@@ -1,0 +1,45 @@
+last week was coloured triangles using haskell .... it's a challenge on code wars
+
+using scala ...
+trait
+	implicit
+
+Polysemy (for Haskell), by Ryan Mulligan
+"effects" - refers to I/O concerns in Haskell
+features:
+* isolate effects
+* easy to test
+* easier to use than transformers
+* allows multiple instances of the same effect monads sans wrappers
+
+runIO :: Member(Lift IO) r => Sem (Time ': r) a -> Sem r a
+runIO =
+ interpret $ \case
+   Now -> sendM getCurrentTime
+
+runPure :: UTCTime -> Sem (Time ': r) a -> Sem r a
+runPure t =
+  interpret $ \case
+   Now -> pure t
+
+oneHourAgo :: Member Time r => Sem r UTCTime
+oneHourAgo = now <&> addUTCTime ...
+
+http://hackage.haskell.org/package/polysemy
+
+doSomething <|> doSomethingElse
+... instead of ...
+[less concise syntax]
+
+Polysemy is an example of freer monad library
+
+can help with mocking
+"get mocking for free"
+control over effects
+
+docTests
+auto-populates Haskell documentation for a library!
+http://hackage.haskell.org/package/doctest
+
+presentation package: patat "presentation atop an ascii terminal"
+
