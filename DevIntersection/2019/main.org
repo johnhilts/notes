@@ -29,4 +29,43 @@
 
 ** ML apps in .net
     - Room 120
+      
+* Tuesday 10:00-11:00
+** functional JS
+    - Room 124
+
+** AI for .net dev
+    - Room 120
+
+* Tuesday 11:15-12:15
+** AI Azure CLI
+    - Room 115
+
+** msg based microservices
+    - Room 112
+
+* Tuesday 1:30-2:30
+** Polly error handling
+    - Room 104
+
+** msg based microservices
+    - Room 120
+
+* Thursday 10:00-11:00
+** AI  for beginners
+    - Room 120
+
+* Thursday 11:15-12:15
+** C# 8
+    - Room 116
+
+** Predict sport outcomes
+   - Room 120
+
+* Thursday 1:30-2:30
+** real time data analysis
+   - Room 112
+
+** deploy/use ML models
+   - Room 120
 

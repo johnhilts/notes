@@ -3,18 +3,9 @@
 
 <s
 
-#+begin_src c
-int main(char[] args)
-{
-  printf("hello");
-  return 0;
-}
-#+end_src
+microsoft bought a github
 
-#+NAME: main.c
-#+begin_src c 
-int main(char[] args)
-{
-  printf("why can't I tab?");
-}
-#+end_src
+cognitive services will turn a form into json
+
+[[https:https://tinkerpop.apache.org/gremlin.html][Gremlin Graph Traversal Language]]
+
