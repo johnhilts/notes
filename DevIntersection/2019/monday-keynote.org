@@ -1,0 +1,20 @@
+* Monday Keynote with Scott Gutthrie
+ - received free book!
+
+<s
+
+#+begin_src c
+int main(char[] args)
+{
+  printf("hello");
+  return 0;
+}
+#+end_src
+
+#+name main.c
+#+begin_src c 
+int main(char[] args)
+{
+  printf("why can't I tab?");
+}
+#+end_src
