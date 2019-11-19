@@ -11,7 +11,7 @@ int main(char[] args)
 }
 #+end_src
 
-#+name main.c
+#+NAME: main.c
 #+begin_src c 
 int main(char[] args)
 {
