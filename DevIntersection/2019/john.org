@@ -1,4 +1,4 @@
-#+ My thoughts on trying out Org Mode
+#+My thoughts on trying out Org Mode
 
 * Emacs is very slow
 - Spacemacs is even slower
