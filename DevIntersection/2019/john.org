@@ -1,0 +1,8 @@
+#+ My thoughts on trying out Org Mode
+
+* Emacs is very slow
+- Spacemacs is even slower
+- evil? yeah, better than *nothing*
+- org mode doesn't work that well with Spacemacs (or maybe evil ... whoth knows)
+
+
