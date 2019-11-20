@@ -3,6 +3,19 @@
 * Emacs is very slow
 - Spacemacs is even slower
 - evil? yeah, better than *nothing*
-- org mode doesn't work that well with Spacemacs (or maybe evil ... whoth knows)
+- org mode doesn't work that well with Spacemacs (or maybe evil ... who th knows)
+- Spacemacs does ... a lot of weird stuff
+- I'd like to try doom emacs, but I don't see a docker container for it ... shouldn't be a big deal to make one, though ...
+
+#+BEGIN_SRC emacs-lisp
+(+ 1 2 3 4)
+#+END_SRC
+
+#+RESULTS:
+: 10
+
+** Test List
+- item 1
+- item 2
 
 
