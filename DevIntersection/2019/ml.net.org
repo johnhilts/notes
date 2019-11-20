@@ -1,5 +1,4 @@
-* ML.NET
-
+#+STARTUP:ML.NET
 * what would be good ML projects or use cases? <- my own question
 
 ML.NET used internally for >8 years (bing ads, office, etc)
@@ -69,16 +68,16 @@ https://aka.ms/mlnetyoutube ML playlist
 
 ML.NET used internally for >8 years (bing ads, office, etc)
 
-new features:
-DNN
-db loader
-Jupyter
-see https://aka.ms/mlnet14blogpost
+* new features:
+- DNN
+- db loader
+- Jupyter
+- see https://aka.ms/mlnet14blogpost
 
 Supervised ML (infers label)
 Unsupervised ML (infers ...)
 
-gh/dotnet/machinelearning-samples <-- lots of scenarios
+[[https://github.com/dotnet/machinelearning-samples][Samples]] <-- lots of scenarios
 
 see photo for mapping scenarios/problems to ML tasks
 
@@ -128,5 +127,5 @@ task mgr actually shows gpu usage! :)
 create model, consume model
 wtf is a model exactly?!?
 
-https://aka.ms/mlnetyoutube ML playlist
+[[https://aka.ms/mlnetyoutube][ML playlist]] 
  
