@@ -1,4 +1,4 @@
-#STARTUP:ML.NET
+# ML.NET
 # what would be good ML projects or use cases? <- my own question
 
 ML.NET used internally for >8 years (bing ads, office, etc)
@@ -63,5 +63,5 @@ task mgr actually shows gpu usage! :)
 create model, consume model
 wtf is a model exactly?!?
 
-[[https://aka.ms/mlnetyoutube][ML playlist]] 
+https://aka.ms/mlnetyoutube <-- ML youtube playlist
  
