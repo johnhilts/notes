@@ -5,7 +5,7 @@
 _static in a nested method prevents closing??_
   need to test ...
   
-#C#8 only runs on .net core*
+*C#8 only runs on .net core*
 - only partially true
 - but which feaures work/don't work complicated
   
@@ -38,4 +38,5 @@ _static in a nested method prevents closing??_
 check out toll collector app
 
 see photo for resources
+![Resources](//lpvmdata/WebDevData/Data/JohnHilts/WorkNotes/BED/conferences/DevIntersections/2019/IMG_20191121_121224_resized_20191121_071230731.jpg)
 
