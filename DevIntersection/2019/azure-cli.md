@@ -27,3 +27,4 @@ az webapp create
 There are VS snippets
 
 see photo for list of resources
+![Resources](resources.jpg)

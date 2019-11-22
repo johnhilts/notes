@@ -15,7 +15,7 @@ Unsupervised ML (infers ...)
 https://github.com/dotnet/machinelearning-samples <-- lots of scenarios
 
 see photo for mapping scenarios/problems to ML tasks
-![Resources](ml-tasks.jpg)
+![Resources](images/ml-tasks.jpg)
 
 model creation + model consumption
 

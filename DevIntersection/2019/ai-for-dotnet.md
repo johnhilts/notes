@@ -22,14 +22,14 @@ you don't have to learn R, scala, python thanks to ONNX
 ML.net covers most of the workloads
 
 See photo for different categories such as *sales forecasting* and *fraud detection*
-![Categories](categories.jpg)
+![Categories](images/categories.jpg)
 
 fraudulent transactions are a very small % of all transactions
 
 ML.net wouldn't produce a perfect model, but it would still be pretty good, and comparable to what a python coder would make
 
 see photo for code sample of trainig and making predictions
-![code sample](ml-sample.jpg)
+![code sample](images/ml-sample.jpg)
 
 scm, devops, testing more important than raw data science skills
 

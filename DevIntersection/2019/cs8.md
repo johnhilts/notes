@@ -38,5 +38,5 @@ _static in a nested method prevents closing??_
 check out toll collector app
 
 see photo for resources
-![Resources](cs8-resources.jpg)
+![Resources](images/cs8-resources.jpg)
 

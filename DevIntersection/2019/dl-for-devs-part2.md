@@ -17,7 +17,7 @@ DNN
 *stop words* == a, an, the
 see photo for training a classification model with text
 	the green box is the model (?)
-![Resources](train-classification-model.jpg)
+![Resources](images/train-classification-model.jpg)
 
 neurons keep reducing in number at each level until 1 is left
 
@@ -46,7 +46,7 @@ at the end, publish to web
 
 Concept: Convolutional Neural Network
 see photo for CNN
-![Resources](cnn.jpg)
+![Resources](images/cnn.jpg)
 
 demo goal: image search
 
@@ -58,13 +58,13 @@ MSINST - "hello, world" of alphanumeric recognition
 
 ## Demo 5 recurrent neural network
 see photo for RNN
-![Resources](rnn.jpg)
+![Resources](images/rnn.jpg)
 
 the architecture has an impact on the result - some fit better with different analyses than others
 
 what about ML.net?
 see photo
-![Resources](ml-net.jpg)
+![Resources](images/ml-net.jpg)
 some support for DL too!
 	but can't do an end to end model ... but can work on the last few layers
 

@@ -41,7 +41,7 @@ how do we know how much it will cost?
 		couldn't you just do a POC locally?
 
 see photo for Resources
-![Resources](references.jpg)
+![Resources](images/references.jpg)
 
 question: how is this actually being used by enterprise customers?
 sql -> azure data factory -> data pipeline (helps simplify model -> deployment process)
@@ -95,7 +95,7 @@ how do we know how much it will cost?
                 couldn't you just do a POC locally?
 
 see photo for Resources
-![Resources](ai-spectrum.jpg)
+![Resources](images/ai-spectrum.jpg)
 
 question: how is this actually being used by enterprise customers?
 sql -> azure data factory -> data pipeline (helps simplify model -> deployment process)

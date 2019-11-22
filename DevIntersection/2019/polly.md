@@ -32,12 +32,12 @@ polly allows plugging in a cache ...
 allows for failing gracefully
 
 see photo for Policy Basics
-![Resources](policy-basics.jpg)
+![Resources](images/policy-basics.jpg)
 
 Samples:github.com/app-vnext/polly-samples
 
 see photo for retry code sample
-![Resources](polly-code.jpg)
+![Resources](images/polly-code.jpg)
 handles all exceptions by using the Exception base class
 
 ## Good combination
@@ -62,4 +62,4 @@ called "Simmy" (like Simeon)
 polly-js another option
 
 see photo for resource links
-![Resources](polly-wiki.jpg)
+![Resources](images/polly-wiki.jpg)

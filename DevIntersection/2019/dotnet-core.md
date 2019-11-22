@@ -37,7 +37,7 @@ There is a tool to purge patches, etc
 
 see photo for global.json entries
 `allowPrerelease` surprising
-![Resources](global-json.jpg)
+![Resources](images/global-json.jpg)
 
 nuget versioning uses *
 _but complicated_
@@ -51,7 +51,7 @@ _not sure if the above is right_
 
 # Publish Options
 See photo for Publish Options
-![Resources](publish-options.jpg)
+![Resources](images/publish-options.jpg)
 
 # Tab completion
 `dotnet add <TAB>`

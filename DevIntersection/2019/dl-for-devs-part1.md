@@ -44,21 +44,21 @@ beware of model rot!
 	- data changes (goes out of date, etc)
 
 see photo for the pre-built and custom AI spectrum
-![Resources](ai-spectrum.jpg)
+![Resources](images/ai-spectrum.jpg)
 see photo for examples of data science tools
-![Resources](data-science-tools.jpg)
+![Resources](images/data-science-tools.jpg)
 
 keras is a "human friendly interface" for tensor flow
 pytorch is from FB
 
 see photo for Azure data science services
-![Resources](azure-data-science.jpg)
+![Resources](images/azure-data-science.jpg)
 Azure ML and Azure Databricks
 
 see photo for advanced analytics pattern in Azure 
-![Resources](azure-analytics.jpg)
+![Resources](images/azure-analytics.jpg)
 see photo for the notebook paradigm (how work in Jupyter or Databricks is organized)
-![Resources](notebook-paradigm.jpg)
+![Resources](images/notebook-paradigm.jpg)
 
 ## Demo 1
 - login to Azure Databricks
@@ -81,7 +81,7 @@ pandas data frames (pdf)
 
 iris setosis is a hello, world dataset
 see photo for ML/DL comparison
-![Resources](ml-vs-dl.jpg)
+![Resources](images/ml-vs-dl.jpg)
 ML - a human decides on which features to train on
 DL - automatic feature extraction; figures out features in a layered fashion (different levels of detail), massive amounts of training data, raw + unstructured OK (that's why it works with things like speech) - requires a lot of computing power
 
@@ -96,7 +96,7 @@ forward pass, backward pass, neurons, weight
 
 (test) loss - is this low enough for us to accept the model?
 see photo for types of functions (part of DL architecture)
-![Resources](last-layer-loss-function.jpg)
+![Resources](images/last-layer-loss-function.jpg)
 
 training set vs test set (homework vs test)
 
