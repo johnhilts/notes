@@ -47,7 +47,7 @@ _not sure if the above is right_
 
 # trimming
 - new in 3.0
-- =<PublishTrimmed>=
+- `<PublishTrimmed>`
 
 # Publish Options
 See photo for Publish Options
@@ -56,5 +56,5 @@ See photo for Publish Options
 # Tab completion
 `dotnet add <TAB>`
 _pretty smart!_
-## .net core tab completion
+## google .net core tab completion
 _tells you how to enable tab completion for cli_
