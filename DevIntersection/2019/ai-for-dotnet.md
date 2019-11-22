@@ -5,9 +5,12 @@
 "intelligence becomes affordable for biz apps"
 
 same slide as another talk *the data science process*
-  including the "in dev terms"
-  _does this guy work at the same company??(solliance)_
-  yep ... works at solliance ...
+
+including the "in dev terms"
+
+_does this guy work at the same company??(solliance)_
+
+yep ... works at solliance ...
 
 same spectrum slide too
 
@@ -22,14 +25,17 @@ See photo for different categories such as *sales forecasting* and *fraud detect
 ![Categories](categories.jpg)
 
 fraudulent transactions are a very small % of all transactions
+
 ML.net wouldn't produce a perfect model, but it would still be pretty good, and comparable to what a python coder would make
 
 see photo for code sample of trainig and making predictions
 ![code sample](ml-sample.jpg)
 
 scm, devops, testing more important than raw data science skills
-  data scientists don't typically work in a structured way .... 
-  most data scientists aren't "equipped" to handle normal SDLC
+
+data scientists don't typically work in a structured way .... 
+
+most data scientists aren't "equipped" to handle normal SDLC
 
 this talk was 99% .... pretty useless ...
 
