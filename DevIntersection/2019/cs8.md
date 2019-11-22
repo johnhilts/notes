@@ -1,15 +1,15 @@
-* C#8 what's new?
+# C#8 what's new?
 
-** Kathleen Dollard (very good speaker, easily best so far)
+## Kathleen Dollard (very good speaker, easily best so far)
 
 _static in a nested method prevents closing??_
   need to test ...
   
-*C#8 only runs on .net core*
+#C#8 only runs on .net core*
 - only partially true
 - but which feaures work/don't work complicated
   
-* nullable reference types
+# nullable reference types
   - in `csproj` add `<Nullable>true</Nullable>`
   _this will change the default re: nullability_
   - do it more selectively in code `#nullable enable`
@@ -18,18 +18,18 @@ _static in a nested method prevents closing??_
   - `!` is the _null forgiving operator_ but considered a code smell ... aka _dammit, do what I said_ operator ...
   - There's a `!` attribute too? (or did they say annotation?)
 
-* Asynchronous streams
+# Asynchronous streams
   - watch the ignite video ...
   
-* Default interface members
+# Default interface members
 - very limited!
 - can only be used in C#8 in .net core 3.0
 - nothing else can use/consume it!!  
 
-* Index / Range
+# Index / Range
 - `var x = arr[..]; // get the entire array - useful with multi-diminsional arrays`
 
-* Switch Expressions
+# Switch Expressions
   - need default or `_` when switching on enums
   _because you can put something not defined in the enums in a variable of enum type!!_
   - `_` works similarly to F# (pattern matching)
