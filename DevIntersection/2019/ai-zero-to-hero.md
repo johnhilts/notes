@@ -1,7 +1,7 @@
-* AI zero to hero
+# AI zero to hero
 prepare data -> build/train -> deploy
 
-** Which:
+## Which:
 	- features?
 	- algorithm?
 	- parameters?
@@ -11,10 +11,10 @@ simplify it!
 azure machine learning "did the dirty work" with hyperparameters
 	azure can apply a lot of resources to the problem (how much??)
 
-** use case: credit card fraud (interesting!)
+## use case: credit card fraud (interesting!)
 column name: "fraud or not?"
 label column name: class (what we want to predict)
-*** settings: 
+### settings: 
 - end early when good match found
 - max run time: 10 minutes
 
@@ -27,7 +27,7 @@ The developer without familiarity with ML can leverage AutomatedML SDK
 
 MS doesn't see the data (that can't be right)
 
-** use case: how much energy demand for NYC in the next 48 hours?
+## use case: how much energy demand for NYC in the next 48 hours?
 data: historical usage
 
 primary metric choices - need ML specific knowledge to even know which one to choose
@@ -41,6 +41,7 @@ how do we know how much it will cost?
 		couldn't you just do a POC locally?
 
 see photo for Resources
+![Resources](references.jpg)
 
 question: how is this actually being used by enterprise customers?
 sql -> azure data factory -> data pipeline (helps simplify model -> deployment process)
@@ -54,7 +55,7 @@ sql -> azure data factory -> data pipeline (helps simplify model -> deployment p
 
 prepare data -> build/train -> deploy
 
-** Which:
+## Which:
         - features?
         - algorithm?
         - parameters?
@@ -64,10 +65,10 @@ simplify it!
 azure machine learning "did the dirty work" with hyperparameters
         azure can apply a lot of resources to the problem (how much??)
 
-** use case: credit card fraud (interesting!)
+## use case: credit card fraud (interesting!)
 column name: "fraud or not?"
 label column name: class (what we want to predict)
-*** settings:
+### settings:
 - end early when good match found
 - max run time: 10 minutes
 
@@ -80,7 +81,7 @@ The developer without familiarity with ML can leverage AutomatedML SDK
 
 MS doesn't see the data (that can't be right)
 
-** use case: how much energy demand for NYC in the next 48 hours?
+## use case: how much energy demand for NYC in the next 48 hours?
 data: historical usage
 
 primary metric choices - need ML specific knowledge to even know which one to choose
@@ -94,6 +95,7 @@ how do we know how much it will cost?
                 couldn't you just do a POC locally?
 
 see photo for Resources
+![Resources](ai-spectrum.jpg)
 
 question: how is this actually being used by enterprise customers?
 sql -> azure data factory -> data pipeline (helps simplify model -> deployment process)

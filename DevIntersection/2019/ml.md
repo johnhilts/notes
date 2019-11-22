@@ -1,9 +1,9 @@
-#+STARTUP:ML.NET
-* what would be good ML projects or use cases? <- my own question
+#STARTUP:ML.NET
+# what would be good ML projects or use cases? <- my own question
 
 ML.NET used internally for >8 years (bing ads, office, etc)
 
-* new features:
+# new features:
 - DNN
 - db loader
 - Jupyter
@@ -12,9 +12,10 @@ ML.NET used internally for >8 years (bing ads, office, etc)
 Supervised ML (infers label)
 Unsupervised ML (infers ...)
 
-[[https://github.com/dotnet/machinelearning-samples][Samples]] <-- lots of scenarios
+https://github.com/dotnet/machinelearning-samples <-- lots of scenarios
 
 see photo for mapping scenarios/problems to ML tasks
+![Resources](ml-tasks.jpg)
 
 model creation + model consumption
 
@@ -28,7 +29,7 @@ demo shows how the model is executed while typing to detect sentiment based on w
 
 API and CLI also do the same thing as "model builder"
 
-** random thought
+## random thought
 - prolog can come to conclusions based on a database of facts
 - AI makes predictions, but accuracy is analogous to weather forecasting
 - Are expectations for AI better suited for prolog?
@@ -37,7 +38,7 @@ posh> mlnet <parameters> <-- calculates model and saves it
 
 XPlot package for plotting data
 
-** DL features
+## DL features
 - DNN
 - Computer Vision
 - Supports ONNX and Tensorflow (pytorch on roadmap)

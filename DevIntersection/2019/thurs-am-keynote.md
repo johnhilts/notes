@@ -1,5 +1,5 @@
-* AI discussion
-/with CNN anchor Don Lemon/
+# AI discussion
+_with CNN anchor Don Lemon_
 
 check and balances to prevent AI abuse
     can't be solved by technology alone (of course, haha)

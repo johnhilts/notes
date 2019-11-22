@@ -43,4 +43,3 @@ yes, it's a big problem
  - can you integrate well into a team?
    ... note to self: get a job as a speaker on AI, since you don't need to really know anything!!
   
-my dancing green robot is NOT dancing ...

@@ -1,11 +1,7 @@
-* Monday Keynote with Scott Gutthrie
+# Monday Keynote with Scott Gutthrie
  - received free book!
-
-<s
-
-microsoft bought a github
 
 cognitive services will turn a form into json
 
-[[https:https://tinkerpop.apache.org/gremlin.html][Gremlin Graph Traversal Language]]
+Gremlin Graph Traversal Language https:https://tinkerpop.apache.org/gremlin.html
 

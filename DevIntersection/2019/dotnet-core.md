@@ -1,19 +1,19 @@
-* .NET Core
-/with Kathleen Dollard/
+# .NET Core
+_with Kathleen Dollard_
 
 .NET 4.8 is on the Windows support policy and will be supported for a very long time
 MS also has a huge number of .NET assets
 
 Each SDK builds apps for earlier runtimes
 
-* SDK selection
+# SDK selection
 
 "Bootstrapper" selects an SDK (latest by default)
 global.json can override the default
-create with =dotnet new globaljson=
+create with `dotnet new globaljson`
 put in sln or repo root
 
-** SDK version numbers
+## SDK version numbers
 x.y.znn
 x=major
 y=minor
@@ -26,33 +26,35 @@ version numbers don't match "latest"
 
 baseline SDK separate from VS
 
-*** splitting the SDK and runtime
+### splitting the SDK and runtime
 - SDK patches rare
 - runtime patches more frequent
 
-=dotnet --list-sdks=
+`dotnet --list-sdks`
 This might be useful for troubleshooting...
 
 There is a tool to purge patches, etc
 
 see photo for global.json entries
-=allowPrerelease= surprising
+`allowPrerelease` surprising
+![Resources](global-json.jpg)
 
 nuget versioning uses *
-/but complicated/
+_but complicated_
 
-=System.Runtime.InteropServices.Runtime=
-/not sure if the above is right/
+`System.Runtime.InteropServices.Runtime`
+_not sure if the above is right_
 
-* trimming
+# trimming
 - new in 3.0
 - =<PublishTrimmed>=
 
-* Publish Options
+# Publish Options
 See photo for Publish Options
+![Resources](publish-options.jpg)
 
-* Tab completion
-=dotnet add <TAB>=
-/pretty smart!/
-** .net core tab completion
-/tells you how to enable tab completion for cli/
+# Tab completion
+`dotnet add <TAB>`
+_pretty smart!_
+## .net core tab completion
+_tells you how to enable tab completion for cli_
