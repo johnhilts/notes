@@ -36,3 +36,6 @@
   - you can *not* =or= the conditions (unlike F#), and it *might* show up in C#9
 
 check out toll collector app
+
+see photo for resources
+
