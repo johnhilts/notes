@@ -32,7 +32,7 @@ polly allows plugging in a cache ...
 allows for failing gracefully
 
 see photo for Policy Basics
-![Resources](polly-basics.jpg)
+![Resources](policy-basics.jpg)
 
 Samples:github.com/app-vnext/polly-samples
 
