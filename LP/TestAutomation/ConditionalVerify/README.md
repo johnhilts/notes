@@ -3,6 +3,10 @@
 ## ConditionalVerify: Skippable verify in case you provided a message.
 ### The point of ConditionalVerify is to skip a test if certain conditions are true.
 
+# Next Steps
+* Add task to add attributes that will filter tests instead of make them skip, where applicable.
+* Other tests should just fail. Failed tests seem to get more attention than skipped ones.
+
 # How `True` works:
 ## `try` block
 * Do a bunch of logging with a message that potentially explains why a test would be skipped.
@@ -28,7 +32,7 @@
             catch (TrueException ex)
             {
                 Browser.SkipTestIfServerError(); // <-- see code block below
-                HandleTrueFailure(message, ex); // <-- almost the same thing as AttemptToVerify (just logging)
+                HandleTrueFailure(message, ex); // <-- almost the same thing as AttemptToVerify (just logging) + will skip the test
             }
         }
 
