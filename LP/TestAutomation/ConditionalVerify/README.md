@@ -1,4 +1,4 @@
-# ConditionalVerfy
+# ConditionalVerify
 
 ## ConditionalVerify: Skippable verify in case you provided a message.
 ### The point of ConditionalVerify is to skip a test if certain conditions are true.
@@ -7,7 +7,7 @@
 ## `try` block
 * Do a bunch of logging with a message that potentially explains why a test would be skipped.
 * Do an Xunit Assertion (true)
-* If the assertion failes, catch the exception. 
+* If the assertion fails, catch the exception. 
 ## `catch` block
 * If a server side error (500) occurred, then skip the test.
 * More logging, this time including the Xunit exception's info.
@@ -38,7 +38,7 @@ I'm suspicious as to whether this entire method even works as advertised ...
 ```
         public void SkipTestIfServerError()
         {
-            if (IsInitialized) <-- this is set at the end of the ctor for this object ... so it will always be true!
+            if (IsInitialized) // <-- this is set at the end of the ctor for this object ... so it will always be true!
             {
                 // Js makes sure body element exists, and if it does it returns the inner text.
                 // Not using IWebElement for performance, and not using Browser.Locate.ElementImmediately to avoid recursion.
