@@ -1,4 +1,4 @@
-#+ Wednesday Morning Scott Hanselman keynote
+# Wednesday Morning Scott Hanselman keynote
 
 cowsay
 
