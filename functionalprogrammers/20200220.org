@@ -1,0 +1,40 @@
+* haskell question
+** How to output sound
+you can use CreateEventA like with C
+
+* Property based testing
+** ExUnit
+Similar to specify/describe style
+string data
+doctest example from code wars
+send a bunch of values to all be tested (compared)
+
+some syntax such as pipeline looks like ML
+
+in Elixir, it looks like =Enum= is short "enumeration" and has helper methods like =.join=
+
+were things like =uniq_list_of()= part of the framework?
+
+#+BEGIN_SRC erlang
+words <- blah(function())
+words
+|> split(' ')
+|> blah(bar)
+#+END_SRC
+
+#+BEGIN_SRC elixir
+foo
+|> bar
+#+END_SRC
+
+* Xbonacci
+example of pattern matching in this week's code (and probably other weeks')
+
+* Next meeting 3/5
+
+TDD kata with nix
+another property based testing kata
+
+* Favorite unit testing f/w?
+hspec
+not that different from hUnit

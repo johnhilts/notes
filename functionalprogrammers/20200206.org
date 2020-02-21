@@ -1,0 +1,118 @@
+* Intro to nix
+
+* Nix  pkg mgr
+
+* Nix espression language
+designed to solve software deployment problems
+
+* Nixpkgs - (like Homebrew)
+
+* NixOS - linux distro
+
+* Why?
++ no missing dependencies
++ declarative OS
++ declarative home directory
++ get up to date software
+** Solves DLL hell
+Uninstalling, rollbacks, atomicity
+
+I wonder if this has been used with something like docker at all?
+
+Ryan uses NixOS on multiple machines
+
+apt, rpm <-- typical pkg mgr
+modifying global state
+/etc
+/usr/bin
+
+NixOS works side by side w/other pkg mgrs
+
+install
+hooks
+
+* channels 
+place to get pkgs from
+
+#+BEGIN_SRC bash
+nix-env -i name # install
+nix-env -f name # find
+#+END_SRC
+
+* profiles
+~/.nix-profile
+#+BEGIN_SRC bash
+nex-env --rollback
+#+END_SRC
+
+rollbacks work on ALL LEVELS, including its own install
+
+nix-repl
+
+nix language has functions, and currying works
+
+[[https://nixos.org/][Nix OS site]]
+
+* derivation (nix expressions)
+contains an encrypted hash to protect against MITM
+
+there are like 48k of these in the nix pagckages folder
+
+derivation spells out environment
+
+configuration.nix
+list packages you want, ports to open
+
+"search NixOS options"
+try searching for nginx
+
+/etc/nixos/configuration.nix
+
+sudo nixos-rebuild-switch
+./nix-pkgs/configuration.nix
+
+can configure emacs!
+
+* NEXT TOPIC
+* Property Based Testing
+* Why?
+generative testing
+
+repeatability?
+
+hunit and quick check (looks like spec style)
+hspec is another one ... maybe that's what was meant?
+
+in *elixir*, =Enum= means "collection"?
+"ExUnit" (get it?)
+*Ex* Unit
+
+** incomplete properties
+
+** round trip testing - property based testing  can generate lots of values
+*** other examples (not tied to property testing)
++ reversing a string twice should return original string
++ encode / decode 
+
+really useful with generating trees of data
+arbitrary complexity
+
+you can write the generator(s)??
+
+libs come with lots of generators built-in
+
+** how deterministic are they?
+*** probably as much as you need
+*** quick check has "replay"
+
+** fuzzing
+
+I wonder if anyone's combined this with multi-threading?
+
+a codebase that has to handle different data formats (because of lib dependencies, and protocol buffers)
+
+* Next meeting: 2/20!
+property based testing kata
+Haskell kata
+
+Ryan has a project to update nix packages
