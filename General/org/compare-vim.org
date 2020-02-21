@@ -1,0 +1,9 @@
+* normal mode
+** screen hopping
+M-r equivlant of S-h S-m S-l
+C-l equivlant of zt zz zb
+C-x 1 equivlant of C-w o
+C-x 0 equivlant of :bd
+
+* insert mode
+M-/ equivalent of C-n

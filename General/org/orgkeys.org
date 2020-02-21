@@ -1,0 +1,6 @@
+* Links
+** Insert file (such as a photo!)
+=C-u C-c C-l=
+*** Display photo
+=C-c C-x C-v=
+

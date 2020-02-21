@@ -1,66 +1,65 @@
-* Polly
+# Polly
 
 AppvNext - current stewards of polly
 
 Carl Franklin
 
-** Transient Errors
+## Transient Errors
 - Network outages
 - Service outages
 and like 3 more I missed
 
 works in blazor
 
-/What's bulkhead isolation?/
-#+BEGIN_QUOTE
-/"one fault shouldn't sink the whole ship"/
-#+END_QUOTE
+_What's bulkhead isolation?_
+_"one fault shouldn't sink the whole ship"_
 
 fallback feature
 
-** retry patterns
+## retry patterns
 - retry (immediately; can set number of retries)
 - wait and retry
   exponential back-off, jitter...
 - retry forever
 
-** Bulkhead isolation
-#+BEGIN_QUOTE
+## Bulkhead isolation
 1 fault shouldn't sink the who ship
-#+END_QUOTE
 
-** Cache feature
+## Cache feature
 polly allows plugging in a cache ...
 
-** Fallback
+## Fallback
 allows for failing gracefully
 
 see photo for Policy Basics
+![Resources](images/policy-basics.jpg)
 
-[[github.com/app-vnext/polly-samples][Samples]]
+Samples:github.com/app-vnext/polly-samples
 
 see photo for retry code sample
+![Resources](images/polly-code.jpg)
 handles all exceptions by using the Exception base class
 
-** Good combination
+## Good combination
 combine exponential backoff + (eventual) timeout + circuit breaker
 
 "breaking the circuit" sounds more like "put requests on pause"
   "break the circuit" after N retries
 
-** policy wrap
+## policy wrap
 - goes from outer to inner
 
 VS code on string wasn't versioned ... so different than what's on GH?
 
-#+BEGIN_SRC java
+```
 .Handle<Exception>
 .OrInner<SomeInnerException>
-#+END_SRC
+```
 
-** next release - chaos engineering 
+## next release - chaos engineering 
 called "Simmy" (like Simeon)
 
 polly-js another option
 
 see photo for resource links
+![Resources](images/polly-wiki.jpg)
