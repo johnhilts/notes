@@ -7,3 +7,11 @@
 * TODO Plan LA Trip 
 
 ORG MODE
+
+#+BEGIN_SRC emacs-lisp
+(+ 1 2 3)
+
+#+END_SRC
+
+#+RESULTS:
+: 6
