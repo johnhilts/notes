@@ -1,0 +1,22 @@
+* Format Code
+** =Tab= at the beginning of each line will format it.
+** re-indent a whole expression with the point on the opening =(= then =C-M-q=
+** re-indent the whole body of a function from anywhere within it with =C-c M-q=
+** close all parens in sexp =C-c C-]=
+
+* Build code
+
+** Compile =C-c C-c= runs the command slime-compile-defun, which in turn sends the definition to Lisp to be evaluated and compiled. 
+- =(load(compile-file("c:/path/to/file")))= compiles and loads into current buffer
+- =C-c C-l= is the shortcut for load and compile-file
+
+* UI
+- M-x invert-face<ret>default<ret> ; toggle light/dark mode
+- (set-cursor-color "#ffffff") ; make the cursor visible
+
+- clear buffer (useful if you have very large output in the repl)
+=C-c M-o=
+
+- stop running process
+=C-c C-b=
+*remember* hit C-b twice if inside temux!
