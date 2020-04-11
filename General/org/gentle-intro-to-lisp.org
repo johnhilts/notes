@@ -50,3 +50,35 @@ It only accepts numbers.
 *** =~S= insert sexp
 *** =~A= insert sexp without escape characters
 
+* Macros
+*Macros* do not evaluate their arguments;they return Lisp expressions that are evaluated.
+
+** Special Functions
+Like macros, *special functions* do not evaluate their inputs. 
+But unlike macros, they do not return Lisp expressions that are to be evaluated. 
+Special functions provide the primitives on which Lisp is built, such as assignment, conditionals, and block structure.
+As of mid-1989, the 24 built-in Common Lisp special functions are:
+BLOCK, CATCH, COMPILER-LET, DECLARE, EVAL-WHEN,
+FLET, FUNCTION, GO, IF, LABELS, LET, LET*, MACROLET,
+MULTIPLE-VALUE-CALL, MULTIPLE-VALUE-PROG1, PROGN,
+PROGV, QUOTE, RETURN-FROM, SETQ, TAGBODY, THE,
+THROW, and UNWIND-PROTECT.
+
+** =`= Backquote character
+Constructs a list from a template. 
+Backquote is particularly useful in macros that construct complex expressions by filling in the blanks of a template.
+/How does a backquote "fill in the blanks of a template"/??
+
+** =,=
+If a template element is preceded by a comma it will be evaluated; the value is then inserted into *the list* being constructed. 
+=,= can also mean *unquote*, in the context of a quoted expression.
+
+** =,@=
+Elements preceded by a comma and at sign combination are *spliced* (interpolated / injected) into the list rather than inserted. 
+
+** =&body=
+In a macro, the body expressions could be collected with =&REST=, 
+but Common Lisp includes a
+special keyword, =&BODY=, to *use when the remaining arguments to a macro
+form the body of some control structure*. Some Lisp editors pay special
+attention to the =&BODY= keyword when indenting calls to macros.

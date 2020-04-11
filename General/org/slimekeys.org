@@ -20,3 +20,25 @@
 - stop running process
 =C-c C-b=
 *remember* hit C-b twice if inside temux!
+
+** Window size
+*note* this is emacs, not slime
+=C-x -= (shrink-window-if-larger-than-buffer) 
+=C-x += (balance-windows) will make windows the same heights and widths.
+=C-x ^= (enlarge-window) increases the height by 1 line, or the prefix arg value. A negative arg shrinks the window. e.g. C-- C-1 C-6 C-x ^ shrinks by 16 rows, as does C-u - 1 6 C-x ^.
+=C-x }= (enlarge-window-horizontally) 
+=C-x {= (shrink-window-horizontally) 
+
+=C-x z= Repeat
+=z=  Continued repetition
+
+* Navigate Code (not necessarily SLIME specific)
+=CM-f/b= go to end/beginning of an expression
+=M-h= select region
+=CM-n/p= go to matching parenthesis
+
+* Editting
+=C-x u= undo edit
+=C-_= redo edit
+=C-x u C-x u= redo edit (undo the undo)
+
