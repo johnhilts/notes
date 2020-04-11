@@ -1,0 +1,40 @@
+* niv (part of nix)
+
+need to go into nix shell
+
+* setup
+niv init
+
+* pin
+pin to a particular version of software
+similar to the lockfile concept
+
+=niv show= - what is pinned?
+
+niv pins its own source code
+
+works well with github
+
+=niv add=
+defaults to github
+
+=niv update nixpkgs-update=
+
+(defun blah (blah)
+(more-blah foo bar))
+
+* emacs stuff
+M-x customize
+
+ergo emacs
+
+* Jason
+witchcraft <- "monads and other dark magic" of elixir
+https://github.com/witchcrafters/witchcraft
+
+freer (another elixir thing)
+https://github.com/lingoer/freer
+
+* Ryan
+polysemy
+
