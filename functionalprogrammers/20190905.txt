@@ -1,0 +1,13 @@
+_little typer_
+church numerals
+
+generic types
+
+pi calculus used in concurrency
+
+dependent type (pi type)
+
+read the little schemer first!!
+
+goes well with racket, which has a gui Dr Racket but also runs in the terminal
+

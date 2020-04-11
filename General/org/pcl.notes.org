@@ -1,0 +1,25 @@
+* Practical Common Lisp Notes
+* format
+FORMAT takes at least two arguments, 
+the first being the stream where it sends its output; 
+t is shorthand for the stream *standard-output*.
+
+The second argument to FORMAT is a format string that can contain both literal text and directives telling FORMAT things such as how to interpolate the rest of its arguments. 
+Format directives start with ~ (much the way printf's directives start with %). 
+FORMAT understands dozens of directives, each with their own set of options.
+** Directives
+*** ~a
+  The ~a directive is the aesthetic directive; 
+  it means to consume one argument and output it in a human-readable form. 
+  This will render keywords without the leading : and strings without quotation marks. 
+*** ~t
+  The ~t directive is for tabulating. 
+  The ~10t tells FORMAT to emit enough spaces to move to the tenth column before processing the next ~a. 
+  A ~t doesn't consume any arguments.
+*** ~{ and ~}
+  Now things get slightly more complicated. 
+  When FORMAT sees ~{ the next argument to be consumed must be a list. 
+  FORMAT loops over that list, processing the directives between the ~{ and ~}, consuming as many elements of the list as needed each time through the list. 
+*** ~%
+  The ~% directive doesn't consume any arguments but tells FORMAT to emit a newline. 
+

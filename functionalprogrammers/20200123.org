@@ -1,0 +1,65 @@
+* Katas
+** elixir
+doctest good for examples, katas
+
+*** code
+#+BEGIN_SRC elixir
+iex> Roman.from(1)
+ 
+# test code (maybe) - there's a lot more than this ... just copying bits and pieces
+def from(1), do: "I"
+def from(10), do: "X"
+def from(i) when I >= 10 and i < 40, do: "X" <> from(i - 10)
+
+def from(i) when 1 >= 1 and i < 4, do: encode(i, "I")
+
+# private method
+defp encode(i, letter) when i >= 1 and i < 4 do
+  letter <> encode(i - 1, letter)
+end
+#+END_SRC
+
+**** syntax questions
+***** is <> a type of pipe? no, it's a concatenation operator for "binaries" (a collection that's not a list)
+***** strings are binaries
+***** String.at
+***** String.slice
+***** use .ex for source code extension
+
+[[https://learnxinyminutes.com/docs/elixir/][Learn Elixir in Y Minutes]]
+
+* Haskell
+#+BEGIN_SRC haskell
+module Kata where
+
+-- | subtract one list from another
+-- >>> difference [] []
+-- []
+-- >>> difference [] [1]
+-- []
+-- >>> difference [1] []
+-- [1]
+-- >>> difference [1] [1]
+-- []
+-- >>> difference ["a"] ["a"]
+-- []
+-- >>> difference [1] [1, 2]
+-- []
+-- >>> difference [1, 1] [1]
+-- []
+-- >>> difference [1, 2] [1, 2]
+-- []
+-- >>> difference [1, 2,2,2,3] [2]
+-- [1,3]
+difference :: Eq a => [a] -> [a] -> [a]
+difference a [] = a
+difference a (x:rest) = difference (filter (/= x) a) rest
+#+END_SRC
+=/== means =!==
+Haskell has list comprehensions
+[[https://learnxinyminutes.com/docs/haskell/][Learn Haskell in Y minutes]]
+
+** Next Meeting
+*** Property Based Testing
+"like quick check"
+*** intro to nix

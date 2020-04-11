@@ -1,0 +1,19 @@
+* normal mode
+** screen hopping
+M-r equivalent of S-h S-m S-l
+C-l equivalent of zt zz zb
+C-x 1 equivalent of C-w o
+C-x 0 equivalent of C-w q
+C-x k equivalent of :bd
+C-x C-x equivalent of '' (except it goes back to the last mark)
+M-h equivalent of vi}
+C-s C-s equivalent of n
+C-r C-r equivalent of N
+M-% (Query replace ) equivalent of :%s/search/replace/gc (type =!= to do all)
+M-!<command> equivalent of :r! <command>
+M-x shell equivalent of :shell
+M-y equivalent of "1-9
+C-x space equivalent of C-v
+
+* insert mode
+M-/ equivalent of C-n
