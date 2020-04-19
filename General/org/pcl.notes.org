@@ -23,3 +23,124 @@ FORMAT understands dozens of directives, each with their own set of options.
 *** ~%
   The ~% directive doesn't consume any arguments but tells FORMAT to emit a newline. 
 
+* Comments
+#+BEGIN_SRC lisp
+;;;; Four semicolons are used for a file header comment.
+
+;;; A comment with three semicolons will usually be a paragraph
+;;; comment that applies to a large section of code that follows,
+
+(defun foo (x)
+  (dotimes (i x)
+    ;; Two semicolons indicate this comment applies to the code
+    ;; that follows. Note that this comment is indented the same
+    ;; as the code that follows.
+    (some-function-call)
+    (another i)              ; this comment applies to this line only
+    (and-another)            ; and this is for this line
+    (baz)))
+#+END_SRC
+
+* Functions
+** Parameters
+ It's possible, but rare, to use all four flavors of parameters in a single function. 
+ Whenever more than one flavor of parameter is used, they must be declared in the following order: 
+ - required parameters
+ - optional parameters
+ - rest parameter
+ -  keyword parameters. 
+ Typical ussage:
+ - Combine required parameters with one other flavor
+ - Combine &optional and &rest parameters. 
+ The other two combinations, either &optional or &rest parameters combined with &key parameters, can lead to somewhat surprising behavior.
+ Best to avoid those combinations.
+
+** =#'=
+Shorthand for (function)
+Similar to how ='= is shortand for quote.
+
+** =funcall=
+*** Example
+#+BEGIN_SRC lisp
+;; This is kind of pointless, because you know the functions name
+(foo 1 2 3) === (funcall #'foo 1 2 3)
+;; better example:
+(defun plot (fn min max step)
+  (loop for i from min to max by step do
+        (loop repeat (funcall fn i) do (format t "*")) ; note: fn is a variable, so no need for #' or (function)
+        (format t "~%")))
+(plot #'exp 0 4 1/2) ; use #' here with the actual function name
+#+END_SRC
+
+** =apply=
+Use instead of =funcall= then the number of parameters isn't known until runtime.
+
+** =lambda= note
+Using the =#'= before =lambda= is actually *optional*!
+The reason is because a =lambda= macro was added for compatibility reasons with another lisp dialect during standardization.
+Either consistently use it or don't use it.
+
+** Interesting Example with closures
+#+BEGIN_SRC lisp
+(let ((count 0))
+  (list
+   #'(lambda () (incf count))
+   #'(lambda () (decf count))
+   #'(lambda () count)))
+#+END_SRC
+If you save the above in a list, then you can call each function, and it remembers the value of count.
+#+BEGIN_SRC lisp
+(setf function-list
+  (let ((count 0))
+    (list
+     #'(lambda () (incf count))
+     #'(lambda () (decf count))
+     #'(lambda () count))))
+(funcall (car function-list))
+(funcall (cadr function-list))
+(funcall (caddr function-list))
+#+END_SRC
+
+* Variables
+** Dynamic or Special Variables
+All globals are automatically dynamic.
+Declare with =defvar= or =defparameter=.
+If you re-bind a global in a local context, you over-ride it for everything in that context, /while/ you're in that context.
+Also referred to as a variable's /extent/ as opposed to /scope/ because it has a temporal component.
+Once you leave that local context, the global's previous value is restored.
+*** Use case
+You want to change *standard-output* without having to remember to change it back.
+You could change it so it outputs to a file for logging purposes.
+*** Multi-threading
+Most threading libraries support binding special variables on a per-thread basis.
+*** Rarely used local special variables
+See CLHS for =declare=, =special=, and =locally=. 
+
+* Constants
+=+= suffix naming convention - necessary because you can't rebind a name used by a constant.
+Constants are global.
+
+* Assignment
+
+** =setf= tricks
+- Assign multiple values to multiple places:
+#+BEGIN_SRC lisp
+; instead of ...
+(setf x 1)
+(setf y 2)
+
+; you can write this:
+(setf x 1 y 2)
+#+END_SRC
+
+- Assign multiple places the same value
+#+BEGIN_SRC lisp
+;; SETF returns the newly assigned value, so you can nest calls to SETF
+(setf x (setf y (random 10))) ; both x and f get assigned the same value
+#+END_SRC
+
+** Assignment patterns
+Simple variable:    (setf x 10) 
+Array:              (setf (aref a 0) 10)
+Hash table:         (setf (gethash 'key hash) 10)
+Slot named 'field': (setf (field o) 10)

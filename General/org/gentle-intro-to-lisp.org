@@ -82,3 +82,25 @@ but Common Lisp includes a
 special keyword, =&BODY=, to *use when the remaining arguments to a macro
 form the body of some control structure*. Some Lisp editors pay special
 attention to the =&BODY= keyword when indenting calls to macros.
+
+* Scoping
+
+=defvar=
+Used for declaring variables whose values will change during the normal operation of the program.
+But, you can't update them with defvar (use setf, or even let!)
+
+=defparameter=
+Has the same syntax as DEFVAR, but it is used to declare variables whose values will not change while the program runs. 
+They hold "parameter settings" that tell the program how to behave. 
+Another difference between DEFPARAMETER and DEFVAR is that DEFPARAMETER will assign a value to a variable even if it already has one.
+
+=defconstant=
+Used to define constants, which are guaranteed never to change. 
+Don't surround with * (convention doesn't apply).
+It is an error to:
+- try to change the value of a constant
+- to create a new variable with the same name as a constant. (!!)
+Fun fact: =PI= is a built-in constant in Common Lisp. (are there others? - quick ddg didn't turn up anything ...) 
+
+If you "re-bind" a special variable then the effect is global, even for built-ins (so works as you'd expect).
+
