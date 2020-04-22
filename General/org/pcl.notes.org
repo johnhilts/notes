@@ -396,3 +396,38 @@ Looking at (A 10)
  :count  Number indicating the number of elements to remove or substitute or NIL to indicate all (REMOVE and SUBSTITUTE  NIL  
    only).    
 
+#+BEGIN_SRC lisp
+;; if and if-not variants
+
+(count-if #'evenp #(1 2 3 4 5))         ; ==> 2
+(count-if-not #'evenp #(1 2 3 4 5))     ; ==> 3
+(position-if #'digit-char-p "abcd0001") ; ==> 4
+(remove-if-not #'(lambda (x) (char= (elt x 0) #\f))
+  #("foo" "bar" "baz" "foom")) ; ==> #("foo" "foom")
+
+(count-if #'evenp #((1 a) (2 b) (3 c) (4 d) (5 e)) :key #'first)    ; ==> 2
+(count-if-not #'evenp #((1 a) (2 b) (3 c) (4 d) (5 e)) :key #'first); ==> 3
+(remove-if-not #'alpha-char-p
+  #("foo" "bar" "1baz") :key #'(lambda (x) (elt x 0))); ==> #("foo" "bar")
+
+(remove-duplicates #(1 2 1 2 3 1 2 3 4)) ==> #(1 2 3 4)
+
+;; whole sequence manipulate
+;; these take 1 argument and return a new object
+copy-seq
+reverse
+
+(concatenate 'vector #(1 2 3) '(4 5 6))    ==> #(1 2 3 4 5 6)
+(concatenate 'list #(1 2 3) '(4 5 6))      ==> (1 2 3 4 5 6)
+;; string is a specify type, so all elements much match type!
+(concatenate 'string "abc" '(#\d #\e #\f)) ==> "abcdef"
+
+;; merge (same as zip?)
+(merge 'vector #(1 3 5) #(2 4 6) #'<) ==> #(1 2 3 4 5 6)
+(merge 'list #(1 3 5) #(2 4 6) #'<)   ==> (1 2 3 4 5 6)
+
+;; return sub-sequence
+(subseq "foobarbaz" 3)   ==> "barbaz"
+(subseq "foobarbaz" 3 6) ==> "bar"
+
+#+END_SRC
