@@ -144,3 +144,255 @@ Simple variable:    (setf x 10)
 Array:              (setf (aref a 0) 10)
 Hash table:         (setf (gethash 'key hash) 10)
 Slot named 'field': (setf (field o) 10)
+
+* Macros
+
+** Unit Test Example
+#+BEGIN_SRC lisp
+(defvar *test-name* nil)
+
+(defmacro deftest (name parameters &body body)
+  "Define a test function. Within a test function we can call
+   other test functions or use 'check' to run individual test
+   cases."
+  `(defun ,name ,parameters
+    (let ((*test-name* (append *test-name* (list ',name))))
+      ,@body)))
+
+(defmacro check (&body forms)
+  "Run each expression in 'forms' as a test case."
+  `(combine-results
+    ,@(loop for f in forms collect `(report-result ,f ',f))))
+
+;; this macro acts like a non-short-circuiting AND!
+(defmacro combine-results (&body forms)
+  "Combine the results (as booleans) of evaluating 'forms' in order."
+  (with-gensyms (result) ; NOTE: using gensyms here to avoid name clashing
+    `(let ((,result t))
+      ,@(loop for f in forms collect `(unless ,f (setf ,result nil)))
+      ,result)))
+
+(defun report-result (result form)
+  "Report the results of a single test case. Called by 'check'."
+  (format t "~:[FAIL~;pass~] ... ~a: ~a~%" result *test-name* form)
+  result)
+#+END_SRC
+
+* Primitives
+
+** Numbers
+#+BEGIN_SRC lisp
+;; Some examples of rationals, with their canonical, decimal representation are as follows: 
+123                            ==> 123
++123                           ==> 123
+-123                           ==> -123
+123.                           ==> 123
+2/3                            ==> 2/3
+-2/3                           ==> -2/3
+4/6                            ==> 2/3
+6/3                            ==> 2
+;; binary
+#b10101                        ==> 21
+#b1010/1011                    ==> 10/11
+;; octal
+#o777                          ==> 511
+;; hex
+#xDADA                         ==> 56026
+;; #R is used for arbitrary radix from 2 to 36
+#36rABCDEFGHIJKLMNOPQRSTUVWXYZ ==> 8337503854730415241050377135811259267835
+
+;; The following are some example floating-point numbers along with their canonical representation:
+1.0      ==> 1.0
+1e0      ==> 1.0
+1d0      ==> 1.0d0
+123.0    ==> 123.0
+123e0    ==> 123.0
+0.123    ==> 0.123
+.123     ==> 0.123
+123e-3   ==> 0.123
+123E-3   ==> 0.123
+0.123e20 ==> 1.23e+19
+123d23   ==> 1.23d+25
+
+;; Here are some examples of numbers written the complex number syntax: 
+
+#c(2      1)    ==> #c(2 1)
+#c(2/3  3/4)    ==> #c(2/3 3/4)
+#c(2    1.0)    ==> #c(2.0 1.0)
+#c(2.0  1.0d0)  ==> #c(2.0d0 1.0d0)
+#c(1/2  1.0)    ==> #c(0.5 1.0)
+#c(3      0)    ==> 3
+#c(3.0  0.0)    ==> #c(3.0 0.0)
+#c(1/2    0)    ==> 1/2
+#c(-6/3   0)    ==> -2
+
+;; arithmatic examples
+
+(+ 1 2)              ==> 3
+(+ 1 2 3)            ==> 6
+(+ 10.0 3.0)         ==> 13.0
+(+ #c(1 2) #c(3 4))  ==> #c(4 6) ; complex numbers
+(- 5 4)              ==> 1
+(- 2)                ==> -2 ; negation
+(- 10 3 5)           ==> 2
+(* 2 3)              ==> 6
+(* 2 3 4)            ==> 24
+(/ 10 5)             ==> 2
+(/ 10 5 2)           ==> 1
+(/ 2 3)              ==> 2/3
+(/ 4)                ==> 1/4 ; reciprocal
+(+)                  ==> 0 ; zero arguments
+(*)                  ==> 1 ; zero arguments
+
+;; The /= function returns true only if all its arguments are different values.
+(/= 1 1)        ==> NIL
+(/= 1 2)        ==> T
+(/= 1 2 3)      ==> T
+(/= 1 2 3 1)    ==> NIL
+(/= 1 2 3 1.0)  ==> NIL
+
+;;  ZEROP MINUSP PLUSP - test is zero, negative, positive respectively
+
+;; character literals
+#\a ;; the character 'a'
+#\Space ;; a space
+#\Newline
+#\Tab
+#\Page
+#\Rubout
+#\Linefeed
+#\Return
+#\Backspace
+
+;; Character Comparison Functions
+;; Numeric Analog  Case-Sensitive  Case-Insensitive  
+   =               CHAR=           CHAR-EQUAL  
+   /=              CHAR/=          CHAR-NOT-EQUAL  
+   <               CHAR<           CHAR-LESSP  
+   >               CHAR>           CHAR-GREATERP  
+   <=              CHAR<=          CHAR-NOT-GREATERP  
+   >=              CHAR>=          CHAR-NOT-LESSP  
+
+;; String Comparison Functions
+;; Numeric Analog  Case-Sensitive  Case-Insensitive  
+   =               STRING=           STRING-EQUAL  
+   /=              STRING/=          STRING-NOT-EQUAL  
+   <               STRING<           STRING-LESSP  
+   >               STRING>           STRING-GREATERP  
+   <=              STRING<=          STRING-NOT-GREATERP  
+   >=              STRING>=          STRING-NOT-LESSP  
+#+END_SRC
+
+* Collections
+vectors and lists share enough characteristics that Common Lisp treats them both as
+subtypes of a more general abstraction, the sequence. 
+You can use many  functions with both vectors and lists.
+
+** Vectors
+Vectors are basic integer-indexed collection. 
+
+*** Fixed-size vectors
+ A lot like arrays in a language such as Java: a thin veneer over a chunk of contiguous memory
+#+BEGIN_SRC lisp
+(vector)     ==> #()
+(vector 1)   ==> #(1)
+(vector 1 2) ==> #(1 2)
+
+
+(vector)     ==> #()
+(vector 1)   ==> #(1)
+(vector 1 2) ==> #(1 2)
+#+END_SRC
+
+*** =MAKE-ARRAY=
+ More general than =VECTOR= since you can use it to create arrays of any dimensionality as well as both fixed-size and resizable vectors.
+#+BEGIN_SRC 
+(make-array 5 :initial-element nil) ==> #(NIL NIL NIL NIL NIL)
+#+END_SRC
+
+***  Resizable vectors
+ More like arrays in Ruby, lists in Python, or the ArrayList class in Java
+They abstract the actual storage, allowing the vector to grow and shrink as elements
+ are added and removed.
+
+#+BEGIN_SRC lisp
+;; To make an arbitrarily resizable vector,  pass =MAKE-ARRAY= =:adjustable=.
+(make-array 5 :fill-pointer 0 :adjustable t) ==> #()
+;; This call makes an adjustable vector whose underlying memory can be resized as needed. To add elements to an adjustable vector, you use VECTOR-PUSH-EXTEND, 
+;; which works just like VECTOR-PUSH except it will automatically expand
+;;  the array if you try to push an element onto a full vector--one whose fill pointer is equal to the size of the underlying storage.
+
+;; make an initially empty but RESIZABLE STRING
+(make-array 5 :fill-pointer 0 :adjustable t :element-type 'character)  ""
+#+END_SRC
+
+*** Sequences
+#+BEGIN_SRC lisp
+(defparameter *x* (vector 1 2 3))
+
+(length *x*) ==> 3
+(elt *x* 0)  ==> 1 ; elt is short for "element"
+(elt *x* 1)  ==> 2
+(elt *x* 2)  ==> 3
+(elt *x* 3)  ==> error
+
+;; ELT is also a SETFable place,  you can set the value of an element like this: 
+(setf (elt *x* 0) 10)
+;; *x* ==> #(10 2 3)
+#+END_SRC
+
+**** =elt= vs =aref=
+- If the string has a fill-pointer, ELT will honor it while AREF will ignore it.
+- elt is generic for sequence types and aref is array specific.
+
+#+BEGIN_SRC lisp
+;; Basic Sequence Functions
+(count 1 #(1 2 1 2 3 1 2 3 4))         ==> 3
+(remove 1 #(1 2 1 2 3 1 2 3 4))        ==> #(2 2 3 2 3 4)
+(remove 1 '(1 2 1 2 3 1 2 3 4))        ==> (2 2 3 2 3 4)
+(remove #\a "foobarbaz")               ==> "foobrbz"
+(substitute 10 1 #(1 2 1 2 3 1 2 3 4)) ==> #(10 2 10 2 3 10 2 3 4)
+(substitute 10 1 '(1 2 1 2 3 1 2 3 4)) ==> (10 2 10 2 3 10 2 3 4)
+(substitute #\x #\b "foobarbaz")       ==> "fooxarxaz"
+(find 1 #(1 2 1 2 3 1 2 3 4))          ==> 1
+(find 10 #(1 2 1 2 3 1 2 3 4))         ==> NIL
+(position 1 #(1 2 1 2 3 1 2 3 4))      ==> 0
+
+;; You can modify the behavior of these five functions in a variety of ways using keyword arguments
+(count "foo" #("foo" "bar" "baz") :test #'string=)    ==> 1
+(find 'c #((a 10) (b 20) (c 30) (d 40)) :key #'first) ==> (C 30)
+
+(find 'a #((a 10) (b 20) (a 30) (b 40)) :key #'first)             ==> (A 10)
+(find 'a #((a 10) (b 20) (a 30) (b 40)) :key #'first :from-end t) ==> (A 30)
+
+(remove #\a "foobarbaz" :count 1)             ==> "foobrbaz"
+(remove #\a "foobarbaz" :count 1 :from-end t) ==> "foobarbz"
+
+
+CL-USER> (defparameter *v* #((a 10) (b 20) (a 30) (b 40)))
+*V*
+CL-USER> (defun verbose-first (x) (format t "Looking at ~s~%" x) (first x))
+VERBOSE-FIRST
+CL-USER> (count 'a *v* :key #'verbose-first)
+Looking at (A 10)
+Looking at (B 20)
+Looking at (A 30)
+Looking at (B 40)
+2
+CL-USER> (count 'a *v* :key #'verbose-first :from-end t)
+Looking at (B 40)
+Looking at (A 30)
+Looking at (B 20)
+Looking at (A 10)
+2
+#+END_SRC
+
+ Argument  Meaning  Default  
+ :test  Two-argument function used to compare item (or value extracted by :key function) to element.  EQL  
+ :key  One-argument function to extract key value from actual sequence element. NIL means use element as is.  NIL  
+ :start  Starting index (inclusive) of subsequence.  0  
+ :end  Ending index (exclusive) of subsequence. NIL indicates end of sequence.  NIL  
+ :from-end  If true, the sequence will be traversed in reverse order, from end to start.  NIL  
+ :count  Number indicating the number of elements to remove or substitute or NIL to indicate all (REMOVE and SUBSTITUTE  NIL  
+   only).    
+
