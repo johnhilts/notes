@@ -430,4 +430,78 @@ reverse
 (subseq "foobarbaz" 3)   ==> "barbaz"
 (subseq "foobarbaz" 3 6) ==> "bar"
 
+;; SEARCH function works like POSITION except the first argument is a sequence rather than a single item. 
+(position #\b "foobarbaz") ==> 3
+(search "bar" "foobarbaz") ==> 3
+
+;;  MISMATCH takes two sequences and returns the index of the first pair of mismatched elements.
+(mismatch "foobarbaz" "foom") ==> 3
+;; in reverse order:
+(mismatch "foobar" "bar" :from-end t) ==> 3
+
+;; sequence predicates
+(every #'evenp #(1 2 3 4 5))    ==> NIL
+(some #'evenp #(1 2 3 4 5))     ==> T
+(notany #'evenp #(1 2 3 4 5))   ==> NIL
+(notevery #'evenp #(1 2 3 4 5)) ==> T
+
+;;  compare elements of two sequences pairwise: (multiple sequences!)
+(every #'> #(1 2 3 4) #(5 4 3 2))    ==> NIL
+(some #'> #(1 2 3 4) #(5 4 3 2))     ==> T
+(notany #'> #(1 2 3 4) #(5 4 3 2))   ==> NIL
+(notevery #'> #(1 2 3 4) #(5 4 3 2)) ==> T
+
+;; map has to specify the result type like concatenate and merge
+(map 'vector #'* #(1 2 3 4 5) #(10 9 8 7 6)) ==> #(10 18 24 28 30)
+
+;; MAP-INTO places its results into a sequence passed as the first argument. 
+;; This sequence can be the same as one of the sequences providing values
+;; for the function. 
+(map-into a #'+ a b c) ; each of these is a vector; over-writes a with the sum of all 3
+
+;; reduce takes a keyword unique to it:
+(:initial-value)
+
+;; gethash actually returns 2 values - the value, and whether the key is present
+(defun show-value (key hash-table)
+  (multiple-value-bind (value present) ; the values returned by gethash
+      (gethash key hash-table) ; regular gethash call
+    (if present
+      (format nil "Value ~a actually present." value)
+      (format nil "Value ~a because key not found." value))))
+
+;; REMHASH takes the same arguments as GETHASH and removes the specified entry.
+;; CLRHASH completely clears a hash table of all its key/value pairs.
+
+;; print all the key/value pairs in a hash table
+(maphash #'(lambda (k v) (format t "~a => ~a~%" k v)) *h*)
+
+;; remove all the entries whose value is less than ten:
+(maphash #'(lambda (k v) (when (< v 10) (remhash k *h*))) *h*)
+
+;; using loop to iterate over a hashtable:
+(loop for k being the hash-keys in *h* using (hash-value v)
+  do (format t "~a => ~a~%" k v))
+
+;; use COPY-LIST with sort to avoid destructive operations on the list 
+
+Function  Description  
+ LAST  Returns the last cons cell in a list. With an integer, argument returns the last n cons cells.  
+ BUTLAST  Returns a copy of the list, excluding the last cons cell. With an integer argument, excludes the last n cells.  
+ NBUTLAST  The recycling version of BUTLAST; may modify and return the argument list but has no reliable side effects.  
+ LDIFF  Returns a copy of a list up to a given cons cell.  
+ TAILP  Returns true if a given object is a cons cell that's part of the structure of a list.  
+ LIST*  Builds a list to hold all but the last of its arguments and then makes the last argument the CDR of the last cell in the list. In other words, a cross between LIST and APPEND.  
+ MAKE-LIST  Builds an n item list. The initial elements of the list are NIL or the value specified with the :initial-element keyword argument.  
+ REVAPPEND  Combination of REVERSE and APPEND; reverses first argument as with REVERSE and then appends the second argument.  
+ NRECONC  Recycling version of REVAPPEND; reverses first argument as if by NREVERSE and then appends the second argument. No reliable side effects.  
+ CONSP  Predicate to test whether an object is a cons cell.  
+ ATOM  Predicate to test whether an object is not a cons cell.  
+ LISTP  Predicate to test whether an object is either a cons cell or NIL.  
+ NULL  Predicate to test whether an object is NIL. Functionally equivalent to NOT but stylistically preferable when testing for an empty list as opposed to boolean false.  
+
+;; tree version of substitute is subst
+(subst 10 1 '(1 2 (3 2 1) ((1 1) (2 2))))
+;; returns: (10 2 (3 2 10) ((10 10) (2 2)))
+
 #+END_SRC
