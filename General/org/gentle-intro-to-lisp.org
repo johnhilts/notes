@@ -27,7 +27,7 @@ The  predicate  beginners  should  use.
 It  compares  lists element by element; otherwise it works like EQL.
 - =EQUALP= 
 More liberal than EQUAL: It ignores case distinctions in strings, among other things.
-=\== 
+- =\== 
 The most efficient way to compare numbers, and the only way to compare numbers of disparate types, such as 3 and 3.0.  
 It only accepts numbers.
 
