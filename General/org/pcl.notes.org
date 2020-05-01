@@ -23,3 +23,752 @@ FORMAT understands dozens of directives, each with their own set of options.
 *** ~%
   The ~% directive doesn't consume any arguments but tells FORMAT to emit a newline. 
 
+* Comments
+#+BEGIN_SRC lisp
+;;;; Four semicolons are used for a file header comment.
+
+;;; A comment with three semicolons will usually be a paragraph
+;;; comment that applies to a large section of code that follows,
+
+(defun foo (x)
+  (dotimes (i x)
+    ;; Two semicolons indicate this comment applies to the code
+    ;; that follows. Note that this comment is indented the same
+    ;; as the code that follows.
+    (some-function-call)
+    (another i)              ; this comment applies to this line only
+    (and-another)            ; and this is for this line
+    (baz)))
+#+END_SRC
+
+* Functions
+** Parameters
+ It's possible, but rare, to use all four flavors of parameters in a single function. 
+ Whenever more than one flavor of parameter is used, they must be declared in the following order: 
+ - required parameters
+ - optional parameters
+ - rest parameter
+ -  keyword parameters. 
+ Typical ussage:
+ - Combine required parameters with one other flavor
+ - Combine &optional and &rest parameters. 
+ The other two combinations, either &optional or &rest parameters combined with &key parameters, can lead to somewhat surprising behavior.
+ Best to avoid those combinations.
+
+** =#'=
+Shorthand for (function)
+Similar to how ='= is shortand for quote.
+
+** =funcall=
+*** Example
+#+BEGIN_SRC lisp
+;; This is kind of pointless, because you know the functions name
+(foo 1 2 3) === (funcall #'foo 1 2 3)
+;; better example:
+(defun plot (fn min max step)
+  (loop for i from min to max by step do
+        (loop repeat (funcall fn i) do (format t "*")) ; note: fn is a variable, so no need for #' or (function)
+        (format t "~%")))
+(plot #'exp 0 4 1/2) ; use #' here with the actual function name
+#+END_SRC
+
+** =apply=
+Use instead of =funcall= then the number of parameters isn't known until runtime.
+
+** =lambda= note
+Using the =#'= before =lambda= is actually *optional*!
+The reason is because a =lambda= macro was added for compatibility reasons with another lisp dialect during standardization.
+Either consistently use it or don't use it.
+
+** Interesting Example with closures
+#+BEGIN_SRC lisp
+(let ((count 0))
+  (list
+   #'(lambda () (incf count))
+   #'(lambda () (decf count))
+   #'(lambda () count)))
+#+END_SRC
+If you save the above in a list, then you can call each function, and it remembers the value of count.
+#+BEGIN_SRC lisp
+(setf function-list
+  (let ((count 0))
+    (list
+     #'(lambda () (incf count))
+     #'(lambda () (decf count))
+     #'(lambda () count))))
+(funcall (car function-list))
+(funcall (cadr function-list))
+(funcall (caddr function-list))
+#+END_SRC
+
+* Variables
+** Dynamic or Special Variables
+All globals are automatically dynamic.
+Declare with =defvar= or =defparameter=.
+If you re-bind a global in a local context, you over-ride it for everything in that context, /while/ you're in that context.
+Also referred to as a variable's /extent/ as opposed to /scope/ because it has a temporal component.
+Once you leave that local context, the global's previous value is restored.
+*** Use case
+You want to change *standard-output* without having to remember to change it back.
+You could change it so it outputs to a file for logging purposes.
+*** Multi-threading
+Most threading libraries support binding special variables on a per-thread basis.
+*** Rarely used local special variables
+See CLHS for =declare=, =special=, and =locally=. 
+
+* Constants
+=+= suffix naming convention - necessary because you can't rebind a name used by a constant.
+Constants are global.
+
+* Assignment
+
+** =setf= tricks
+- Assign multiple values to multiple places:
+#+BEGIN_SRC lisp
+; instead of ...
+(setf x 1)
+(setf y 2)
+
+; you can write this:
+(setf x 1 y 2)
+#+END_SRC
+
+- Assign multiple places the same value
+#+BEGIN_SRC lisp
+;; SETF returns the newly assigned value, so you can nest calls to SETF
+(setf x (setf y (random 10))) ; both x and f get assigned the same value
+#+END_SRC
+
+** Assignment patterns
+Simple variable:    (setf x 10) 
+Array:              (setf (aref a 0) 10)
+Hash table:         (setf (gethash 'key hash) 10)
+Slot named 'field': (setf (field o) 10)
+
+* Macros
+
+** Unit Test Example
+#+BEGIN_SRC lisp
+(defvar *test-name* nil)
+
+(defmacro deftest (name parameters &body body)
+  "Define a test function. Within a test function we can call
+   other test functions or use 'check' to run individual test
+   cases."
+  `(defun ,name ,parameters
+    (let ((*test-name* (append *test-name* (list ',name))))
+      ,@body)))
+
+(defmacro check (&body forms)
+  "Run each expression in 'forms' as a test case."
+  `(combine-results
+    ,@(loop for f in forms collect `(report-result ,f ',f))))
+
+;; this macro acts like a non-short-circuiting AND!
+(defmacro combine-results (&body forms)
+  "Combine the results (as booleans) of evaluating 'forms' in order."
+  (with-gensyms (result) ; NOTE: using gensyms here to avoid name clashing
+    `(let ((,result t))
+      ,@(loop for f in forms collect `(unless ,f (setf ,result nil)))
+      ,result)))
+
+(defun report-result (result form)
+  "Report the results of a single test case. Called by 'check'."
+  (format t "~:[FAIL~;pass~] ... ~a: ~a~%" result *test-name* form)
+  result)
+#+END_SRC
+
+* Primitives
+
+** Numbers
+#+BEGIN_SRC lisp
+;; Some examples of rationals, with their canonical, decimal representation are as follows: 
+123                            ==> 123
++123                           ==> 123
+-123                           ==> -123
+123.                           ==> 123
+2/3                            ==> 2/3
+-2/3                           ==> -2/3
+4/6                            ==> 2/3
+6/3                            ==> 2
+;; binary
+#b10101                        ==> 21
+#b1010/1011                    ==> 10/11
+;; octal
+#o777                          ==> 511
+;; hex
+#xDADA                         ==> 56026
+;; #R is used for arbitrary radix from 2 to 36
+#36rABCDEFGHIJKLMNOPQRSTUVWXYZ ==> 8337503854730415241050377135811259267835
+
+;; The following are some example floating-point numbers along with their canonical representation:
+1.0      ==> 1.0
+1e0      ==> 1.0
+1d0      ==> 1.0d0
+123.0    ==> 123.0
+123e0    ==> 123.0
+0.123    ==> 0.123
+.123     ==> 0.123
+123e-3   ==> 0.123
+123E-3   ==> 0.123
+0.123e20 ==> 1.23e+19
+123d23   ==> 1.23d+25
+
+;; Here are some examples of numbers written the complex number syntax: 
+
+#c(2      1)    ==> #c(2 1)
+#c(2/3  3/4)    ==> #c(2/3 3/4)
+#c(2    1.0)    ==> #c(2.0 1.0)
+#c(2.0  1.0d0)  ==> #c(2.0d0 1.0d0)
+#c(1/2  1.0)    ==> #c(0.5 1.0)
+#c(3      0)    ==> 3
+#c(3.0  0.0)    ==> #c(3.0 0.0)
+#c(1/2    0)    ==> 1/2
+#c(-6/3   0)    ==> -2
+
+;; arithmatic examples
+
+(+ 1 2)              ==> 3
+(+ 1 2 3)            ==> 6
+(+ 10.0 3.0)         ==> 13.0
+(+ #c(1 2) #c(3 4))  ==> #c(4 6) ; complex numbers
+(- 5 4)              ==> 1
+(- 2)                ==> -2 ; negation
+(- 10 3 5)           ==> 2
+(* 2 3)              ==> 6
+(* 2 3 4)            ==> 24
+(/ 10 5)             ==> 2
+(/ 10 5 2)           ==> 1
+(/ 2 3)              ==> 2/3
+(/ 4)                ==> 1/4 ; reciprocal
+(+)                  ==> 0 ; zero arguments
+(*)                  ==> 1 ; zero arguments
+
+;; The /= function returns true only if all its arguments are different values.
+(/= 1 1)        ==> NIL
+(/= 1 2)        ==> T
+(/= 1 2 3)      ==> T
+(/= 1 2 3 1)    ==> NIL
+(/= 1 2 3 1.0)  ==> NIL
+
+;;  ZEROP MINUSP PLUSP - test is zero, negative, positive respectively
+
+;; character literals
+#\a ;; the character 'a'
+#\Space ;; a space
+#\Newline
+#\Tab
+#\Page
+#\Rubout
+#\Linefeed
+#\Return
+#\Backspace
+
+;; Character Comparison Functions
+;; Numeric Analog  Case-Sensitive  Case-Insensitive  
+   =               CHAR=           CHAR-EQUAL  
+   /=              CHAR/=          CHAR-NOT-EQUAL  
+   <               CHAR<           CHAR-LESSP  
+   >               CHAR>           CHAR-GREATERP  
+   <=              CHAR<=          CHAR-NOT-GREATERP  
+   >=              CHAR>=          CHAR-NOT-LESSP  
+
+;; String Comparison Functions
+;; Numeric Analog  Case-Sensitive  Case-Insensitive  
+   =               STRING=           STRING-EQUAL  
+   /=              STRING/=          STRING-NOT-EQUAL  
+   <               STRING<           STRING-LESSP  
+   >               STRING>           STRING-GREATERP  
+   <=              STRING<=          STRING-NOT-GREATERP  
+   >=              STRING>=          STRING-NOT-LESSP  
+#+END_SRC
+
+* Collections
+vectors and lists share enough characteristics that Common Lisp treats them both as
+subtypes of a more general abstraction, the sequence. 
+You can use many  functions with both vectors and lists.
+
+** Vectors
+Vectors are basic integer-indexed collection. 
+
+*** Fixed-size vectors
+ A lot like arrays in a language such as Java: a thin veneer over a chunk of contiguous memory
+#+BEGIN_SRC lisp
+(vector)     ==> #()
+(vector 1)   ==> #(1)
+(vector 1 2) ==> #(1 2)
+
+
+(vector)     ==> #()
+(vector 1)   ==> #(1)
+(vector 1 2) ==> #(1 2)
+#+END_SRC
+
+*** =MAKE-ARRAY=
+ More general than =VECTOR= since you can use it to create arrays of any dimensionality as well as both fixed-size and resizable vectors.
+#+BEGIN_SRC 
+(make-array 5 :initial-element nil) ==> #(NIL NIL NIL NIL NIL)
+#+END_SRC
+
+***  Resizable vectors
+ More like arrays in Ruby, lists in Python, or the ArrayList class in Java
+They abstract the actual storage, allowing the vector to grow and shrink as elements
+ are added and removed.
+
+#+BEGIN_SRC lisp
+;; To make an arbitrarily resizable vector,  pass =MAKE-ARRAY= =:adjustable=.
+(make-array 5 :fill-pointer 0 :adjustable t) ==> #()
+;; This call makes an adjustable vector whose underlying memory can be resized as needed. To add elements to an adjustable vector, you use VECTOR-PUSH-EXTEND, 
+;; which works just like VECTOR-PUSH except it will automatically expand
+;;  the array if you try to push an element onto a full vector--one whose fill pointer is equal to the size of the underlying storage.
+
+;; make an initially empty but RESIZABLE STRING
+(make-array 5 :fill-pointer 0 :adjustable t :element-type 'character)  ""
+#+END_SRC
+
+*** Sequences
+#+BEGIN_SRC lisp
+(defparameter *x* (vector 1 2 3))
+
+(length *x*) ==> 3
+(elt *x* 0)  ==> 1 ; elt is short for "element"
+(elt *x* 1)  ==> 2
+(elt *x* 2)  ==> 3
+(elt *x* 3)  ==> error
+
+;; ELT is also a SETFable place,  you can set the value of an element like this: 
+(setf (elt *x* 0) 10)
+;; *x* ==> #(10 2 3)
+#+END_SRC
+
+**** =elt= vs =aref=
+- If the string has a fill-pointer, ELT will honor it while AREF will ignore it.
+- elt is generic for sequence types and aref is array specific.
+
+#+BEGIN_SRC lisp
+;; Basic Sequence Functions
+(count 1 #(1 2 1 2 3 1 2 3 4))         ==> 3
+(remove 1 #(1 2 1 2 3 1 2 3 4))        ==> #(2 2 3 2 3 4)
+(remove 1 '(1 2 1 2 3 1 2 3 4))        ==> (2 2 3 2 3 4)
+(remove #\a "foobarbaz")               ==> "foobrbz"
+(substitute 10 1 #(1 2 1 2 3 1 2 3 4)) ==> #(10 2 10 2 3 10 2 3 4)
+(substitute 10 1 '(1 2 1 2 3 1 2 3 4)) ==> (10 2 10 2 3 10 2 3 4)
+(substitute #\x #\b "foobarbaz")       ==> "fooxarxaz"
+(find 1 #(1 2 1 2 3 1 2 3 4))          ==> 1
+(find 10 #(1 2 1 2 3 1 2 3 4))         ==> NIL
+(position 1 #(1 2 1 2 3 1 2 3 4))      ==> 0
+
+;; You can modify the behavior of these five functions in a variety of ways using keyword arguments
+(count "foo" #("foo" "bar" "baz") :test #'string=)    ==> 1
+(find 'c #((a 10) (b 20) (c 30) (d 40)) :key #'first) ==> (C 30)
+
+(find 'a #((a 10) (b 20) (a 30) (b 40)) :key #'first)             ==> (A 10)
+(find 'a #((a 10) (b 20) (a 30) (b 40)) :key #'first :from-end t) ==> (A 30)
+
+(remove #\a "foobarbaz" :count 1)             ==> "foobrbaz"
+(remove #\a "foobarbaz" :count 1 :from-end t) ==> "foobarbz"
+
+
+CL-USER> (defparameter *v* #((a 10) (b 20) (a 30) (b 40)))
+*V*
+CL-USER> (defun verbose-first (x) (format t "Looking at ~s~%" x) (first x))
+VERBOSE-FIRST
+CL-USER> (count 'a *v* :key #'verbose-first)
+Looking at (A 10)
+Looking at (B 20)
+Looking at (A 30)
+Looking at (B 40)
+2
+CL-USER> (count 'a *v* :key #'verbose-first :from-end t)
+Looking at (B 40)
+Looking at (A 30)
+Looking at (B 20)
+Looking at (A 10)
+2
+#+END_SRC
+
+ Argument  Meaning  Default  
+ :test  Two-argument function used to compare item (or value extracted by :key function) to element.  EQL  
+ :key  One-argument function to extract key value from actual sequence element. NIL means use element as is.  NIL  
+ :start  Starting index (inclusive) of subsequence.  0  
+ :end  Ending index (exclusive) of subsequence. NIL indicates end of sequence.  NIL  
+ :from-end  If true, the sequence will be traversed in reverse order, from end to start.  NIL  
+ :count  Number indicating the number of elements to remove or substitute or NIL to indicate all (REMOVE and SUBSTITUTE  NIL  
+   only).    
+
+#+BEGIN_SRC lisp
+;; if and if-not variants
+
+(count-if #'evenp #(1 2 3 4 5))         ; ==> 2
+(count-if-not #'evenp #(1 2 3 4 5))     ; ==> 3
+(position-if #'digit-char-p "abcd0001") ; ==> 4
+(remove-if-not #'(lambda (x) (char= (elt x 0) #\f))
+  #("foo" "bar" "baz" "foom")) ; ==> #("foo" "foom")
+
+(count-if #'evenp #((1 a) (2 b) (3 c) (4 d) (5 e)) :key #'first)    ; ==> 2
+(count-if-not #'evenp #((1 a) (2 b) (3 c) (4 d) (5 e)) :key #'first); ==> 3
+(remove-if-not #'alpha-char-p
+  #("foo" "bar" "1baz") :key #'(lambda (x) (elt x 0))); ==> #("foo" "bar")
+
+(remove-duplicates #(1 2 1 2 3 1 2 3 4)) ==> #(1 2 3 4)
+
+;; whole sequence manipulate
+;; these take 1 argument and return a new object
+copy-seq
+reverse
+
+(concatenate 'vector #(1 2 3) '(4 5 6))    ==> #(1 2 3 4 5 6)
+(concatenate 'list #(1 2 3) '(4 5 6))      ==> (1 2 3 4 5 6)
+;; string is a specify type, so all elements much match type!
+(concatenate 'string "abc" '(#\d #\e #\f)) ==> "abcdef"
+
+;; merge (same as zip?)
+(merge 'vector #(1 3 5) #(2 4 6) #'<) ==> #(1 2 3 4 5 6)
+(merge 'list #(1 3 5) #(2 4 6) #'<)   ==> (1 2 3 4 5 6)
+
+;; return sub-sequence
+(subseq "foobarbaz" 3)   ==> "barbaz"
+(subseq "foobarbaz" 3 6) ==> "bar"
+
+;; SEARCH function works like POSITION except the first argument is a sequence rather than a single item. 
+(position #\b "foobarbaz") ==> 3
+(search "bar" "foobarbaz") ==> 3
+
+;;  MISMATCH takes two sequences and returns the index of the first pair of mismatched elements.
+(mismatch "foobarbaz" "foom") ==> 3
+;; in reverse order:
+(mismatch "foobar" "bar" :from-end t) ==> 3
+
+;; sequence predicates
+(every #'evenp #(1 2 3 4 5))    ==> NIL
+(some #'evenp #(1 2 3 4 5))     ==> T
+(notany #'evenp #(1 2 3 4 5))   ==> NIL
+(notevery #'evenp #(1 2 3 4 5)) ==> T
+
+;;  compare elements of two sequences pairwise: (multiple sequences!)
+(every #'> #(1 2 3 4) #(5 4 3 2))    ==> NIL
+(some #'> #(1 2 3 4) #(5 4 3 2))     ==> T
+(notany #'> #(1 2 3 4) #(5 4 3 2))   ==> NIL
+(notevery #'> #(1 2 3 4) #(5 4 3 2)) ==> T
+
+;; map has to specify the result type like concatenate and merge
+(map 'vector #'* #(1 2 3 4 5) #(10 9 8 7 6)) ==> #(10 18 24 28 30)
+
+;; MAP-INTO places its results into a sequence passed as the first argument. 
+;; This sequence can be the same as one of the sequences providing values
+;; for the function. 
+(map-into a #'+ a b c) ; each of these is a vector; over-writes a with the sum of all 3
+
+;; reduce takes a keyword unique to it:
+(:initial-value)
+
+;; gethash actually returns 2 values - the value, and whether the key is present
+(defun show-value (key hash-table)
+  (multiple-value-bind (value present) ; the values returned by gethash
+      (gethash key hash-table) ; regular gethash call
+    (if present
+      (format nil "Value ~a actually present." value)
+      (format nil "Value ~a because key not found." value))))
+
+;; REMHASH takes the same arguments as GETHASH and removes the specified entry.
+;; CLRHASH completely clears a hash table of all its key/value pairs.
+
+;; print all the key/value pairs in a hash table
+(maphash #'(lambda (k v) (format t "~a => ~a~%" k v)) *h*)
+
+;; remove all the entries whose value is less than ten:
+(maphash #'(lambda (k v) (when (< v 10) (remhash k *h*))) *h*)
+
+;; using loop to iterate over a hashtable:
+(loop for k being the hash-keys in *h* using (hash-value v)
+  do (format t "~a => ~a~%" k v))
+
+;; use COPY-LIST with sort to avoid destructive operations on the list 
+
+Function  Description  
+ LAST  Returns the last cons cell in a list. With an integer, argument returns the last n cons cells.  
+ BUTLAST  Returns a copy of the list, excluding the last cons cell. With an integer argument, excludes the last n cells.  
+ NBUTLAST  The recycling version of BUTLAST; may modify and return the argument list but has no reliable side effects.  
+ LDIFF  Returns a copy of a list up to a given cons cell.  
+ TAILP  Returns true if a given object is a cons cell that's part of the structure of a list.  
+ LIST*  Builds a list to hold all but the last of its arguments and then makes the last argument the CDR of the last cell in the list. In other words, a cross between LIST and APPEND.  
+ MAKE-LIST  Builds an n item list. The initial elements of the list are NIL or the value specified with the :initial-element keyword argument.  
+ REVAPPEND  Combination of REVERSE and APPEND; reverses first argument as with REVERSE and then appends the second argument.  
+ NRECONC  Recycling version of REVAPPEND; reverses first argument as if by NREVERSE and then appends the second argument. No reliable side effects.  
+ CONSP  Predicate to test whether an object is a cons cell.  
+ ATOM  Predicate to test whether an object is not a cons cell.  
+ LISTP  Predicate to test whether an object is either a cons cell or NIL.  
+ NULL  Predicate to test whether an object is NIL. Functionally equivalent to NOT but stylistically preferable when testing for an empty list as opposed to boolean false.  
+
+;; tree version of substitute is subst
+(subst 10 1 '(1 2 (3 2 1) ((1 1) (2 2))))
+;; returns: (10 2 (3 2 10) ((10 10) (2 2)))
+
+#+END_SRC
+
+* List alternatives (that build on top of lists)
+** Sets
+#+BEGIN_SRC lisp
+CL-USER> (defparameter *set* ())
+*SET*
+CL-USER> (adjoin 1 *set*)
+(1)
+CL-USER> *set*
+NIL
+CL-USER> (setf *set* (adjoin 1 *set*))
+(1)
+CL-USER> (pushnew 2 *set*)
+(2 1)
+CL-USER> *set*
+(2 1)
+CL-USER> (pushnew 2 *set*)
+(2 1)
+#+END_SRC
+Sets work with the following:
+=member=
+=intersection=
+=union=
+=set-difference=
+=subsetp=
+And these 2 new ones I haven't seen before:
+=set-difference=
+=set-exclusive-or=
+
+** alists
+
+*** Example:
+#+BEGIN_SRC lisp
+;; example alist
+((A . 1) (B . 2) (C . 3))
+
+;; using assoc
+CL-USER> (assoc 'a '((a . 1) (b . 2) (c . 3)))
+(A . 1)
+CL-USER> (assoc 'c '((a . 1) (b . 2) (c . 3)))
+(C . 3)
+CL-USER> (assoc 'd '((a . 1) (b . 2) (c . 3)))
+NIL
+
+;; get value ONLY that's associated with a key
+CL-USER> (cdr (assoc 'a '((a . 1) (b . 2) (c . 3))))
+1
+
+;; acons (convenience function for adding to head of an alist)
+(acons 'new-key 'new-value alist)
+
+;; which can be written with CONS like this:
+(cons (cons 'new-key 'new-value) alist)
+
+;; destructive versions:
+(setf alist (acons 'new-key 'new-value alist))
+;; or ..
+(push (cons 'new-key 'new-value) alist)
+
+;; other ways to do lookups on alists:
+assoc-if
+assoc-if-not
+rassoc-if ; reverse lookup
+rassoc-if-not ; reverse lookup
+#+END_SRC
+
+*** perf concerns
+- lookups are all O(n)
+- but outperforms hashtables for small tables
+
+*** Other ways to create alists
+- =copy-alist=
+- =pairlis= - creates an alist from a pair of lists
+#+BEGIN_SRC lisp
+CL-USER> (pairlis '(a b c) '(1 2 3))
+((C . 3) (B . 2) (A . 1)) ; result order NOT guaranteed!
+#+END_SRC
+
+** plists
+
+*** functions
+uses =getf= instead of =assoc=
+
+ #+BEGIN_SRC lisp
+ ;; example plist (very simple)
+(A 1 B 2 C 3)
+
+ ;; getting and setting
+
+CL-USER> (defparameter *plist* ())
+*PLIST*
+CL-USER> *plist*
+NIL
+CL-USER> (setf (getf *plist* :a) 1)
+1
+CL-USER> *plist*
+(:A 1)
+CL-USER> (setf (getf *plist* :a) 2)
+2
+CL-USER> *plist*
+(:A 2)
+
+;; removing - use REMF
+(remf *plist* :a)
+
+;; get-properties to get multiples (not 100% sure how this works)
+(get-properties plist keys)
+ #+END_SRC
+
+*** Manipulating symbol plists
+#+BEGIN_SRC lisp
+;; use GET convenience function (showing GETF translation here)
+(get 'symbol 'key) === (getf (symbol-plist 'symbol) 'key)
+;; add arbitrary info
+(setf (get 'some-symbol 'my-key) "information")
+
+;; remove with remprop convenience function or remf
+(remprop 'symbol 'key) === (remf (symbol-plist 'symbol key))
+
+#+END_SRC
+
+*** =destructuring-bind=
+
+**** Examples
+#+BEGIN_SRC lisp
+(destructuring-bind (&key x y z) (list :x 1 :y 2 :z 3)
+  (list :x x :y y :z z)) ==> (:X 1 :Y 2 :Z 3)
+
+(destructuring-bind (&key x y z) (list :z 1 :y 2 :x 3)
+  (list :x x :y y :z z)) ==> (:X 3 :Y 2 :Z 1)
+
+;; &WHOLE parameter
+
+(destructuring-bind (&whole whole &key x y z) (list :z 1 :y 2 :x 3)
+  (list :x x :y y :z z :whole whole))
+==> (:X 3 :Y 2 :Z 1 :WHOLE (:Z 1 :Y 2 :X 3))
+
+#+END_SRC
+
+* File I/O
+
+** Functions
+- =open=
+ Obtain a stream from which you can read a file's contents
+ Returns a character-based input stream
+
+- =read-char=
+ Reads a single character
+
+- =read-line=
+ Reads a line of text, returning a string with end-of-line character(s) removed
+
+- =read=
+ Reads a single s-expression, returning a Lisp object.
+
+- =close=
+Use when done with the stream
+
+*** Example
+#+BEGIN_SRC lisp
+
+(open "/some/file/name.txt")
+
+(let ((in (open "/some/file/name.txt")))
+  (format t "~a~%" (read-line in))
+  (close in))
+
+;; handle non-existent file as nil stream:
+(let ((in (open "/some/file/name.txt" :if-does-not-exist nil)))
+  (when in
+    (format t "~a~%" (read-line in))
+    (close in)))
+
+;; can also use create to create if the file doesn't exist
+
+;; safely read file - won't error if going past EOF
+(let ((in (open "/some/file/name.txt" :if-does-not-exist nil)))
+  (when in
+    (loop for line = (read-line in nil) ; 2 parametre nil means "don't error on reading after EOF"
+         while line do (format t "~a~%" line))
+    (close in)))
+#+END_SRC
+
+*** Using =read= and =print= on a file
+
+**** Given this file
+ (1 2 3)
+ 456
+ "a string" ; this is a comment
+ ((a b)
+  (c d))
+
+... containing four s-expressions: 
+- a list of numbers
+- a number
+- a string
+- a list of lists
+
+#+BEGIN_SRC lisp
+ CL-USER> (defparameter *s* (open "/some/file/name.txt"))
+ *S*
+ CL-USER> (read *s*)
+ (1 2 3)
+ CL-USER> (read *s*)
+ 456
+ CL-USER> (read *s*)
+ "a string"
+ CL-USER> (read *s*)
+ ((A B) (C D))
+ CL-USER> (close *s*)
+ T
+#+END_SRC
+
+*** Binary Data
+
+**** Functions
+- =read-byte=
+- =read-sequence=
+Very performant
+
+*** Output
+#+BEGIN_SRC lisp
+(open "/some/file/name.txt" :direction :output :if-exists :supersede)
+#+END_SRC
+
+**** Functions
+- =WRITE-CHAR=
+ Writes a single character to the stream.
+
+- =WRITE-LINE=
+ Writes a string followed by a newline
+- =WRITE-STRING=
+Writes a string without adding any end-of-line characters. 
+- =TERPRI=
+Short for "terminate print"
+Unconditionally prints a newline character
+- =FRESH-LINE=
+ Prints a newline character unless the stream is at the beginning of a line.
+- =PRINT=
+ Prints an s-expression preceded by an end-of-line and followed by a space.
+- =PRIN1=
+ Prints just the s-expression.
+- =PPRINT=
+ Prints s-expressions  using the "pretty printer"
+- =PRINC=
+Also prints Lisp objects, but in a way designed for human consumption. 
+For instance, PRINC prints strings without quotation marks. 
+- Also: =write-byte= and =write-sequence=
+
+**** Closing files
+#+BEGIN_SRC lisp
+;; NOTE SAFE - the following isn't like having a C# using statement
+(let ((stream (open "/some/file/name.txt")))
+  ;; do stuff with stream
+  (close stream))
+
+;; these are safe and are like a using statement:
+;; with-open-file is a macro built on top of unwind-protect
+(with-open-file (stream "/some/file/name.txt")
+  (format t "~a~%" (read-line stream)))
+
+;;  create a new file
+(with-open-file (stream "/some/file/name.txt" :direction :output)
+  (format stream "Some text."))
+
+#+END_SRC
+

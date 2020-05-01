@@ -27,7 +27,7 @@ The  predicate  beginners  should  use.
 It  compares  lists element by element; otherwise it works like EQL.
 - =EQUALP= 
 More liberal than EQUAL: It ignores case distinctions in strings, among other things.
-=\== 
+- =
 The most efficient way to compare numbers, and the only way to compare numbers of disparate types, such as 3 and 3.0.  
 It only accepts numbers.
 
@@ -49,4 +49,58 @@ It only accepts numbers.
 *** =~&= line break if not already at the beginning of a line
 *** =~S= insert sexp
 *** =~A= insert sexp without escape characters
+
+* Macros
+*Macros* do not evaluate their arguments;they return Lisp expressions that are evaluated.
+
+** Special Functions
+Like macros, *special functions* do not evaluate their inputs. 
+But unlike macros, they do not return Lisp expressions that are to be evaluated. 
+Special functions provide the primitives on which Lisp is built, such as assignment, conditionals, and block structure.
+As of mid-1989, the 24 built-in Common Lisp special functions are:
+BLOCK, CATCH, COMPILER-LET, DECLARE, EVAL-WHEN,
+FLET, FUNCTION, GO, IF, LABELS, LET, LET*, MACROLET,
+MULTIPLE-VALUE-CALL, MULTIPLE-VALUE-PROG1, PROGN,
+PROGV, QUOTE, RETURN-FROM, SETQ, TAGBODY, THE,
+THROW, and UNWIND-PROTECT.
+
+** =`= Backquote character
+Constructs a list from a template. 
+Backquote is particularly useful in macros that construct complex expressions by filling in the blanks of a template.
+/How does a backquote "fill in the blanks of a template"/??
+
+** =,=
+If a template element is preceded by a comma it will be evaluated; the value is then inserted into *the list* being constructed. 
+=,= can also mean *unquote*, in the context of a quoted expression.
+
+** =,@=
+Elements preceded by a comma and at sign combination are *spliced* (interpolated / injected) into the list rather than inserted. 
+
+** =&body=
+In a macro, the body expressions could be collected with =&REST=, 
+but Common Lisp includes a
+special keyword, =&BODY=, to *use when the remaining arguments to a macro
+form the body of some control structure*. Some Lisp editors pay special
+attention to the =&BODY= keyword when indenting calls to macros.
+
+* Scoping
+
+=defvar=
+Used for declaring variables whose values will change during the normal operation of the program.
+But, you can't update them with defvar (use setf, or even let!)
+
+=defparameter=
+Has the same syntax as DEFVAR, but it is used to declare variables whose values will not change while the program runs. 
+They hold "parameter settings" that tell the program how to behave. 
+Another difference between DEFPARAMETER and DEFVAR is that DEFPARAMETER will assign a value to a variable even if it already has one.
+
+=defconstant=
+Used to define constants, which are guaranteed never to change. 
+Don't surround with * (convention doesn't apply).
+It is an error to:
+- try to change the value of a constant
+- to create a new variable with the same name as a constant. (!!)
+Fun fact: =PI= is a built-in constant in Common Lisp. (are there others? - quick ddg didn't turn up anything ...) 
+
+If you "re-bind" a special variable then the effect is global, even for built-ins (so works as you'd expect).
 
