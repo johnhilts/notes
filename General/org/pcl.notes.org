@@ -772,3 +772,28 @@ For instance, PRINC prints strings without quotation marks.
 
 #+END_SRC
 
+* Format Recipes
+#+BEGIN_SRC lisp
+;; output CSV using LOOP
+(loop for cons on list
+    do (format t "~a" (car cons))
+    when (cdr cons) do (format t ", "))
+
+;; same with FORMAT 1 liner
+(format t "~{~a~^, ~}" list)
+#+END_SRC
+
+** Modifiers
+- =~S= is used to generate =READ= able data.
+- Use with =:= to convert =NIL= to =()=
+- =~~= to emit a literal =~=
+- Emit nonprinting characters by name:
+#+BEGIN_SRC lisp
+;; combines ~c for use with characters with :
+(format t "Syntax error. Unexpected character: ~:c" #\Space)
+
+;; print ascii name
+(format nil "~:@c" (code-char 0)) ; "Nul"                                                                                                                                                                  
+(format nil "~:@c" (code-char 1)) ; "Soh"                                                                                                                                                                  
+(format nil "~:@c" (code-char 7)) ; "Bel"              
+#+END_SRC

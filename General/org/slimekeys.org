@@ -41,5 +41,6 @@
 * Editting
 =C-x u= undo edit
 =C-_= redo edit
+or, =C-?= (think "control shift /")
 =C-x u C-x u= redo edit (undo the undo)
 
