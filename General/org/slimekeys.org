@@ -44,3 +44,25 @@
 or, =C-?= (think "control shift /")
 =C-x u C-x u= redo edit (undo the undo)
 
+* Lisp source
+=C-h m= get list of commands (for current mode)
+=M-.= go to definition
+=M-,= pop back out
+
+** Documentation commands:
+=C-c C-d C-d= Describe symbol.
+=C-c C-d C-a= Apropos search.
+=C-c M-d= Disassemble a function.
+
+** Compiling
+=C-c TAB= completion-at-point
+=C-c RET= slime-expand-1 (expand macro)
+=C-c C-p= slime-pprint-eval-last-expression
+=C-c C-u= slime-undefine-function
+
+** Debugging
+=C-c I= slime-inspect
+=C-c C-w c= slime-who-calls
+=C-c C-t= slime-toggle-fancy-trace
+=C-c RET= macro exapand interactively
+=C-c M-d= slime-disassemble-symbol

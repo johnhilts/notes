@@ -1,0 +1,38 @@
+* Haskell kata
+
+https://www.codewars.com/kata/541c8630095125aba6000c00/train/haskell
+
+ghci
+:info Integral
+94 `divMod` 10
+|| empty list
+sum $ digitsOf num
+
+digital root from code wars
+
+=<>= monoidal append
+=++= is list append (?)
+
+digitalRoot n = 1 + (n - 1) `mod` 9
+
+doctest
+
+* Elixier kata (same)
+dialyzer
+942 -> 6
+
+#+BEGIN_SRC elixir
+def digital_root(i) when is_integer(i) and i < 10, do: i
+
+def digital_root(i) when is_integer(i) do
+  i |> Integer.digits() |> Enum.sum() |> digital_root()
+end
+end
+#+END_SRC
+
+* Next mtg 5/14
+parsing in Elixir
+
+* Other topics
+Element 14
+https://www.element14.com/
