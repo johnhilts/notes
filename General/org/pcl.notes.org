@@ -796,4 +796,44 @@ For instance, PRINC prints strings without quotation marks.
 (format nil "~:@c" (code-char 0)) ; "Nul"                                                                                                                                                                  
 (format nil "~:@c" (code-char 1)) ; "Soh"                                                                                                                                                                  
 (format nil "~:@c" (code-char 7)) ; "Bel"              
+
+;; transliteration
+(format nil "~r" 1234) ==> "one thousand two hundred thirty-four"
+;; the colon modifier emits the number as an ordinal.
+(format nil "~:r" 1234) ==> "one thousand two hundred thirty-fourth"
+;; an at-sign modifier emits the number as a Roman numeral
+(format nil "~@r" 1234)  ==> "MCCXXXIV"
+; with both an at-sign and a colon, it emits "old-style" Roman numerals in which fours and nines are written as IIII and VIIII instead of IV and IX.
+(format nil "~:@r" 1234) ==> "MCCXXXIIII"
+;; For numbers too large to be represented in the given form, ~R behaves like ~D.
+
+;; To help you generate messages with words properly pluralized, FORMAT provides the ~P directive, which simply emits an s unless the corresponding argument is 1.
+(format nil "file~p" 1)  ==> "file"
+(format nil "file~p" 10) ==> "files"
+(format nil "file~p" 0)  ==> "files"
+
+;;  use ~P with the colon modifier to reprocess the previous format argument.
+(format nil "~r file~:p" 1)  ==> "one file"
+(format nil "~r file~:p" 10) ==> "ten files"
+(format nil "~r file~:p" 0)  ==> "zero files"
+
+;; With the at-sign modifier combined with the colon modifier, ~P emits either y or ies.
+(format nil "~r famil~:@p" 1)  ==> "one family"
+(format nil "~r famil~:@p" 10) ==> "ten families"
+(format nil "~r famil~:@p" 0)  ==> "zero families"
+
+;;  ~( allows you to control the case of text in the output. 
+;; Each ~( is paired with a ~)
+;;   the output will be converted to all lowercase.
+(format nil "~(~a~)" "FOO") ==> "foo"
+(format nil "~(~@r~)" 124)  ==> "cxxiv"
+
+;;  modify ~( with an at sign to make it capitalize the first word
+;; with a colon to make it to capitalize all words
+;; with both modifiers to convert all text to uppercase. 
+(format nil "~(~a~)" "tHe Quick BROWN foX")   ==> "the quick brown fox"
+(format nil "~@(~a~)" "tHe Quick BROWN foX")  ==> "The quick brown fox"
+(format nil "~:(~a~)" "tHe Quick BROWN foX")  ==> "The Quick Brown Fox"
+(format nil "~:@(~a~)" "tHe Quick BROWN foX") ==> "THE QUICK BROWN FOX"
+
 #+END_SRC
