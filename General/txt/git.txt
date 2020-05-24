@@ -1,0 +1,268 @@
+Thinking in git - Rob Richardson
+
+http://git-scm.com/
+
+Since 2005
+
+_Version control by example_ by Eric Sinc
+
+msysgit.github.com
+Code.google.com/p/gitextensions
+
+Source tree from Atlassian too
+
+Robrich.org "thinking in git" under slides
+
+git log --oneline --graph --decorate
+
+HEAD is where working dir is
+
+Remember, time moves UP! - that's how it's displayed in git log
+
+git checkout <git hash> <-- now HEAD is pointing at a different commit
+
+By default git log only shows from HEAD down
+
+git log --oneline --graph --decorate --all
+git log --name-only --oneline v0.26..v0.29 Database # what changed in the database folder between versions 26-29
+git tag -a 'v0.29' -m "version 0.29 alpha"
+	use -f if you need to move the tag (re-tag)
+To view the available tags of your repository:
+$ git tag
+
+To push tags to a remote repository e.g. to origin:
+$ git push origin --tags
+
+delete the tag (because you want to move it, etc)
+git push origin :refs/tags/v.1.0.0
+
+git log -i --all --grep='something from commit message'
+# the -i is for case-insensitive
+
+git log --oneline --graph --decorate --all --author='author's name (git user name)' (case sensitive?)
+
+git log --name-only # lists just the file names, can also combine with --oneline
+
+git log -- [filename]
+git log --follow -p -- [filename] # This will show the entire history of the file (including history beyond renames and with diffs for each change).
+This works better:
+git log -p -m --all --oneline --full-history -- FileName.ext
+You can also narrow it down by adding the commits (^ for inclusive):
+git log 476f47a^..HEAD -p -m --all --oneline --full-history -- FileName.ext
+
+git show HASH:filename
+
+git log -p # shows diffs
+
+git log newbranch ^oldbranch --no-merges # what commits are in new branch but not in old
+git log newbranch ^oldbranch --no-merges --follow -p -- [filename] # same as above, but look at what's in just one file, and see the changes
+git diff branch1..branch2 [filename] # compare file between 2 branches
+git diff master:./ # compare master against working directory
+git diff --ignore-space-at-eol -b -w --ignore-blank-lines Development..master # ignore blank lines, ^M
+git diff --name-status firstbranch..yourBranchName # get just the different files between branches (not that useful)
+git log <hash> -p -m -1 -U # display diff for just 1 commit; this will pick up a merge commit too
+git log -p -m -S 'search string' --all -- FileName.ext # track changes to a string; including deleted ones
+
+how to get a "squashed" diff from history:
+git diff HEAD~3..HEAD
+
+ignore white space
+git diff -b
+git log -w
+
+ignore ALL spacing - very usefull when dealing with nuget .config reformats:
+git diff --unified=0 --ignore-all-space
+do this if you want to commit everything besides those reformats:
+git diff --unified=0 --ignore-all-space | git apply --cached --ignore-whitespace --unidiff-zero - # commit all other changes
+git checkout -- . # revert the spacing changes
+
+output files affected by just ONE commit, in `A|M|D FileName` format:
+git log -m -1 eb21ce10f9773a538a464e3d49600bcc11e8e556 --raw | awk '/\s[A|D|M]\s/{print $5 " " $6}'
+
+diff all files in a certain historical range:
+1. Find the hash you want to start at
+2. get the list of files from history, sort, then pipe to git diff:
+This example shows all the files changed in commits associated with a Jira task:
+git log --grep=25931 --name-only | grep Source | sort -u | xargs git diff a2bf99a1596bbe45205eee3ba51f396186ab2105..HEAD --
+The hash is the one before the first hash returned by git log --grep=25931
+
+Go back to the top:
+git checkout master
+
+Can we tag a commit and then checkout the tag
+
+git branch branch1
+
+commit file in detached HEAD
+
+git checkout branch1
+
+At this point detached head commit is being left behind 
+
+git merge <git hash> (from detached head)
+
+Now branch1 is pointing at where detached head was - this was fast-forward merge 
+
+git config user.name --global "your name"
+git config user.email --global "your email"
+
+SHA1 hash
+Data is stored as zlib compressed file
+
+git gc #will compress repo - maybe do every 100 commands or so
+
+Copy .git folder to backup repo
+
+How do you merge branch1 and master?
+
+git merge master - master is still separate from branch1 and HEAD
+
+git checkout master
+
+git merge branch1 # NOW branch1=HEAD=master
+
+when a merge doesn't have any conflicts, git will automatically commit the merged changes - NOTE: with a fast-forward merge, all you do is move HEAD, so no need for a commit
+
+git mergetool # use when you need to fix a bad merge
+
+If I rename a file, and you commit a change to the per-renamed file after the merge your changes will be in the renamed file (example of how git works with file content as opposed to files as units)
+
+What branch am I on?
+git branch -a
+
+You can do git add -p in extensions 
+
+Everything in staging gets committed - all or nothing
+
+git remote add origin ../remote # actually pointing to a different local folder for the remote! THIS IS COOL - YOU CAN PLAY AROUND ON YOUR OWN MACHINE
+
+git push origin double-label
+
+git push origin # will push the branch you're on based on config OR push everything (default)
+
+git clone [url, etc] # does an init+add remote+pull all at once
+
+You can put aliases in the git .config file
+
+un-stage the files in a folder:
+	git rm --cached -r .\src\main\java\pages
+undo last commit:
+	git reset --soft HEAD~1
+more undo commands: http://git-scm.com/book/en/v2/Git-Basics-Undoing-Things
+
+*** shelving with git ****
+basic idea: create a new branch, all changes including new files will go there, push that to remote.
+NOTE: original branch is back to previous revision, so you would need to do a merge to "unshelve" changes
+# make new branch
+git checkout -b shelfBranch
+# commit to it
+git add foo/bar.c; git commit
+# now you push this branch 
+git push -u origin shelfBranch
+
+*** start over before pushing ***
+NOTE: you can optionally do git stash first, just in case
+git fetch  --all
+git reset --hard origin/master
+
+*** split previous commit ***
+git rebase -i HASH
+vim: in the list of commits, use edit for the one you want to split
+git commit --amend
+git reset HEAD^ # now you have the chance for a commit do-over! at this point, you can git add -p, change the commit message, whatever you want!
+git rebase --continue
+
+** handle that one weird issue where git insists unmodified files are modified (with line breaks, no less)
+git rm --cached -r .
+git reset --hard
+reference: https://stackoverflow.com/questions/2016404/git-status-shows-modifications-git-checkout-file-doesnt-remove-them
+
+*** get just 1 file from another branch ***
+git checkout master               # first get back to master
+git checkout experiment -- app.js # then copy the version of app.js from branch "experiment"
+
+*** add new remote from local ***
+# Sets the new remote
+git remote add origin [remote repository URL] # NOTE: this assumes you created an empty repo in the remote host
+# Verifies the new remote URL
+git remote -v
+# push
+git push origin master
+
+# push new local branch
+git push -u origin <branch>
+
+*** change remote's URL - this is useful if you fork AFTER cloning and want to push changes ***
+git remote set-url origin https://github.com/USERNAME/OTHERREPOSITORY.git
+
+*** branch off of a commit ***
+git branch branchname <sha1-of-commit>
+
+Advanced topics
+git reset
+Rebase
+cherry pick
+
+Git flow
+
+git servers
+Web git .net (asp.net MVC!)
+
+git svn pull # you can use git locally with svn server
+
+git deploy to azure - something for us??
+
+MS lunch n learn 2/18 all day event
+Search for ms events Las Vegas inNEVation center
+
+git rev-list [commit range] - not sure how this is different from git log
+
+example of how to get something back from re-written history:
+git reflog show master
+git reset --hard sha
+
+keypoint: reflog remembers *everything* ... even after re-base
+
+*** remove file you should have added to github:
+git rm -r --cached some-directory
+git commit -m 'Remove the now ignored directory "some-directory"'
+git push origin master
+
+*** add upstream
+git remote add upstream <repo-location>
+most docs say to use rebase ... not sure why you can't just use pull ...?  becaue pull adds a merge commit??
+git pull upstream master # what's wrong with doing this?
+
+pulling from parent branch:
+git pull origin parent-branch-name
+
+
+copy (or view!) a file from another branch:
+git show BranchName:FileName
+	from there, you can pipe it, etc
+
+merging - choosing "ours" - example:
+	get latest from kitsku
+	merge from master
+	git checkout --ours .  # checkout our local version of all files
+	git add -u             # mark all conflicted files as merged
+	git commit             # commit the merge
+
+git stash save -- 'message'
+git stash pop
+git stash list
+git stash show
+git stash show -p
+git stash show -p stash@{1}
+git stash apply # like pop but doesn't remove latest entry
+git stash drop
+git stash pop can be performed by doing git stash apply && git stash drop
+
+# save credentials
+git config credential.helper store
+git pull 
+# now credentials are automatically saved for the current repo
+
+# pruning links to deleted remote branches:
+git remote prune origin --dry-run # dry run is optional!
+
