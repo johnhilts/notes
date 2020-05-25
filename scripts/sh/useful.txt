@@ -1,0 +1,500 @@
+   20  git diff
+   21  git add -i
+   22  git status
+   23  git diff
+   24  git add asp.net/bcbc/Data.Scripts/DatabaseScripts/Sprocs/Payrun/CalculateAtmCommissions.sql
+   25  git diff --cached 
+   26  git commit -m 'ATM bonuses - calculation and display'
+   27  git log -- asp.net/bcbc/Data.Scripts/DatabaseScripts/Sprocs/Payrun/AccumulateOrderPointInfo.sql
+   28  git log -p -- asp.net/bcbc/Data.Scripts/DatabaseScripts/Sprocs/Payrun/AccumulateOrderPointInfo.sql
+   29  git show --name-only 
+   30  git status
+   31  git diff
+   32  git commit -am 'added atm calc to payrun sproc'
+   33  git log
+   34  git show dc863650f96d0254e4549cfd8548fcb5b08aa24d
+   35  git checkout feature/backoffice-and-admin 
+   36  git merge master
+   37  git status
+   38  git diff
+   39  git status
+   40  git checkout asp.net/bcbc/Web/bcbc.Web/Views/Shared/_Layout.cshtml
+   41  git diff
+   42  git status
+   43  git add -i
+   44  git status
+   45  git commit -m 'added ATM bonus details'
+   46  git status
+   47  git diff
+   48  git diff
+   49  git status
+   50  git diff
+   51  git add -i
+   52  git status
+   53  git commit -m 'DRY refactoring'
+   54  git status
+   55  git diff
+   56  git status
+   57  git diff
+   58  git add reactjs/src/components/Commissions/BinaryBalance.js
+   59  git commit -m 'formatting'
+   60  git add -i
+   61  git status
+   62  git commit -m 'added jest tests with snapshots'
+   63  git status
+   64  git diff
+   65  git status
+   66  git add reactjs/src/__tests__/components/__snapshots__/commissions.spec.js.snap
+   67  git add reactjs/src/__tests__/components/commissions.spec.js
+   68  git diff --cached 
+   69  git diff
+   70  git commit -m 'added spec for NoData component'
+   71  git status
+   72  git commit -am 'fixed spelling of CommissionType constant'
+   73  git status
+   74  git status
+   75  git diff
+   76  grep -r '\<NoData ' --include='*.js' --exclude-dir='node_module'
+   77  grep -ir 'comission' * --exclude-dir='node_module'
+   78  grep -ir 'comission' * --exclude-dir='node_module'
+   79  grep -ir 'comission' * --exclude-dir='node_module'
+   80  git status
+   81  git log
+   82  git status
+   83  git diff asp.net/bcbc/Web/bcbc.Web/Controllers/MemberApiController.cs
+   84  git commit -am 'fixed spelling of Commission in C# too'
+   85  git commit --amend
+   86  git log
+   87  git status
+   88  git push
+   89  git status
+   90  git checkout master 
+   91  git log
+   92  git merge feature/backoffice-and-admin 
+   93  git status
+   94  git diff
+   95  git status
+   96  git add asp.net/bcbc/Modules/bcbc.Member.Module/Repository/MemberRepository.cs
+   97  git diff --cached 
+   98  git commit -m 'optimized personally sponsored count query'
+   99  git add -i
+  100  git status
+  101  git diff --cached 
+  102  git commit -m 'renamed RenderDetail -> CommissionDetail'
+  103  git log -p
+  104  git push
+  105  git log
+  106  git log --name-only 
+  107  git checkout feature/backoffice-and-admin 
+  108  git merge master
+  109  git status
+  110  git add bitcoinbuyersclub 
+  111  git status
+  112  git commit -m 'removed empty folder'
+  113  git status
+  114  git diff
+  115  git log
+  116  git tag -a 'CommissionDetailv0.2' -m "version 0.02 CommissionDetails"
+  117  git diff
+  118  git add -i
+  119  git status
+  120  git diff --cached asp.net/bcbc/Data.Scripts/DatabaseScripts/DatabaseScripts.csproj
+  121  git commit -m 'begin coding for managing the payrun through admin super user'
+  122  git push --tags 
+  123  git log
+  124  git log --decorate
+  125  exit
+  126  grep -r 'GiftCardAddModel' --include='*.cs'
+  127  grep -rl 'GiftCardAddModel' --include='*.cs'
+  128  grep -rl 'GiftCardAddModel' --include='*.cs' | grep 'GiftCardAddModel'
+  129  cat LampsPlus.GiftCard.EndPoints.WebApi/Models/Request/ApiGiftCardAddModel.cs
+  130  cat Libraries/LampsPlus.GiftCard.Core/Models/GiftCardAddModel.cs
+  131  ls Libraries/LampsPlus.GiftCard.Core/Models/
+  132  cat Libraries/LampsPlus.GiftCard.Core/Models/GiftCardTenderModel.cs 
+  133  exit
+  134  grep -r "gcrefund" --include='*.cs'
+  135  exit
+  136  grep -r 'IssueGiftCardAsync' --include='*.cs'
+  137  exit
+  138  grep -r 'ValidationHelper' --include='*.cs'
+  139  grep -rl 'ValidationHelper' --include='*.cs'
+  140  cat LampsPlus.GiftCard.EndPoints.WebApi/Infrastructure/Validation/ValidationHelper.cs
+  141  exit
+  142  node flattener.js 
+  143  exit
+  144  node flattener.js 
+  145  exit
+  146  node flattener.js 
+  147  exit
+  148  node
+  149  exit
+  150  vim testfile.txt
+  151  sed 's/me/YOU/g' testfile.txt 
+  152  cat testfile.txt 
+  153  sed 's/\sme\s/YOU/g' testfile.txt 
+  154  sed 's/\sme\W/YOU/g' testfile.txt 
+  155  sed 's/\s\(me\)\W/\1/g' testfile.txt 
+  156  sed 's/\(\s\)\(me\)\(\W\)/\1YOU\3/g' testfile.txt 
+  157  history | tail | vi -
+  158  exit
+  159  cd /c/work/
+  160  ls
+  161  mkdir microservices
+  162  git clone https://jhilts@bitbucket.lampsplus.com:8443/scm/mic/giftcardmicroservice.git
+  163  cd microservices/giftcardmicroservice/
+  164  git branch
+  165  git pull
+  166  git branch
+  167  vim .
+  168  vim .
+  169  git branch -r | grep 'release'
+  170  git checkout release/rc-branch-for-gcs-1.0.0.0
+  171  git pull
+  172  ls
+  173  vim .
+  174  exit
+  175  grep -r 'complete_payment' --include='*.php'
+  176  grep -r '_='*.php'
+  177  grep -r 'process_payment' --include='*.php'
+  178  grep -r 'process_payment'
+  179  exit
+  180  cd /c/Project/Work/BitcoinBuyersClub/downloads/linux/
+  181  ls
+  182  cat connect-to-training.sh 
+  183  . ./connect-to-training.sh 
+  184  . ./connect-to-training.sh 
+  185  . ./connect-to-training.sh 
+  186  exit
+  187  whois yahoo.com
+  188  exit
+  189  whois
+  190  exit
+  191  cat .gitconfig 
+  192  ls *.sh
+  193  . ./ez7zu6-git.sh 
+  194  git difftool 
+  195  exit
+  196  vim ~/Dropbox/PlainText/Personal/cooking/TurkeyMaPoTofu.txt ~/Dropbox/PlainText/Personal/cooking/ShoppingList.txt 
+  197  exit
+  198  cd /c/Project/Education/
+  199  ls
+  200  cd cs/
+  201  ls
+  202  ls functional-csharp-code/
+  203  ls functional-csharp-code/ -a
+  204  git clone https://github.com/johnhilts/CSharpShortCodeSamples.git
+  205  cd CSharpShortCodeSamples/
+  206  ls
+  207  cd sample3/chap4
+  208  ls
+  209  cd 配列の値が繰り返される値で初期化された配列
+  210  ls
+  211  cp NEWCODE/ NEWCODE2/
+  212  ls
+  213  cp -h
+  214  cp -help
+  215  cp --help
+  216  cp NEWCODE/ NEWCODE2/ -r
+  217  ls
+  218  cd NEWCODE2
+  219  ls
+  220  cd NEWCODE
+  221  ls
+  222  cat Program.cs 
+  223  cd /c/Project/Education/cs/CSharpShortCodeSamples
+  224  vim /c/Project/Education/cs/CSharpShortCodeSamples/sample3/chap4/配列の値が繰り返される値で初期化された配列/NEWCODE2/NEWCODE2
+  225  vim let g:netrw_dirhistmax  =10
+  226  vim /c/Project/Education/cs/CSharpShortCodeSamples/sample3/chap4/配列の値が繰り返される値で初期化された配列/NEWCODE2/NEWCODE2
+  227  vim /c/Project/Education/cs/CSharpShortCodeSamples/sample3/chap4/配列の値が繰り返される値で初期化された配列/NEWCODE2/NEWCODE2
+  228  wc /c/Project/Education/cs/CSharpShortCodeSamples/sample3/chap4/配列の値が繰り返される値で初期化された配列/NEWCODE2/NEWCODE2/Program.cs 
+  229  wc --help
+  230  wc -l /c/Project/Education/cs/CSharpShortCodeSamples/sample3/chap4/配列の値が繰り返される値で初期化された配列/NEWCODE2/NEWCODE2/Program.cs 
+  231  wc -c /c/Project/Education/cs/CSharpShortCodeSamples/sample3/chap4/配列の値が繰り返される値で初期化された配列/NEWCODE2/NEWCODE2/Program.cs 
+  232  wc -c /c/Project/Education/cs/CSharpShortCodeSamples/sample3/chap4/配列の値が繰り返される値で初期化された配列/NEWCODE/NEWCODE/Program.cs 
+  233  wc -l /c/Project/Education/cs/CSharpShortCodeSamples/sample3/chap4/配列の値が繰り返される値で初期化された配列/NEWCODE/NEWCODE/Program.cs 
+  234  git status
+  235  git add -i
+  236  git status
+  237  git commit 
+  238  git commit 
+  239  wc -c /c/Project/Education/cs/CSharpShortCodeSamples/sample3/chap4/配列の値が繰り返される値で初期化された配列/NEWCODE2/NEWCODE2/Program.cs 
+  240  git log
+  241  git push
+  242  git push
+  243  exit
+  244  ls .*
+  245  ls .v*
+  246  cat .viminfo 
+  247  pwd
+  248  ls .v* --all
+  249  ls .vim
+  250  ls .vim/ --all
+  251  vim .giti
+  252  vim .gitignore
+  253  vim .gitconfig 
+  254  cd /c/
+  255  ls p*
+  256  ls P*
+  257  ls Pr*
+  258  ls Prog*
+  259  ls Prog*/v*
+  260  ls Prog*/V*
+  261  cd Program ftconfig.ini 
+  262  cd 'Program Files (x86)/Vim'
+  263  ls
+  264  ls -a
+  265  vim _vimrc 
+  266  ls vim74/
+  267  ls vimfiles/
+  268  ls vim74/ -a
+  269  cd ~/
+  270  vim
+  271  vim
+  272  vim --version
+  273  ls ~/.vim
+  274  cd ~/.vim
+  275  ls
+  276  ls -a
+  277  cd /etc/
+  278  pwd
+  279  ls
+  280  cat vimrc 
+  281  vim --version
+  282  ls -a
+  283  cat hosts 
+  284  vim --version
+  285  cd $HOME/
+  286  cat .vimrc
+  287  cat ./.exrc
+  288  cat /etc/.vimrc
+  289  cat /etc/vimrc
+  290  cat /c/Windows/System32/drivers/etc/vimrc
+  291  ls /c/Windows/System32/drivers/etc/
+  292  ls /c/Windows/System32/drivers/etc/ -a
+  293  ls ./.bas*
+  294  ls ./bash*
+  295  bash --version
+  296  vim
+  297  git status
+  298  ls -l
+  299  ls
+  300  ls .* -a
+  301  ls .git*
+  302  ls *.bak
+  303  cd /c/Project/Education/cs/
+  304  ls -l
+  305  cd CSharpShortCodeSamples/
+  306  code ./
+  307  git log
+  308  git show
+  309  exit
+  310  ls *.sh
+  311  . ./bcbc-git.sh 
+  312  git diff
+  313  git diff
+  314  git commit -am 'fixed config binding code + db timeout'
+  315  git status
+  316  git diff
+  317  git diff
+  318  git commit -a
+  319  git status
+  320  git diff
+  321  git commit -am 'added cache buster to admin layout'
+  322  git status
+  323  git log
+  324  git push
+  325  git checkout master
+  326  git status
+  327  git checkout -b fix/missing-orders
+  328  git diff
+  329  git status
+  330  git commit -am 'add missing signup order when signing in'
+  331  git push -u origin fix/missing-orders 
+  332  grep -ri ';with' --include='*.sql' --exclude-dir=node_module
+  333  vim masterscript.sql 
+  334  git status 
+  335  git checkout master
+  336  git checkout -b feature/yearendInfo
+  337  git status
+  338  git diff
+  339  git add -i
+  340  git status
+  341  git commit -m 'decrypt list of ID Numbers + tests'
+  342  git status
+  343  git diff asp.net/bcbc/Modules/bcbc.Member.Module/bcbc.Member.Module.csproj
+  344  git checkout asp.net/bcbc/Modules/bcbc.Member.Module/bcbc.Member.Module.csproj
+  345  cat asp.net/bcbc/Modules/bcbc.Member.Module/Data/MemberUsTaxData.cs
+  346  git status
+  347  rm asp.net/bcbc/Modules/bcbc.Member.Module/Data/UsMemberTaxData.cs
+  348  git status
+  349  cat h
+  350  git status
+  351  git diff
+  352  git add -i
+  353  git commit -m 'use different data model'
+  354  git diff
+  355  git status
+  356  git add -i
+  357  git status
+  358  git commit -m 'read from DB + view'
+  359  git push
+  360  git status
+  361  git checkout master
+  362  git merge feature/yearendInfo 
+  363  git status
+  364  git push
+  365  git branch
+  366  git status
+  367  git status feature/backoffice-and-admin
+  368  git checkout feature/backoffice-and-admin 
+  369  git log feature/backoffice-and-admin ^master --no-merges 
+  370  git checkout -b feature/automate-payrun
+  371  git merge master 
+  372  git mergetool
+  373  git status
+  374  git diff
+  375  git diff --cached 
+  376  git commit -m 'merge from master'
+  377  git push -u origin feature/automate-payrun 
+  378  git status 
+  379  git checkout feature/backoffice-and-admin 
+  380  git checkout master
+  381  git checkout -b feature/monthly-binary
+  382  git pull
+  383  git checkout Orders 
+  384  git status
+  385  git diff
+  386  git status
+  387  git add -i
+  388  git commit -m 'UI skeleton for monthly training subscription
+  389  '
+  390  git log
+  391  git log
+  392  git checkout Orders 
+  393  git pull
+  394  git status
+  395  git checkout master
+  396  git checkout Orders 
+  397  git checkout master
+  398  git merge Orders 
+  399  git status
+  400  git diff
+  401  git status
+  402  git add asp.net/bcbc/Data.Scripts/DatabaseScripts/Tables/CustomerService
+  403  git status
+  404  git commit -m 'CustomerServiceMessages table SQL'
+  405  git commit -am 'minor changes customer service questions view'
+  406  git log
+  407  git status
+  408  git diff
+  409  git commit -am 'missed data script project change'
+  410  git push
+  411  exit
+  412  cd /c/Project/Education/cs/CSharpShortCodeSamples/
+  413  ls
+  414  ls sample3/
+  415  code ./
+  416  ls chap5
+  417  ls sample3/chap5
+  418  ls sample3/chap5
+  419  ls sample3/chap5/1個も見つからない場合も動作を一致
+  420  ls sample3/chap5/1個も見つからない場合も動作を一致/NEWCODE/
+  421  ls sample3/chap5/1個も見つからない場合も動作を一致/NEWCODE/NEWCODE
+  422  less sample3/chap5/1個も見つからない場合も動作を一致/NEWCODE/NEWCODE/Program.cs 
+  423  cat sample3/chap5/1個も見つからない場合も動作を一致/NEWCODE/NEWCODE/Program.cs 
+  424  cat sample3/chap5/1個も見つからない場合も動作を一致/OLDCODE/OLDCODE/Program.cs 
+  425  ls sample3/chap5
+  426  cat sample3/chap5/最後の1個を取得せよ/NEWCODE/NEWCODE/Program.cs 
+  427  cat sample3/chap5/最後の1個を取得せよ/OLDCODE/OLDCODE/Program.cs 
+  428  exit
+  429  cd ~/
+  430  pwd
+  431  ssh 192.168.1.19
+  432  ssh 192.168.1.19 -v
+  433  cat /etc/ssh/ssh_config
+  434  exit
+  435  ls *.sh
+  436  . ./ez7zu6-git.sh 
+  437  git diff
+  438  git status
+  439  ls asp.net/ez7zu6/Tests/Unit/
+  440  git diff
+  441  git add -i
+  442  git status
+  443  git diff
+  444  git commit -m 'unit tests'
+  445  git diff
+  446  git add -i
+  447  git commit -m 'use https with react URLs'
+  448  git log feature/note ^master 
+  449  git log master
+  450  grep -r 'bind' --include='*.js' --exclude-dir=node_module
+  451  grep -r 'bind' --include='*.js' --exclude-dir='node_modules'
+  452  grep -r 'bind' --include='*.js' --exclude-dir='/node_modules/'
+  453  grep -r 'bind' --include='*.js' --exclude-dir='*/node_modules/*'
+  454  grep -r 'bind' --include='*.js' --exclude-dir='*/node_modules*'
+  455  grep -r 'bind' --include='*.js' --exclude-dir='node_modules'
+  456  history
+  457  . ./ez7zu6-git.sh 
+  458  grep -r 'bind' --include='*.js' --exclude='node_modules'
+  459  grep -r 'bind' --include='*.js' --exclude='/node_modules/'
+  460  grep -r 'bind' --include='*.js' --exclude='/node_modules'
+  461  grep -r 'bind' --include='*.js' --exclude='*node_modules*'
+  462  grep -r 'bind' --include='*.js' --exclude-dir='*node_modules*'
+  463  grep -r 'bind' --include='*.js' --exclude='*node_modules*' --name-only
+  464  man grep
+  465  grep --h
+  466  grep --h | vim -
+  467  jobs
+  468  grep -r 'bind' --include='*.js' --exclude-dir=node_module
+  469  ls *.sh
+  470  cd /c/Project/Work/BitcoinBuyersClub/downloads/
+  471  ls
+  472  cd linux/
+  473  ls
+  474  ssh -i "btc_prod.pem" ec2-user@10.0.0.171
+  475  exit
+  476  ssh jfh@192.168.1.19
+  477  history | grep 'ssh'
+  478  ssh 192.168.1.19
+  479  ssh jfh@192.168.1.19
+  480  ps -e
+  481  exit
+  482  history -tail 10
+  483  history | tail 10
+  484  history | tail 
+  485  ssh jfh@192.168.1.19
+  486  ssh jfh@192.168.1.19
+  487  ssh kagevf@sdf.org
+  488  exit
+  489  ls
+  490  ls *.sh
+  491  ls *.pem
+  492  find -f *.pem
+  493  find -type f *.pem
+  494  find *.pem
+  495  ls /c/Project/Work/BitcoinBuyersClub/downloads/linux/
+  496  cat /c/Project/Work/BitcoinBuyersClub/downloads/linux/connect-to-training.sh 
+  497  ssh jfh@192.168.1.19
+  498  exit
+  499  screen
+  500  exit
+  501  uname -a
+  502  uname -v
+  503  uname -r
+  504  uname -m
+  505  ifconfig
+  506  ip addr show
+  507  df -ah
+  508  service ssh status
+  509  systemctl status ssh
+  510  du -sh Downloads/
+  511  netstat -tulpn
+  512  netstat
+  513  netstat --help
+  514  netstat -tpn
+  515  ps -aux
+  516  top
+  517  ls /mnt
+  518  less /etc/fstab 
+  519  history > ~/Dropbox/scripts/sh/useful.txt
