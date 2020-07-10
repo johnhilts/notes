@@ -1,0 +1,34 @@
+* 2020 / 7 / 9
+
+* matrix
+- dencentralized chat protocol
+- can have multiple chat clients
+
+https://www.codewars.com/kata/573c84bf0addf9568d001299/train/haskell
+
+https://getferdi.com/
+
+* Home manager template
+https://github.com/ryantm/home-manager-template
+
+- manage your dotfiles
+- recreate your home folder in multiple places
+- configure home env
+- leverages niv/nix
+
+** git bare repos 
+- Ryan thinks home mgr is better
+  - for example, can leverage other people's configs
+
+* Elixir Lisp Parse
+** Umbrella project
+** Protocols
+dynamic lang equivalent of a typeclass
+Rust uses them too?
+=defprotocol=
+=defstruct=
+=defimpl=
+=\\= operator used for "default parameter" <-- makes it an optional arg in function parameters
+
+* Next Meeting
+
