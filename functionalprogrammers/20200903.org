@@ -1,0 +1,31 @@
+* 9/3/2020
+
+* Projects
+https://www.learnsomething.io/
+
+* Haskell Kata
+https://www.codewars.com/kata/54bf85e3d5b56c7a05000cf9/train/haskell
+You can look up function info directly in the repl
+=<>= operator
+
+* Lisp Part 2 (me)
+
+* Nix configuration secrets encryption
+** Alternative
+- sop-nix
+  - good for aws or other places it's supported
+  - but kind of complicated, needs GPG, etc
+- age
+  - simpler
+  - supports SSH keys
+
+** Use with nix
+*** Ryan's repo
+https://github.com/ryantm/agenix/
+
+*** Other links
+https://github.com/krebs/krops
+
+https://github.com/nmattia/niv
+
+next meeting: 9/17/2020
