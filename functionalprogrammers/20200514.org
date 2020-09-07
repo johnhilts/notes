@@ -1,0 +1,29 @@
+* Parsers (by Jason)
+top down parser easier to do manually - match left with right, and work down
+bottom up parser is difficult to do by hand
+
+Parsec - the Haskell parser combinator library
+ExParsec exists for elixir, but is still limited...
+
+elixir suitable for writing a recursive descent parser with just the base language, no libs
+pattern matching helps
+
+elixir has a =defmacro= keyword?!?
+
+in this case, using macros cleaned up the syntax versus using "pure" functions
+.some_call(argument)
+/versus/
+.some_call(fn -> argument end) # or something like that
+
+* Haskell kata
+https://www.codewars.com/kata/5946a0a64a2c5b596500019a/train/haskell
+
+lib splitAt used by splitHalf
+lib zipWIth (+)
+
+pushed to gh
+
+next mtg: 5/28
+
+to do mutability in elixir you have to spawn another process - the smallest unit is an agent for doing mutability
+

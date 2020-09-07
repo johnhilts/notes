@@ -1,0 +1,15 @@
+* 2020 / 7 / 23
+
+** code block
+let ...
+in ....
+
+** keywords (?)
+Just
+`div`
+`divMod`
+`divRem`
+
+*** Int vs Integer?
+
+why use backticks?

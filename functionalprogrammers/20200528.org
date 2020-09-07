@@ -1,0 +1,28 @@
+* Haskell kata
+ghcid - type checking daemon
+#+BEGIN_SRC haskell
+take 2 $ iterate (+1) 1 -- what's a $?
+#+END_SRC
+
+** questions
+ what's =$= mean?
+ difference between =Int= and =integer=?
+
+ last week's split code: https://github.com/ryantm/hkata/blob/master/Kata.hs
+ this week's codewars: https://www.codewars.com/kata/5513795bd3fafb56c200049e
+
+ what does =:= mean?
+
+ Integer has infinite precision
+ Int uses machines definition of "integer" 32 or 64 depending on the architecture
+ "purist wouldn't use Int"
+
+* Elixir scheme parser
+
+* Next mtg
+** Nix flakes 
+- experimental feature
+- supposed to fix some kind of problem ... like a more general ruby gem file
+
+* Other misc topics
+Stripe wrote "sorbet" for type annotations in ruby

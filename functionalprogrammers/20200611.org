@@ -1,0 +1,41 @@
+* Nix Flakes
+** some links:
+https://github.com/tweag/rfcs/blob/ca2845b81814c345945de4be0b36cd5fb4eb080b/rfcs/0049-flakes.md
+https://github.com/tweag/rfcs/blob/ca2845b81814c345945de4be0b36cd5fb4eb080b/rfcs/0049-flakes.md
+
+nix flakes can make it easier to share nix packages, etc
+
+How to use nix:
+#+BEGIN_SRC bash
+$ nix shell github:edolstra/dwarffs -c dwarffs --version
+#+END_SRC
+
+** flake.nix
+- to configure
+- use rev to specify a version, or leave it out if it doesn't matter
+
+niv is a tool that will pin nix packages
+
+** agendas
+- make it easy to share
+- improve reproducibility
+
+** nix build
+- knows about flakes
+- prefers flake.nix over default.nix if nix flakes enabled
+
+90K+ issues and PRs on the nix repo
+
+nix packager abstracts out configuration (modules) so that you don't have to learn each one's configuration, just learn the nix way ...
+
+similar to "bundler" in ruby (what's "bundler"?)
+https://bundler.io/ "best way to manage an app's gems"
+
+nix "makes it ok" to be "more like nodejs" - loose coupling to dependency libraries
+
+there are settings for assets you can't re-distribute
+
+David is involved in a "nix cr" project ...
+
+guix - repology.org
+

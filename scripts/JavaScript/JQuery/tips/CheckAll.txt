@@ -1,0 +1,38 @@
+Assign a function to a "Check all" checkbox, which then turns around and checks/unchecks a
+checkboxlist
+
+<%@ Page Language="C#" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="_Default" %>
+ 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+ 
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Check/Uncheck All CheckBoxes Using JQuery</title>
+ 
+    <script src="Scripts/jquery-1.2.6.js" type="text/javascript"></script>
+   
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('#chkAll').click(
+             function() {
+                 $("INPUT[type='checkbox']").attr('checked', $('#chkAll').is(':checked'));
+             });
+         });    
+        
+     </script>
+   
+</head>
+<body>
+    <form id="form1" runat="server">
+    <div>
+   
+        <asp:CheckBox ID="chkAll" runat="server" Text="Check All" /><br />
+   
+        <asp:CheckBoxList ID="cbList" runat="server">
+        </asp:CheckBoxList>
+       
+    </div>
+    </form>
+</body>
+</html>
+ 
