@@ -1,0 +1,7 @@
+* Keystrokes
+View Lossage =C-h l=
+
+* Hide menu bars
+toggle-menu-bar-mode-from-frame
+menu-bar-showhide-tool-bar-menu-customize-disable
+toggle-frame-fullscreen
