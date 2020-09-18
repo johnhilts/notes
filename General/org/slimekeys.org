@@ -66,3 +66,8 @@ or, =C-?= (think "control shift /")
 =C-c C-t= slime-toggle-fancy-trace
 =C-c RET= macro exapand interactively
 =C-c M-d= slime-disassemble-symbol
+
+** Profiling
+(sb-profile:profile function-name) ; no need for any symbols, just the actual function name
+(sb-profile:unprofile)
+(sb-profile:report)
