@@ -1,11 +1,26 @@
 #+BEGIN_SRC emacs-lisp
+(setq org-src-fontify-natively t)
 
-(let ((number-list ' (1 2 3 4)))
- (princ number-list))
+;; make org mode allow eval of some langs
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (lisp . t)
+   (clojure . t)
+   (python . t)
+   (ruby . t)))
+(setq-local org-confirm-babel-evaluate nil)
 #+END_SRC
 
 #+RESULTS:
-| 1 | 2 | 3 | 4 |
+
+#+BEGIN_SRC lisp
+(let ((number-list ' (1 2 3 4)))
+ (print number-list))
+#+END_SRC
+
+#+RESULTS:
+
 
 
 * simple repl
