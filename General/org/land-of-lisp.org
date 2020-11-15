@@ -1,0 +1,41 @@
+#+BEGIN_SRC emacs-lisp
+
+(let ((number-list ' (1 2 3 4)))
+ (princ number-list))
+#+END_SRC
+
+#+RESULTS:
+| 1 | 2 | 3 | 4 |
+
+
+* simple repl
+= (loop (print (eval (read))))
+
+* print variations
+** =print=
+- produces =read= -able output
+- adds a blank line to the beginning of each output and ends with a space
+
+#+BEGIN_SRC lisp
+(let ((number-list ' (1 2 3 4)))
+ (print number-list))
+#+END_SRC
+
+** =prin1=
+- also produces =read= -able output
+- does not any blank lines or spaces
+ - more compact, but harder to eye parse
+** =princ=
+- does not produce =read= -able output
+- is meant to produce eye parseable output
+
+* map variations
+** =mapcar=
+- the "usual" map function; takes a list and produces another list
+** =map=
+- requires specifying the output type, meaning one kind of list can be mapped to another
+** =mapc=
+- no return value; good for side-effect only "mappings" (you don't want to map, you just want to traverse a list and output to console, etc)
+** =maplist=
+- the cdr of the list is passed as the predicate parameter, instead of just the next element.
+- for better symetry, they could have called this mapcdr (or maprest)!
