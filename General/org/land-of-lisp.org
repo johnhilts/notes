@@ -8,6 +8,7 @@
    (lisp . t)
    (clojure . t)
    (python . t)
+   (js . t)
    (ruby . t)))
 (setq-local org-confirm-babel-evaluate nil)
 #+END_SRC
@@ -16,11 +17,8 @@
 
 #+BEGIN_SRC lisp
 (let ((number-list ' (1 2 3 4)))
- (print number-list))
+ (mapcar #' (lambda (e) (+ 1 e)) number-list))
 #+END_SRC
-
-#+RESULTS:
-
 
 
 * simple repl
@@ -34,15 +32,36 @@
 #+BEGIN_SRC lisp
 (let ((number-list ' (1 2 3 4)))
  (print number-list))
+
+=>
+
+(1 2 3 4) ;; extra space here!
+;; note extra line break above list!
 #+END_SRC
 
 ** =prin1=
 - also produces =read= -able output
 - does not any blank lines or spaces
  - more compact, but harder to eye parse
+#+BEGIN_SRC lisp
+(let ((number-list ' (1 2 3 4)))
+ (prin1 number-list))
+
+=> ;; no extra spaces
+(1 2 3 4)
+#+END_SRC
+
 ** =princ=
 - does not produce =read= -able output
 - is meant to produce eye parseable output
+#+BEGIN_SRC lisp
+(let ((number-list ' (1 2 3 4)))
+ (princ number-list))
+
+=> ;; no extra spaces - in this case happens to be the same as prin1
+(1 2 3 4)
+#+END_SRC
+
 
 * map variations
 ** =mapcar=
