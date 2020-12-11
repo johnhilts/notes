@@ -1,0 +1,26 @@
+* nuget DC
+cd \work\CrossCuttingConcerns\lampsplus.crosscuttingconcerns.distributedcache
+dir
+cd LampsPlus.CrosscuttingConcerns.DistributedCache
+dir
+dir bin\Debug\
+cd bin\Debug\
+dir \Data\Downloads
+dir \Data\Downloads\Utils
+dir \Data\Downloads\Tools
+dir \Data\Downloads\Tools\Dotnet
+dir \Data\Downloads\Tools\Dotnet\nuget.exe add LampsPlus.CrosscuttingConcerns.DistributedCache.1.0.0.nupkg -source \\prod1_web1\PackageSource
+\Data\Downloads\Tools\Dotnet\nuget.exe add LampsPlus.CrosscuttingConcerns.DistributedCache.1.0.0.nupkg -source \\prod1_web1\PackageSource
+doskey /h > doskey.txt
+gvim doskey.txt
+cd ..\..\
+cd ..
+dir /ad
+cd src
+nuget locals all -list
+\Data\Downloads\Tools\Dotnet\nuget.exe locals all -list
+\Data\Downloads\Tools\Dotnet\nuget.exe locals all -clear
+\Data\Downloads\Tools\Dotnet\nuget.exe add LampsPlus.CrosscuttingConcerns.DistributedCache.1.0.0.nupkg -source \\prod1_web1\PackageSource
+doskey /h
+doskey /h > nuget.doskey.txt
+
