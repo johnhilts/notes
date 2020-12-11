@@ -1,0 +1,21 @@
+* 10/1/2020
+
+- New local member joined
+
+* Ryan's lightnihg talk
+https://github.com/ryantm/home-manager-template/tree/013ddd0ecef9679a7662b5abfb10eca6fc932f03
+
+** Organize $HOME with Nix-OS like config
+** Minimize state in home dir
+** maximize reproducibility
+https://github.com/ryantm/talks/blob/master/home-manager-template/slides.md
+
+* Haskell Kata (Patrick)
+** Square Every Digit
+*** algo
+- convert to string then take each digit ... <-- this part can be optimized later
+
+* Morse Code parser (Jason) 
+
+* Next meeting
+10/15/2020

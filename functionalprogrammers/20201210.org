@@ -1,0 +1,11 @@
+* Haskell Kata (Ryan)
+
+* Ocelot OS Project (Daniel)
+** Links
+- https://ocelot-project.github.io/
+- https://github.com/ocelot-project/olman
+- https://github.com/ocelot-project/ocelot
+"The Ocelot operating system is a Lisp Machine-inspired, developer-oriented Linux distribution, based on NixOS. 
+The driving idea behind Ocelot is that everything running on a computer, from the kernel to the user interface, 
+should be easily, instantly, and safely extensible by the user."
+
