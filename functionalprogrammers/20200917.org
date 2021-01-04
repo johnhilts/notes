@@ -1,0 +1,17 @@
+* 9/17/2020
+
+* Haskell Kata
+used chr to get ascii code
+
+* Elixir Kata
+** use macro
+morse code
+mix test --trace
+lots of trimming, splitting, mapping, joining
+spaces can create empty entries in the split array
+
+* Some nix stuff
+careful with ssh (keys)
+
+* Next meeting
+Elixir kata part 2
