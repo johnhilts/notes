@@ -5,3 +5,4 @@ View Lossage =C-h l=
 toggle-menu-bar-mode-from-frame
 menu-bar-showhide-tool-bar-menu-customize-disable
 toggle-frame-fullscreen
+toggle-scroll-bar

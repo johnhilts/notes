@@ -71,3 +71,12 @@ or, =C-?= (think "control shift /")
 (sb-profile:profile function-name) ; no need for any symbols, just the actual function name
 (sb-profile:unprofile)
 (sb-profile:report)
+** Evaluating code
+=C-c C-j= (slime-eval-last-expression-in-repl) 
+** Other possibly useful:
+slime-who*
+slime-list-compiler-notes
+slime-trace-dialog-toggle-trace
+slime-inspect-definition
+slime-delete-system-fasls (Useful when .fasls are out-of-sync)
+slime-profile-package, then run the desired functions, then slime-profile-report
