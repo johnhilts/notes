@@ -1,0 +1,51 @@
+* penny mac USA
+
+* https://www.pennymacusa.com/blog%2Fa-refinance-checklist-do-you-have-all-the-right-documents
+
+** Goals
+Lower monthly payment
+
+** Does refinancing make financial sense?
+- [ ] Is the interest rate lower than your existing rate?
+- [ ] Will the new rate increase your monthly payments?
+- [ ] Will you pay more money over the entire length of the loan?
+
+*** Rule of thumb
+- [ ] If the current interest rate is at least a half percent lower than the interest rate in your existing mortgage, then refinancing may be a good option for you.
+  - For example, if you have $390,000 remaining on an original $400,000 loan at 4.25%, replacing your current mortgage at 3.75% could save as much as $162 per month.
+  - In addition to interest rates, homeowners also need to consider the length of the new loan term.
+    - If you’re five years into your current mortgage and refinance into a new 30-year fixed-rate loan, you’ll be making monthly payments for a total of 35 years — which could result in paying more interest over the life of your loan.
+
+*** Refinance Calculator
+- https://www.pennymacusa.com/mortgage-calculators
+
+** Can you afford closing costs and fees?
+- [ ] Are you prepared to pay the application fee?
+- [ ] Have you determined title insurance, attorney and closing costs?
+- [ ] Do you have these funds to pay upfront?
+- [ ] Will these fees be less than the savings?
+  - How long until fees are recouped?
+
+** Have you determined what the payoff amount will be (including any prepayment penalties)?
+- [ ] Calculate the payoff amount (balance + interest)
+- [ ] *Determine any payoff penalty fees*
+  - Pre-payment penalties are *usually about 80% of six months interest*, which can run in the TENS OF THOUSANDS OF DOLLARS.
+    - *It is your right to request a copy of the payoff statement* before you choose to enter a refinancing loan.
+- [ ] Request a copy of the payoff statement
+
+** Do you know what mortgage refinancing documents are needed to apply? Can you obtain them?
+- [ ] Paystubs
+- [ ] Tax Returns, W-2s, and/or 1099s
+- [ ] Credit Report
+  - [ ] double check before lender reviews
+- [ ] Statement of Debts
+  - car loans
+  - existing mortgage
+- [ ] Statement of Assets
+  - Savings account
+
+** Apply with this website
+- https://www.pennymacusa.com/contact-us
+
+
+
