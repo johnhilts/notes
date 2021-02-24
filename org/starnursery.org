@@ -81,7 +81,7 @@ maybe around the time change?
 there's a line with a cap that also needs to be flushed
 don't bury under rocks
 
-** TODO move rocks away from tree trunk
+** DONE move rocks away from tree trunk
 too much heat, trees can't breathe
 add mulch around it!!
 
