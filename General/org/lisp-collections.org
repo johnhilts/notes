@@ -1,6 +1,15 @@
 * Lisp Collections
 
+
 * List
+
+** What is it?
+- The list is the original data structure of Lisp
+  - List code itself is in the form of lists, which is the key to easy meta-programing.
+- made up of cons cells
+  - a singly linked list with one value cell and one pointer.
+- Can be nested (ie., tree)
+
 #+BEGIN_SRC lisp
 (list 1 2 3 4)
 (list 1 (list 2 3) 4)
@@ -16,6 +25,7 @@ CL-USER> (eq (list 'a 'b 'c) '(a b c))
 NIL
 #+END_SRC
 
+
 * A-List / Association List
 ** What is it?
 - A list of dotted pairs.
@@ -26,7 +36,7 @@ NIL
 '(a . b) ; one "association"?
 (cons 'a 'b) ; same as above, using CONS
 #+END_SRC
-** Associate functions (no pun intended)
+** Associated functions (no pun intended)
 #+BEGIN_SRC lisp
 (assoc 'c '((a . b) (c . d) (e . f))) ; (C . D)
 (rassoc 'd '((a . b) (c . d) (e . f))) ; (C . D) 
@@ -77,3 +87,49 @@ Even if the associations aren't dotted pairs, assoc still "works":
 ;; because ...
 (cdr (assoc 1 (list '(1 one)))) ; (ONE) - gasp!!
 #+END_SRC
+
+
+* Hashtables
+
+** What is it?
+- A key value pair
+- Performs better than other data structures on large collections.
+
+** Literal initializing
+- *note* this is the closest you can come to it
+#+BEGIN_SRC lisp
+(let ((ht (make-hash-table)))
+	     (setf (gethash 'one ht) 1
+		   (gethash 'two ht) 2
+		   (gethash 'three ht) 3)
+	     (maphash #'(lambda (k v) (format t "key: ~a value: ~a~%" k v)) ht))
+#+END_SRC
+- You can set :size and :test params in =make-hash-table=
+
+** Associated functions
+- =make-hash-table=
+- =gethash=
+- =remhash=
+
+** Cool tricks
+
+*** Store sets
+#+BEGIN_SRC lisp
+(let ((ht-set (make-hash-table)))
+	     (setf (gethash 'one ht-set) t
+		   (gethash 'two ht-set) t
+		   (gethash 'three ht-set) t)
+	     (maphash #'(lambda (k v) (format t "entry: ~a~%" k)) ht-set)) ; style-warning for not using v 
+#+END_SRC
+
+** Traps
+
+*** =maphash= doesn't return a value!!
+- It's for side-effects *only*
+- You could use a lambda, etc and populate an external collection, though.
+
+*** There's no =sethash=
+- Use =setf= with =getash=
+- You can also use =push= (=push= is actually =setf= in disguise!)
+- See in ACL p. 77
+ 
