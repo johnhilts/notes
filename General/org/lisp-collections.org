@@ -3,19 +3,27 @@
 * List
 #+BEGIN_SRC lisp
 (list 1 2 3 4)
-(list 1 (2 3) 4) ; check syntax
+(list 1 (list 2 3) 4)
 (list 'a 'b 'c)
 '(a b c) ; should be equal to the previous one (but not eq)
+CL-USER> (equal (list 'a 'b 'c) '(a b c))
+T
+CL-USER> (equalp (list 'a 'b 'c) '(a b c))
+T
+CL-USER> (eql (list 'a 'b 'c) '(a b c))
+NIL
+CL-USER> (eq (list 'a 'b 'c) '(a b c))
+NIL
 #+END_SRC
 
-* A List / Association List
+* A-List / Association List
 ** What is it?
 - A list of dotted pairs.
   - =assoc= treats the =car= as the key to the =cdr=
   - =rassoc= treats the =cdr= as the key to the =car=
 ** Literal format
 #+BEGIN_SRC lisp
-'(a . b) ; one association?
+'(a . b) ; one "association"?
 (cons 'a 'b) ; same as above, using CONS
 #+END_SRC
 ** Associate functions (no pun intended)
@@ -26,7 +34,8 @@
 (acons x y a) ; == (cons (cons x y) a)
 (acons 'g 'h '((a . b) (c . d) (e . f))) ; ((G . H) (A . B) (C . D) (E . F)) 
 
-;; pairlis takes two lists and makes an association list that associates elements of the first list to corresponding elements of the second list
+;; pairlis takes two lists and makes an association list that
+;; associates elements of the 1st list to corresponding elements of the 2nd list
 (pairlis '(one two) '(1 2) '((three . 3) (four . 19)))
 ;; => ((one . 1) (two . 2) (three . 3) (four . 19))
 
@@ -45,8 +54,10 @@
 ;; the following 2 are similar ...
 (assoc item list :test fn)
 (find item list :test fn :key #'car)
-;; except that ... if nil appears in the a-list in place of a pair, and the item being searched for is nil, find will blithely compute the car of the nil in the a-list, find that it is equal to the item,
-;; and return nil, whereas assoc will ignore the nil in the a-list and continue to search for an actual pair (cons) whose car is nil. See find and position. 
+;; except that ... if nil appears in the a-list in place of a pair, and the item being searched for is nil, 
+;; find will blithely compute the car of the nil in the a-list, find that it is equal to the item,
+;; and return nil, whereas assoc will ignore the nil in the a-list and continue to search for 
+;; an actual pair (cons) whose car is nil. See find and position. 
 #+END_SRC
 *** To "update" a list just insert a pair with the same key
 #+BEGIN_SRC lisp
