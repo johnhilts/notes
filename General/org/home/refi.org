@@ -1,6 +1,7 @@
 * penny mac USA
 
-* https://www.pennymacusa.com/blog%2Fa-refinance-checklist-do-you-have-all-the-right-documents
+** Link
+- https://www.pennymacusa.com/blog%2Fa-refinance-checklist-do-you-have-all-the-right-documents
 
 ** Goals
 Lower monthly payment
@@ -47,5 +48,79 @@ Lower monthly payment
 ** Apply with this website
 - https://www.pennymacusa.com/contact-us
 
+* Wiki How
+** Link
+- https://www.wikihow.com/Prepare-to-Refinance
 
+** Make financial sense?
+*** Fees can vary - shop around!
+  - The application fee, which can be anywhere from $75-$300+.
+  - loan origination fee
+  - up front points
+  - appraisal
+  - title search
+*** Calculate the break even date
+  - Calculator: http://www.bankrate.com/calculators/mortgages/mortgage-refinance-break-even-calculator.aspx
+  - All you’ll need is your monthly mortgage statement, your income tax rate, and the new interest rate, loan origination fee, points paid, and closing costs
+*** Calcuate savings
+  - How much is your current loan? Calculate payment * months remaining (also at some point we can take off the insurance)
+*** Loan to value ratio
+  - Should be no more than 80%
+  - [ ] check on zillow, etc - what's that vs remaining principal?
+*** Credit score
+  - [ ] check credit karma
+*** Shopping around
+  - It may be most cost effective to work with a broker or direct lender.
+  - You should compare quotes from:
+    - [ ] a direct lender
+    - [ ] a reputable broker
+    - [ ] a bank
+    - [ ] a credit union.
+*** Statement of assets
+  - possibly will just be part of the application
+  - [ ] Titles to real property or cars
+  - [ ] Savings and checking accounts
+  - [ ] balances of retirement accounts (401k's??)
+*** Statement of debts
+  - [ ] mortgage
+  - [ ] car loan
 
+* Nerd Wallet
+** Link
+- https://www.nerdwallet.com/article/mortgages/how-to-refinance-your-mortgage
+** Shopping Around
+- Apply for a mortgage with three to five lenders.
+  - *Submit all applications within a two-week period to minimize the impact on your credit score.*
+- Compare the Loan Estimate document each lender provides after you apply.
+
+* Lending Tree
+** Link
+- https://www.lendingtree.com/home/refinance/how-long-it-takes-to-refinance-a-house/
+** FHA
+*** FHA streamline. 
+- Homeowners with a current FHA mortgage may be eligible for the faster and easier refinance process of an FHA streamline refinance with no appraisal.
+- An added bonus: No income verification is required.
+** Prep Financial Info
+- Current month’s pay stubs
+- W-2s for the last two years
+- Names and phone numbers of employers for the last two years*
+- Current two months’ bank statements
+- Current mortgage statement
+- Current homeowners policy with contact information
+- Current property tax statement
+
+* Motley Fool 1
+** link
+- https://www.fool.com/the-ascent/mortgages/refinance-guide/
+
+* Motley Fool 2
+** Link
+- https://www.fool.com/the-ascent/mortgages/coronavirus-how-refinance/
+
+* Motley Fool 3
+** Link
+- https://www.fool.com/mortgages/2017/04/08/refinancing-a-mortgage-essential-tips-you-need-to.aspx
+
+* Motley Fool 4
+** Link
+- https://www.fool.com/mortgages/2017/03/26/7-dumb-mortgage-refinancing-mistakes-to-avoid.aspx
