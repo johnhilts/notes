@@ -122,7 +122,7 @@ Even if the associations aren't dotted pairs, assoc still "works":
 	     (maphash #'(lambda (k v) (format t "entry: ~a~%" k)) ht-set)) ; style-warning for not using v 
 #+END_SRC
 
-** Traps
+** Beware
 
 *** =maphash= doesn't return a value!!
 - It's for side-effects *only*
@@ -133,3 +133,20 @@ Even if the associations aren't dotted pairs, assoc still "works":
 - You can also use =push= (=push= is actually =setf= in disguise!)
 - See in ACL p. 77
  
+
+* P-List / Property Lists
+
+** What is it?
+- A list of even numbered elements that works as a KV store by convention, and has special functions for it.
+
+** Literal format
+#+BEGIN_SRC lisp
+(getf (list 'one 1 'two 2 'three 3) 'one) ; 1
+#+END_SRC
+
+** Associated functions
+=get= ; for symbol plists
+=getf= ; getter counterpart to setf
+
+** Beware
+Probably the least performant.
