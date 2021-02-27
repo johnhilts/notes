@@ -1,0 +1,52 @@
+* Fetching json
+
+** In Common Lisp
+
+*** Experience
+ - At this point, I have been learning in my free time for over 1 year.
+ - I've read some of _Gentle Info_, _PCL_, _Land of Lisp_, 
+ and 1st 4 chapters of _ACL_
+
+*** Facts about code
+- I have used drakma to do http requests before, so used it again
+- First time fetching json
+- Retrieved data not treated as text(?), so all characters came back as ASCII codes
+- I knew that the int to char function was either CHAR-CODE or CODE-CHAR
+  - It was CODE-CHAR
+  - CHAR-CODE does the opposite, ie take a character and return its ASCII code
+- I concatenated all the characters into a string as I converted them from ASCII into characters.
+- I knew about cl-json so used that to convert json string into an alist.
+
+*** Some thoughts
+- The drakma http request call is straight-forward plus has options if necessary
+- I had to reference something I did before to remember how to do it
+  - When I did it before I probably got code from the cookbook
+
+** In C#
+*** Experience
+ - .NET since 2001 or 2002
+ - C# since 2008
+ - Probably not the first time, but I recall distinctly making json calls on 7/4/2012.
+ - Didn't use newtonsoft.json for that time.
+   - Recall discovering that MS had built-in functionality to do JSON parsing.
+ - Used a dynamic type.
+   - It was for geolocation with Google's location API.
+
+*** Facts about code
+- The newtonsoft.json and built-in MS json functionality is similar, but different enough.
+  - They both work the same way though, at least for simple serialization / deserialization.
+- If using Visual Studio it's pretty easy to just type in something close to the actual API for making an http request and the IDE will help you.
+- Could probably also pull it off in vim if able to recall the correct imports and references.
+  - OK, maybe not so easy in vim without looking it up.
+- Don't recall ever having to do ASCII to character conversion.
+- If using LinqPad could probably do it "interactively" like in SLIME
+- Using VS requires having a solution, project, and class in place to write a method that does the request and json deserialization.
+  - Then CS-b to build.
+- Using vim can skip the solution.
+  - There are ways to do a build from within vim (as seen in DAS videos)
+  - Simple enough to just have another window dedicated to building in termux.
+  - vim's term is also an option, but copy / paste doesn't work quite like I would expect, so don't find myself using it very often.
+    - Also, you can't close it? Kind of weird, but of course it can be hidden.
+
+
+
