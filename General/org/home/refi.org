@@ -138,18 +138,55 @@ Be prepared to provide a copy of your current homeowners insurance policy.
 - Your streamline refinance must result in a *shorter loan term*, a lower mortgage interest rate, or both
 
 
-
 ** List of online lenders
 https://www.fool.com/the-ascent/mortgages/
+
+*** FHA loan: warning
+*You pay certain premiums with an FHA loan (similar to PMI) that can make your mortgage more expensive.*
 
 * Motley Fool 2
 ** Link
 - https://www.fool.com/the-ascent/mortgages/coronavirus-how-refinance/
+  - Already read this ...
 
 * Motley Fool 3
 ** Link
 - https://www.fool.com/mortgages/2017/04/08/refinancing-a-mortgage-essential-tips-you-need-to.aspx
+*** Links
+- https://www.fool.com/mortgages/2017/03/28/3-things-you-may-not-know-about-refinancing-your-m.aspx
+- https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=newssearch&cd=5&cad=rja&uact=8&ved=0ahUKEwiThPGn-P7SAhUHWSYKHWDPDp4QqQIIJigAMAQ&url=https%3A%2F%2Fwww.fool.com%2Fmortgages%2F2017%2F03%2F26%2F7-dumb-mortgage-refinancing-mistakes-to-avoid.aspx
+  - [ ] Make sure to look at APR numbers, *not* APY
+  - [ ] No cost refinancing - the costs get added to the loan amount - might make sense depending on time, etc
+  - [ ] Make sure there's no pre-payment penalty
+  - [ ] Calculating break-even
+    - Example, closing costs = $6,000 and saving $100/month, divide $6,000 by $100 => 60.  It will take 60 months (five years) before break even.
+- https://www.fool.com/mortgages/2017/03/25/how-to-get-the-best-mortgage-refiance-rates.aspx
+- https://www.fool.com/mortgages/2017/03/09/6-steps-to-check-before-refinancing-your-mortgage.aspx
+**** Notes
+***** PMI
+ - If you pay < 20%, then you'll have to get PMI
+   - 20% of home's value, or 20% of the loan?
+***** debt-to-income ratio
+- Divide the total of all your monthly debt payments by your gross monthly income
+  - Should be 43% or less
+***** Break even
+- To figure out when you'll break even, divide the closing costs by how much lower your monthly payment will be. (see example above)
+***** Better.com
+- Not available in Nevada!
 
 * Motley Fool 4
 ** Link
 - https://www.fool.com/mortgages/2017/03/26/7-dumb-mortgage-refinancing-mistakes-to-avoid.aspx
+  - already read; see notes above
+
+* % table
+
+** Principal Balance ~= $270,000
+ |  % |     $ |     $$ |
+ |----+-------+--------|
+ |  1 |  2700 | 267300 |
+ |  3 |  8100 | 261900 |
+ |  5 | 13500 | 256500 |
+ | 10 | 27000 | 243000 |
+ | 20 | 54000 | 216000 |
+ |    |       |        |
