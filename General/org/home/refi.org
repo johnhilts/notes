@@ -144,10 +144,12 @@ https://www.fool.com/the-ascent/mortgages/
 *** FHA loan: warning
 *You pay certain premiums with an FHA loan (similar to PMI) that can make your mortgage more expensive.*
 
+
 * Motley Fool 2
 ** Link
 - https://www.fool.com/the-ascent/mortgages/coronavirus-how-refinance/
   - Already read this ...
+
 
 * Motley Fool 3
 ** Link
@@ -174,15 +176,72 @@ https://www.fool.com/the-ascent/mortgages/
 ***** Better.com
 - Not available in Nevada!
 
+
 * Motley Fool 4
 ** Link
 - https://www.fool.com/mortgages/2017/03/26/7-dumb-mortgage-refinancing-mistakes-to-avoid.aspx
   - already read; see notes above
 
+
 * More Links ...
-https://www.magnifymoney.com/blog/mortgage/refinance-with-your-current-lender472013385/
-https://www.nasb.com/lending/solutions/loan-servicing/Manage-Your-NASB-Mortgage
+
+* Magnify Money
+** Link
+ https://www.magnifymoney.com/blog/mortgage/refinance-with-your-current-lender472013385/
+** Notes
+*** Step 1: Gather basic information you’ll need to start getting quotes
+- [ ] Current mortgage statement
+- [ ] Date you took out current mortgage
+  - Mainly concerned if you've had > 7 months
+- [ ] Estimated FICO Score
+  - your credit score
+- [ ] How much your house is worth
+  - Zillow's zestimate, etc
+  - if appraisal is low, rate and costs could go *up*
+- [ ] Get all the quotes on the same day
+  - credit inquiries by multiple lenders only count as 1 credit pull if done on the same day
+- [ ] Take your best quotes to your current lender to see if they’ll negotiate
+  - Current lender may give you:
+    - waiving appraisal inspection
+    - allow you to roll over the balance of your escrow account
+      - Notes on escrow account (I have one, according to this)
+	- If your current payment includes a portion for your property taxes and insurance, then you have an escrow account.
+	- An escrow account is simply a savings account the lender creates to pay your property taxes and insurance when they come due
+	- Is required on loans if you have *less than 20% equity in your home*
+	- If you refinance with a lender besides your current lender, you’ll have to set up a new escrow account
+	  - That means extra money out of your pocket at closing.
+	  - However, you do end up getting a refund of whatever is in your current lender’s escrow account
+	    - so *you often get most if not all of the funds you spend on the new account back*.
+
+
+* Current Lender
+  https://www.nasb.com/lending/solutions/loan-servicing/Manage-Your-NASB-Mortgage
+
+| Product         |  Rate | APR        | Payment       | Monthly PMI | Fees   |
+|-----------------+-------+------------+---------------+-------------+--------|
+| 30 Yr Fixed     | 3.25% | 3.279% APR | $1,175 /mo    | $0          | $995   |
+|-----------------+-------+------------+---------------+-------------+--------|
+| 15 Yr Fixed     | 2.75% | 2.803% APR | $1,832 /mo    | $0          | $61    |
+|-----------------+-------+------------+---------------+-------------+--------|
+| FHA 30 Yr Fixed | 2.75% | 3.44% APR  | $1,300.21 /mo | $178.21     | $5,720 |
+|-----------------+-------+------------+---------------+-------------+--------|
+
+** Other ideas
+- [ ] Calculate the difference in $$ out over 2, 3, 5, 10 years
+- Why does FHA look like such a bad deal??
+
+
+* Zillow
 https://www.zillow.com/mortgage-rates/quotes/?auto=true&loantype=refinance&zip=89011&value=347838&cscore=760%2B&va=false&type=SingleFamilyHome&use=Primary&currentbalance=273948#request=ZR-JQQPSZPP
+
+** Notes
+
+*** Get lots of quotes with different parameters
+ https://www.zillow.com/mortgage-rates/quotes/?auto=true&loantype=refinance&zip=89011&value=347838&cscore=760%2B&va=false&type=SingleFamilyHome&use=Primary&currentbalance=273948#request=ZR-CXWWXHMZ
+
+
+* Others?
+Was Trulia.com a site to check out?
 
 * % table
 
@@ -195,3 +254,19 @@ https://www.zillow.com/mortgage-rates/quotes/?auto=true&loantype=refinance&zip=8
  | 10 | 27000 | 243000 |
  | 20 | 54000 | 216000 |
  |    |       |        |
+
+
+* Loan Hunting!
+
+- [ ] Read notes
+
+- [ ] Get all info
+  - [ ] Documents (see lists above)
+  - [ ] Credit Score
+
+- [ ] Online Contact Prep
+  - [ ] Which lenders?
+    - Need to contact on the same day
+  - [ ] Which kind of loan?
+    - maybe not FHA?
+
