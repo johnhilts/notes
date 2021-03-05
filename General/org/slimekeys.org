@@ -80,3 +80,73 @@ slime-trace-dialog-toggle-trace
 slime-inspect-definition
 slime-delete-system-fasls (Useful when .fasls are out-of-sync)
 slime-profile-package, then run the desired functions, then slime-profile-report
+
+** sexp editing
+
+*** (from http://cl-cookbook.sourceforge.net/emacs-ide.html)
+=C-M-t= Swap sexp
+=C-M-Space= highlight sexp 
+=C-M-u= expand the selection "upwards"
+=C-M-k= delete sexp
+=C-M-q= format
+=M-x check-parens= locate mismatched parens in a buffer
+=C-u 2 M-(= surround next 2 sexps with parentheses
+
+**** Example of combining the above to extract from a progn then delete the progn
+#+BEGIN_SRC lisp
+;; To delete the enclosing "progn" below, put the cursor on the open
+;; parens of the "(+ 1 1)" and press the following sequence of keys:
+;; "C-M-k C-M-k C-M-k C-M-u C-M-k C-y M-y C-M-a C-M-q":
+
+(defun a ()
+  (progn 
+    (+ 1 1)
+    (+ 2 2)
+    (+ 3 3)))
+#+END_SRC
+
+**** Folding
+*warning* not very useful implementation ... makes folded code /invisible/
+*Seems dangerous*
+Including here just to know aobut it. Disabled by default in emacs.
+
+=C-x n n= hide everything outside of region (kind of)
+=C-x n w= unfold
+=C-x n d= fold everything besides current defun (actually block)
+
+***** Translations of shortcuts used in folding
+=n= "narrow"
+=w= "widen"
+=d= "defun"
+
+**** Comments
+=M-;= toggle commenting of highlighted block. Creates "line comment" if nothing highlighted.
+=M-q= wrap comments *and strings*
+
+**** Searching
+=M-x occur= grep a buffer. Standard emacs
+=M-x grep= grep a buffer; supports regex. Standard emacs
+
+**** diffing
+=M-x ediff=
+
+**** hyperspec (*haven't tested this yet*)
+Use code similar to the following to access the HyperSpec from the Shift-F1 key:
+#+BEGIN_SRC lisp
+(global-set-key [(shift f1)]
+		'(lambda ()
+		   (interactive)
+		   (let ((browse-url-browser-function 
+                            'browse-url-w3)
+		           (common-lisp-hyperspec-root            
+                            "file://c:/home/docs/Hyperspec/")
+	                           (common-lisp-hyperspec-symbol-table 
+                             (concat common-lisp-hyperspec-root 
+                                         "Data/Map_Sym.txt"))
+		            (hyperspec-prog 
+                             "c:/home/site/ilisp/extra/hyperspec"))
+		     (load-library hyperspec-prog)
+		     (common-lisp-hyperspec 
+                        (thing-at-point 'symbol)))))
+#+END_SRC
+
