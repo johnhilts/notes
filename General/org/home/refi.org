@@ -43,6 +43,9 @@ Lower monthly payment
 - [ ] Tax Returns, W-2s, and/or 1099s
 - [ ] Credit Report
   - [ ] double check before lender reviews
+    - March 8, 2021
+      - Transunion: 762
+      - Equifax: 768
 - [ ] Statement of Debts
   - car loans
   - existing mortgage
@@ -74,6 +77,9 @@ Lower monthly payment
   - [ ] check on zillow, etc - what's that vs remaining principal?
 *** TODO Credit score
   - [ ] check credit karma
+    - March 8, 2021
+      - Transunion: 762
+      - Equifax: 768
 *** TODO Shopping around
   - It may be most cost effective to work with a broker or direct lender.
   - You should compare quotes from:
@@ -111,6 +117,8 @@ Lower monthly payment
 - [ ] Current month’s pay stubs
 - [ ] W-2s for the last two years
 - [ ] Names and phone numbers of employers for the last two years*
+  - LampsPlus, Inc
+    - 818-428-4100 (?)
 - [ ] Current two months’ bank statements
 - [ ] Current mortgage statement
 - [ ] Current homeowners policy with contact information
@@ -200,6 +208,9 @@ https://www.fool.com/the-ascent/mortgages/
   - Mainly concerned if you've had > 7 months
 - [ ] Estimated FICO Score
   - your credit score
+    - March 8, 2021
+      - Transunion: 762
+      - Equifax: 768
 - [ ] How much your house is worth
   - Zillow's zestimate, etc
   - if appraisal is low, rate and costs could go *up*
@@ -268,6 +279,9 @@ Was Trulia.com a site to check out?
 - [ ] Get all info
   - [ ] Documents (see lists above)
   - [ ] Credit Score
+    - March 8, 2021
+      - Transunion: 762
+      - Equifax: 768
 
 - [ ] Online Contact Prep
   - [ ] Which lenders?
