@@ -6,12 +6,16 @@
 ** Goals
 Lower monthly payment
 
-** Does refinancing make financial sense?
+** TODO Does refinancing make financial sense?
 - [ ] Is the interest rate lower than your existing rate?
+  - [ ] Existing rate
+  - [ ] New Rate
+    - [ ] Expected
+    - [ ] Actual
 - [ ] Will the new rate increase your monthly payments?
 - [ ] Will you pay more money over the entire length of the loan?
 
-*** Rule of thumb
+*** TODO Rule of thumb
 - [ ] If the current interest rate is at least a half percent lower than the interest rate in your existing mortgage, then refinancing may be a good option for you.
   - For example, if you have $390,000 remaining on an original $400,000 loan at 4.25%, replacing your current mortgage at 3.75% could save as much as $162 per month.
   - In addition to interest rates, homeowners also need to consider the length of the new loan term.
@@ -20,21 +24,21 @@ Lower monthly payment
 *** Refinance Calculator
 - https://www.pennymacusa.com/mortgage-calculators
 
-** Can you afford closing costs and fees?
+** TODO Can you afford closing costs and fees?
 - [ ] Are you prepared to pay the application fee?
 - [ ] Have you determined title insurance, attorney and closing costs?
 - [ ] Do you have these funds to pay upfront?
 - [ ] Will these fees be less than the savings?
-  - How long until fees are recouped?
+  - [ ] How long until fees are recouped?
 
-** Have you determined what the payoff amount will be (including any prepayment penalties)?
+** TODO Have you determined what the payoff amount will be (including any prepayment penalties)?
 - [ ] Calculate the payoff amount (balance + interest)
-- [ ] *Determine any payoff penalty fees*
+- [X] *Determine any payoff penalty fees*
   - Pre-payment penalties are *usually about 80% of six months interest*, which can run in the TENS OF THOUSANDS OF DOLLARS.
     - *It is your right to request a copy of the payoff statement* before you choose to enter a refinancing loan.
 - [ ] Request a copy of the payoff statement
 
-** Do you know what mortgage refinancing documents are needed to apply? Can you obtain them?
+** TODO Do you know what mortgage refinancing documents are needed to apply? Can you obtain them?
 - [ ] Paystubs
 - [ ] Tax Returns, W-2s, and/or 1099s
 - [ ] Credit Report
@@ -45,7 +49,7 @@ Lower monthly payment
 - [ ] Statement of Assets
   - Savings account
 
-** Apply with this website
+** TODO Apply with this website
 - https://www.pennymacusa.com/contact-us
 
 
@@ -60,29 +64,29 @@ Lower monthly payment
   - up front points
   - appraisal
   - title search
-*** Calculate the break even date
+*** TODO Calculate the break even date
   - Calculator: http://www.bankrate.com/calculators/mortgages/mortgage-refinance-break-even-calculator.aspx
-  - All you’ll need is your monthly mortgage statement, your income tax rate, and the new interest rate, loan origination fee, points paid, and closing costs
-*** Calcuate savings
+    - All you’ll need is your monthly mortgage statement, your income tax rate, and the new interest rate, loan origination fee, points paid, and closing costs
+*** TODO Calcuate savings
   - How much is your current loan? Calculate payment * months remaining (also at some point we can take off the insurance)
-*** Loan to value ratio
+*** TODO Loan to value ratio
   - Should be no more than 80%
   - [ ] check on zillow, etc - what's that vs remaining principal?
-*** Credit score
+*** TODO Credit score
   - [ ] check credit karma
-*** Shopping around
+*** TODO Shopping around
   - It may be most cost effective to work with a broker or direct lender.
   - You should compare quotes from:
     - [ ] a direct lender
     - [ ] a reputable broker
     - [ ] a bank
     - [ ] a credit union.
-*** Statement of assets
+*** TODO Statement of assets
   - possibly will just be part of the application
   - [ ] Titles to real property or cars
   - [ ] Savings and checking accounts
   - [ ] balances of retirement accounts (401k's??)
-*** Statement of debts
+*** TODO Statement of debts
   - [ ] mortgage
   - [ ] car loan
 
@@ -90,10 +94,10 @@ Lower monthly payment
 * Nerd Wallet
 ** Link
 - https://www.nerdwallet.com/article/mortgages/how-to-refinance-your-mortgage
-** Shopping Around
+** TODO Shopping Around
 - Apply for a mortgage with three to five lenders.
   - *Submit all applications within a two-week period to minimize the impact on your credit score.*
-- Compare the Loan Estimate document each lender provides after you apply.
+- [ ] Compare the Loan Estimate document each lender provides after you apply.
 
 
 * Lending Tree
@@ -103,14 +107,14 @@ Lower monthly payment
 *** FHA streamline. 
 - Homeowners with a current FHA mortgage may be eligible for the faster and easier refinance process of an FHA streamline refinance with no appraisal.
 - An added bonus: No income verification is required.
-** Prep Financial Info
-- Current month’s pay stubs
-- W-2s for the last two years
-- Names and phone numbers of employers for the last two years*
-- Current two months’ bank statements
-- Current mortgage statement
-- Current homeowners policy with contact information
-- Current property tax statement
+** TODO Prep Financial Info
+- [ ] Current month’s pay stubs
+- [ ] W-2s for the last two years
+- [ ] Names and phone numbers of employers for the last two years*
+- [ ] Current two months’ bank statements
+- [ ] Current mortgage statement
+- [ ] Current homeowners policy with contact information
+- [ ] Current property tax statement
 
 
 * Motley Fool 1
@@ -123,8 +127,8 @@ Lower monthly payment
 ** Mortgage insurance
 If you have private mortgage insurance (PMI), *you can easily get rid of it once your loan-to-value (LTV) ratio falls below 80%.*
 
-** Home Insurance
-Be prepared to provide a copy of your current homeowners insurance policy.
+** TODO Home Insurance
+- [ ] Be prepared to provide a copy of your current homeowners insurance policy.
 
 ** list of FHA lenders
 - https://www.fool.com/the-ascent/mortgages/best-lenders-fha-loans/
@@ -157,9 +161,10 @@ https://www.fool.com/the-ascent/mortgages/
 *** Links
 - https://www.fool.com/mortgages/2017/03/28/3-things-you-may-not-know-about-refinancing-your-m.aspx
 - https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=newssearch&cd=5&cad=rja&uact=8&ved=0ahUKEwiThPGn-P7SAhUHWSYKHWDPDp4QqQIIJigAMAQ&url=https%3A%2F%2Fwww.fool.com%2Fmortgages%2F2017%2F03%2F26%2F7-dumb-mortgage-refinancing-mistakes-to-avoid.aspx
+*** TODO Checklist
   - [ ] Make sure to look at APR numbers, *not* APY
   - [ ] No cost refinancing - the costs get added to the loan amount - might make sense depending on time, etc
-  - [ ] Make sure there's no pre-payment penalty
+  - [X] Make sure there's no pre-payment penalty
   - [ ] Calculating break-even
     - Example, closing costs = $6,000 and saving $100/month, divide $6,000 by $100 => 60.  It will take 60 months (five years) before break even.
 - https://www.fool.com/mortgages/2017/03/25/how-to-get-the-best-mortgage-refiance-rates.aspx
@@ -189,7 +194,7 @@ https://www.fool.com/the-ascent/mortgages/
 ** Link
  https://www.magnifymoney.com/blog/mortgage/refinance-with-your-current-lender472013385/
 ** Notes
-*** Step 1: Gather basic information you’ll need to start getting quotes
+*** TODO Step 1: Gather basic information you’ll need to start getting quotes
 - [ ] Current mortgage statement
 - [ ] Date you took out current mortgage
   - Mainly concerned if you've had > 7 months
@@ -226,7 +231,7 @@ https://www.fool.com/the-ascent/mortgages/
 | FHA 30 Yr Fixed | 2.75% | 3.44% APR  | $1,300.21 /mo | $178.21     | $5,720 |
 |-----------------+-------+------------+---------------+-------------+--------|
 
-** Other ideas
+** TODO Other ideas
 - [ ] Calculate the difference in $$ out over 2, 3, 5, 10 years
 - Why does FHA look like such a bad deal??
 
@@ -256,9 +261,9 @@ Was Trulia.com a site to check out?
  |    |       |        |
 
 
-* Loan Hunting!
+* TODO Loan Hunting!
 
-- [ ] Read notes
+- [X] Read notes
 
 - [ ] Get all info
   - [ ] Documents (see lists above)
