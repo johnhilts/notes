@@ -115,7 +115,9 @@ Lower monthly payment
 - An added bonus: No income verification is required.
 ** TODO Prep Financial Info
 - [ ] Current month’s pay stubs
+  - got from paycom for 2/2021 and 3/2021
 - [ ] W-2s for the last two years
+  - got from paycom for 2020 and 2019
 - [ ] Names and phone numbers of employers for the last two years*
   - LampsPlus, Inc
     - 818-428-4100 (?)

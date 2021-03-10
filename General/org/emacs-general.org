@@ -6,3 +6,18 @@ toggle-menu-bar-mode-from-frame
 menu-bar-showhide-tool-bar-menu-customize-disable
 toggle-frame-fullscreen
 toggle-scroll-bar
+
+* Frames
+=C-x 5 2= create a new frame and switch to it
+=C-x 5 o= cycle through existing frames
+=C-x 5 0= delete current frame
+
+** Identifying frames
+- Each frame has a number to distinguish it.
+- The selected frame's number n appears near the beginning of the mode line, in the form `Fn'.
+  - `Fn' is actually the frame's name.
+=M-x set-frame-name RET name RET= specify new name for the selected frame
+=M-x select-frame-by-name RET name RET= select a frame by name
+- The name you specify appears in the mode line when the frame is selected.
+
+
