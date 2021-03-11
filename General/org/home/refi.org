@@ -213,8 +213,9 @@ https://www.fool.com/the-ascent/mortgages/
     - March 8, 2021
       - Transunion: 762
       - Equifax: 768
-- [ ] How much your house is worth
-  - Zillow's zestimate, etc
+- [X] How much your house is worth
+  - Zillow's zestimate: $365K
+  - Trulia: $365K
   - if appraisal is low, rate and costs could go *up*
 - [ ] Get all the quotes on the same day
   - credit inquiries by multiple lenders only count as 1 credit pull if done on the same day
