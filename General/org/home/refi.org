@@ -328,3 +328,15 @@ Was Trulia.com a site to check out?
   - [ ] We should run some of them through the formulas to see how good of a deal each one is!
 - [ ] Choose some here too: https://www.fool.com/the-ascent/mortgages/
   - [ ] We should run some of them through the formulas to see how good of a deal each one is!
+
+| Lender                      | closing costs | monthly payment | savings per month | Months until break-even | years |
+|-----------------------------+---------------+-----------------+-------------------+-------------------------+-------|
+| Example                     |          6000 |                 |               100 | (/ 6000 100) 60         |     5 |
+| BoA                         |               |                 |                   |                         |       |
+| loanDepot                   |          6799 |            1067 |               800 | (/ 6799 800) 8          |   0.8 |
+| Sebonic                     |          2303 |            1119 |               700 | (/ 2303 700) 3          |   0.3 |
+| loanDepot                   |          1615 |            1120 |               700 | (/ 1615 700) 2          |   0.2 |
+| Rocket                      |               |                 |                   |                         |       |
+| axos                        |               |                 |                   |                         |       |
+| PennyMac                    |               |                 |                   |                         |       |
+| North American Savings Bank |               |                 |                   |                         |       |
