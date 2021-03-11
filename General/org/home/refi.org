@@ -9,6 +9,7 @@ Lower monthly payment
 ** TODO Does refinancing make financial sense?
 - [ ] Is the interest rate lower than your existing rate?
   - [ ] Existing rate
+    - 3.875%
   - [ ] New Rate
     - [ ] Expected
     - [ ] Actual
@@ -48,6 +49,8 @@ Lower monthly payment
       - Equifax: 768
 - [ ] Statement of Debts
   - car loans
+    - Honda - $13,658; $370/month
+    - Subaru - $23,995; $594/month
   - existing mortgage
 - [ ] Statement of Assets
   - Savings account
@@ -75,6 +78,7 @@ Lower monthly payment
 *** TODO Loan to value ratio
   - Should be no more than 80%
   - [ ] check on zillow, etc - what's that vs remaining principal?
+    - (/ 270000.0 365000.0) = ~74%
 *** TODO Credit score
   - [ ] check credit karma
     - March 8, 2021
@@ -125,7 +129,32 @@ Lower monthly payment
 - [ ] Current mortgage statement
 - [ ] Current homeowners policy with contact information
 - [ ] Current property tax statement
+  - hard copy
+  - info for my area 521 on the web
+#+BEGIN_SRC text
+CLARK COUNTY PROPERTY TAX RATES
+Fiscal Year 2020-2021
+ 
+District 521 - HENDERSON CITY REDEVELOPMENT 521
+ 	
+ASSISTANCE TO INDIGENT PERSONS	0.0300
+CLARK COUNTY CAPITAL	0.0150
+CLARK COUNTY FAMILY COURT	0.0058
+CLARK COUNTY GENERAL OPERATING	0.1380
+COUNTY SCHOOL DEBT (BONDS)	0.5534
+COUNTY SCHOOL MAINTENANCE & OPERATION	0.2250
+HENDERSON CITY	0.1862
+HENDERSON CITY DEBT	0.0360
+HENDERSON CITY LIBRARY	0.0182
+HENDERSON REDEVELOPMENT AREA#521	1.6542
+INDIGENT ACCIDENT FUND	0.0045
+STATE COOPERATIVE EXTENSION	0.0030
+STATE OF NEVADA	0.0598
 
+Total Tax Rate	
+
+2.9291
+#+END_SRC
 
 * Motley Fool 1
 ** link
@@ -139,6 +168,8 @@ If you have private mortgage insurance (PMI), *you can easily get rid of it once
 
 ** TODO Home Insurance
 - [ ] Be prepared to provide a copy of your current homeowners insurance policy.
+  - Hard copy ready
+  - Web: couldn't find on qbe.com/us
 
 ** list of FHA lenders
 - https://www.fool.com/the-ascent/mortgages/best-lenders-fha-loans/
@@ -152,7 +183,7 @@ If you have private mortgage insurance (PMI), *you can easily get rid of it once
 - Your streamline refinance must result in a *shorter loan term*, a lower mortgage interest rate, or both
 
 
-** List of online lenders
+** TODO List of online lenders
 https://www.fool.com/the-ascent/mortgages/
 
 *** FHA loan: warning
@@ -292,3 +323,8 @@ Was Trulia.com a site to check out?
   - [ ] Which kind of loan?
     - maybe not FHA?
 
+* TODO Actual applications
+- [ ] Go to here and choose some good ones: https://www.zillow.com/mortgage-rates/quotes/?auto=true&loantype=refinance&zip=89011&value=347838&cscore=760%2B&va=false&type=SingleFamilyHome&use=Primary&currentbalance=273948#request=ZR-TQHFHDMF
+  - [ ] We should run some of them through the formulas to see how good of a deal each one is!
+- [ ] Choose some here too: https://www.fool.com/the-ascent/mortgages/
+  - [ ] We should run some of them through the formulas to see how good of a deal each one is!
