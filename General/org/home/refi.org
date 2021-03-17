@@ -84,6 +84,9 @@ Lower monthly payment
     - March 8, 2021
       - Transunion: 762
       - Equifax: 768
+    - March 16, 2021
+      - Transunion: 755
+      - Equifax: 760
 *** TODO Shopping around
   - It may be most cost effective to work with a broker or direct lender.
   - You should compare quotes from:
@@ -340,3 +343,28 @@ Was Trulia.com a site to check out?
 | axos                        |               |                 |                   |                         |       |
 | PennyMac                    |               |                 |                   |                         |       |
 | North American Savings Bank |               |                 |                   |                         |       |
+
+** PennyMac: https://www.pennymacusa.com/contact-us
+
+* Post application
+| Lender                      | closing costs | monthly payment | savings per month | Months until break-even | years |
+|-----------------------------+---------------+-----------------+-------------------+-------------------------+-------|
+| Example                     |          6000 |                 |               100 | (/ 6000 100) 60         |     5 |
+| BoA                         |               |                 |                   |                         |       |
+| loanDepot                   |               |                 |                   |                         |       |
+| Sebonic                     |               |                 |                   |                         |       |
+| Rocket                      |               |                 |                   |                         |       |
+| axos                        |               |                 |                   |                         |       |
+| PennyMac                    |               |                 |                   |                         |       |
+| North American Savings Bank |               |                 |                   |                         |       |
+
+| Lender                      | Agent | Contact Info | Notes |
+|-----------------------------+-------+--------------+-------|
+| BoA                         |       |              |       |
+| loanDepot                   |       |              |       |
+| Sebonic                     |       |              |       |
+| Rocket                      |       |              |       |
+| axos                        |       |              |       |
+| PennyMac                    |       |              |       |
+| North American Savings Bank |       |              |       |
+
