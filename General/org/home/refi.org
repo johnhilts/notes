@@ -347,24 +347,134 @@ Was Trulia.com a site to check out?
 ** PennyMac: https://www.pennymacusa.com/contact-us
 
 * Post application
-| Lender                      | closing costs | monthly payment | savings per month | Months until break-even | years |
-|-----------------------------+---------------+-----------------+-------------------+-------------------------+-------|
-| Example                     |          6000 |                 |               100 | (/ 6000 100) 60         |     5 |
-| BoA                         |               |                 |                   |                         |       |
-| loanDepot                   |               |                 |                   |                         |       |
-| Sebonic                     |               |                 |                   |                         |       |
-| Rocket                      |               |                 |                   |                         |       |
-| axos                        |               |                 |                   |                         |       |
-| PennyMac                    |               |                 |                   |                         |       |
-| North American Savings Bank |               |                 |                   |                         |       |
+| Lender                      | closing costs | monthly payment | savings per month | Months until break-even | years | Notes             |
+|-----------------------------+---------------+-----------------+-------------------+-------------------------+-------+-------------------|
+| Example                     |          6000 |                 |               100 | (/ 6000 100) 60         |     5 |                   |
+| BoA                         |          6643 |            1493 |                   |                         |       | Includes taxs+ins |
+| loanDepot (Sean + Alex)     |          4500 |            1603 |                   |                         |       | 3.875             |
+| loanDepot (Sean + Alex)     |          7500 |            1546 |                   |                         |       | 3.5               |
+| Sebonic                     |               |                 |                   |                         |       |                   |
+| Rocket                      |               |                 |                   |                         |       |                   |
+| axos                        |       3183.89 |         1426.58 |                   |                         |       | Includes taxs+ins |
+| PennyMac                    |               |                 |                   |                         |       |                   |
+| North American Savings Bank |               |                 |                   |                         |       |                   |
 
-| Lender                      | Agent | Contact Info | Notes |
-|-----------------------------+-------+--------------+-------|
-| BoA                         |       |              |       |
-| loanDepot                   |       |              |       |
-| Sebonic                     |       |              |       |
-| Rocket                      |       |              |       |
-| axos                        |       |              |       |
-| PennyMac                    |       |              |       |
-| North American Savings Bank |       |              |       |
+| Lender                      | Agent   | Contact Info | Notes |
+|-----------------------------+---------+--------------+-------|
+| BoA                         |         |              |       |
+| loanDepot                   |         |              |       |
+| Sebonic                     |         |              |       |
+| Rocket                      |         |              |       |
+| axos                        | Melissa | 858-649-2514 |       |
+| PennyMac                    |         |              |       |
+| North American Savings Bank |         |              |       |
 
+
+* Axos
+
+** Contact
+ - Melissa Wallen
+ - 858-649-2514
+
+** Free checking account
+   - $995 fee waived
+   - what about ATMs?
+     - fees reimbursed
+   - Can decide before closing
+
+** More notes
+ might get appraisal waived - *NO*
+ OTOH value can determine pricing bracket
+ 2.99%
+ closing: $3183.89
+ $2188.89 (reduced)
+
+** appraisal fee: $450 <-- that's part of closing cost
+
+** when's QBE due? (February?)
+
+** Closing notes
+- Escrow balance - can't transfer - will be collected by Axos and reimbursed by NASB
+- secure for 45 days allow time for appraisal
+- 3 months of insurance 4 months of tax --> can be included in loan amount
+- PMI - $190? will go away
+
+$1426.58 -> monthly payment including taxes + insurance
+
+Will get email from doc magic - disclosures.
+Another email with a link to a secure portal link.
+Pricing locked for 45 days.
+Solidify - the appraisal company
+
+
+* Voice mails
+Penny w/Sebonic
+240-206-5283
+
+8:01AM
+Automated VM from Penny Mac
+888 910 7506 <-- opt out
+855-2079736
+
+8:09AM
+Eddie from Quicken Loans
+888-700-369??
+
+9:04
+Mike from Sebonic
+877-721-6866
+
+9:06AM
+Savanna from Loan Depot (automated)
+866-965-9011 opt-out
+"missing pieces of critical info"
+866 965 9011
+
+9:21AM
+Melissa w/Axos
+858-649-2514
+
+10:03AM
+Automated VM from Penny Mac
+888 910 7506 <-- opt out
+855-207-9736
+
+10:11AM
+Savanna from Loan Depot (automated) again
+866-965-9011 opt-out
+"missing pieces of critical info"
+866 965 9011
+until 8PM
+
+11:56AM
+Melissa again from Axos "working another 3 hours"
+
+12:07PM
+PennyMac again
+
+12:32PM
+Mike from Sebonic
+877 721 6866 (?)
+
+4:36PM
+Perry Alexander w/BOA
+pre-approved based on what I submitted
+800-781-4104 ext 1560357
+
+4:55PM
+Alex with loanDepot
+702 278 3879
+
+Josh with Loan Depot
+works with Jennifer
+they don't work with Sean/Alex
+
+* Axos
+$475 for appraisal - only out of pocket
+monthly without closing 3.875% $1603
+closing costs ~$4500, 
+
+for 3.5% $1546
+$7500 in closing cost - "paying down interest"
+
+Let them know if you want to move forward (call Alex)
