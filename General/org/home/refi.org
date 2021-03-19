@@ -326,54 +326,59 @@ Was Trulia.com a site to check out?
   - [ ] Which kind of loan?
     - maybe not FHA?
 
-* TODO Actual applications
-- [ ] Go to here and choose some good ones: https://www.zillow.com/mortgage-rates/quotes/?auto=true&loantype=refinance&zip=89011&value=347838&cscore=760%2B&va=false&type=SingleFamilyHome&use=Primary&currentbalance=273948#request=ZR-TQHFHDMF
-  - [ ] We should run some of them through the formulas to see how good of a deal each one is!
-- [ ] Choose some here too: https://www.fool.com/the-ascent/mortgages/
-  - [ ] We should run some of them through the formulas to see how good of a deal each one is!
+* DONE Actual applications
+- [X] Go to here and choose some good ones: https://www.zillow.com/mortgage-rates/quotes/?auto=true&loantype=refinance&zip=89011&value=347838&cscore=760%2B&va=false&type=SingleFamilyHome&use=Primary&currentbalance=273948#request=ZR-TQHFHDMF
+  - [X] We should run some of them through the formulas to see how good of a deal each one is!
+- [X] Choose some here too: https://www.fool.com/the-ascent/mortgages/
+  - [X] We should run some of them through the formulas to see how good of a deal each one is!
 
-| Lender                      | closing costs | monthly payment | savings per month | Months until break-even | years |
-|-----------------------------+---------------+-----------------+-------------------+-------------------------+-------|
-| Example                     |          6000 |                 |               100 | (/ 6000 100) 60         |     5 |
-| BoA                         |               |                 |                   |                         |       |
-| loanDepot                   |          6799 |            1067 |               800 | (/ 6799 800) 8          |   0.8 |
-| Sebonic                     |          2303 |            1119 |               700 | (/ 2303 700) 3          |   0.3 |
-| loanDepot                   |          1615 |            1120 |               700 | (/ 1615 700) 2          |   0.2 |
-| Rocket                      |               |                 |                   |                         |       |
-| axos                        |               |                 |                   |                         |       |
-| PennyMac                    |               |                 |                   |                         |       |
-| North American Savings Bank |               |                 |                   |                         |       |
+** Advertised amounts
+ | Lender                      | closing costs | monthly payment | savings per month | Months until break-even | years |
+ |-----------------------------+---------------+-----------------+-------------------+-------------------------+-------|
+ | Example                     |          6000 |                 |               100 | (/ 6000 100) 60         |     5 |
+ | BoA                         |               |                 |                   |                         |       |
+ | loanDepot                   |          6799 |            1067 |               800 | (/ 6799 800) 8          |   0.8 |
+ | Sebonic                     |          2303 |            1119 |               700 | (/ 2303 700) 3          |   0.3 |
+ | loanDepot                   |          1615 |            1120 |               700 | (/ 1615 700) 2          |   0.2 |
+ | Rocket                      |               |                 |                   |                         |       |
+ | axos                        |               |                 |                   |                         |       |
+ | PennyMac                    |               |                 |                   |                         |       |
+ | North American Savings Bank |               |                 |                   |                         |       |
 
-** PennyMac: https://www.pennymacusa.com/contact-us
+*** PennyMac: https://www.pennymacusa.com/contact-us
 
-Current monthly: 1845.99
+ Current monthly: 1845.99
+
 
 * Post application
-| Lender                      |   closing costs | monthly payment | savings per month | Months until break-even | years  | Notes                |
-|-----------------------------+-----------------+-----------------+-------------------+-------------------------+--------+----------------------|
-| Example                     |            6000 |                 |               100 | (/ 6000 100) 60         | 5y     |                      |
-| BoA                         |            6643 |            1493 |            352.99 | (/ 6643 352.99)         | 1y 7m  | Includes taxs+ins    |
-| loanDepot (Sean + Alex)     |            4500 |            1603 |            242.99 | (/ 4500 242.99)         | 1y 7m  | 3.875                |
-| loanDepot (Sean + Alex)     |            7500 |            1546 |            299.99 | (/ 7500 299.99)         | 2y 1m  | 3.5                  |
-| loanDepot (Luis Torres)     |            2360 |            1488 |            357.99 | (/ 2360 357.99)         | 7m     | He said 11m?         |
-| Sebonic                     |                 |                 |                   |                         |        |                      |
-| Rocket                      |            5400 |            1514 |               332 | (/ 5400 332)            | 2y 1m  | 20 months; 16 months |
-| axos                        |         3183.89 |         1426.58 |            419.41 | (/ 3183.89 419.41)      | 8m     | Includes taxs+ins    |
-| PennyMac                    |            6698 |         1474.41 |            371.58 | (/ 6698 371.58)         | 1y 6m  | Includes taxs+ins    |
-| PennyMac                    |            8702 |         1455.41 |            390.58 | (/ 8702 390.58)         | 1y 11m | Includes taxs+ins    |
-| PennyMac                    | 4201.89 (-2500) |            1464 |            381.99 | (/ 4201.89 381.99)      | 11m    | Includes taxs+ins    |
-| North American Savings Bank |                 |                 |                   |                         |        |                      |
 
-| Lender                      | Agent            | Contact Info                      |                            | Notes                       |
-|-----------------------------+------------------+-----------------------------------+----------------------------+-----------------------------|
-| BoA                         | Perry Alexander  | 800-781-4104 ext 1560357          |                            |                             |
-| loanDepot                   | Alex + Sean      | 702 278 3879                      |                            |                             |
-| loanDepot                   | Josh + Jennifer  | 725-800-9955                      |                            | Different Branch?           |
-| Sebonic                     | Penny            | 240-206-5283                      |                            |                             |
-| Rocket                      | Adam + Tiffany   | 844-986-2170 direct: 216-466-8285 |                            | Tiffany pretty cool         |
-| axos                        | Melissa          | 858-649-2514                      |                            |                             |
-| PennyMac                    | Gabrielle Tamala | (623) 250-2908                    | gabrielle.tamala@pnmac.com | ridiculously long hold time |
-| North American Savings Bank |                  |                                   |                            |                             |
+** Break even and other numbers
+ | Lender                      |   closing costs | monthly payment | savings per month | Months until break-even | years  | Notes                                     |
+ |-----------------------------+-----------------+-----------------+-------------------+-------------------------+--------+-------------------------------------------|
+ | Example                     |            6000 |                 |               100 | (/ 6000 100) 60         | 5y     |                                           |
+ | BoA                         |            6643 |            1493 |            352.99 | (/ 6643 352.99)         | 1y 7m  | Includes taxs+ins                         |
+ | loanDepot (Sean + Alex)     |            4500 |            1603 |            242.99 | (/ 4500 242.99)         | 1y 7m  | 3.875                                     |
+ | loanDepot (Sean + Alex)     |            7500 |            1546 |            299.99 | (/ 7500 299.99)         | 2y 1m  | 3.5                                       |
+ | loanDepot (Luis Torres)     |            2360 |            1488 |            357.99 | (/ 2360 357.99)         | 7m     | He said 11m? "brother"; difference is PMI |
+ | Sebonic                     |                 |                 |                   |                         |        |                                           |
+ | Rocket                      |            5400 |            1514 |               332 | (/ 5400 332)            | 2y 1m  | 20 months; 16 months                      |
+ | axos                        |         3183.89 |         1426.58 |            419.41 | (/ 3183.89 419.41)      | 8m     | Includes taxs+ins                         |
+ | PennyMac                    |            6698 |         1474.41 |            371.58 | (/ 6698 371.58)         | 1y 6m  | Includes taxs+ins                         |
+ | PennyMac                    |            8702 |         1455.41 |            390.58 | (/ 8702 390.58)         | 1y 11m | Includes taxs+ins                         |
+ | PennyMac                    | 4201.89 (-2500) |            1464 |            381.99 | (/ 4201.89 381.99)      | 11m    | Includes taxs+ins                         |
+ | North American Savings Bank |                 |                 |                   |                         |        |                                           |
+
+** Contact info
+ | Lender                      | Agent            | Contact Info                      |                            | Notes                       |
+ |-----------------------------+------------------+-----------------------------------+----------------------------+-----------------------------|
+ | BoA                         | Perry Alexander  | 800-781-4104 ext 1560357          |                            |                             |
+ | loanDepot                   | Alex + Sean      | 702 278 3879                      |                            |                             |
+ | loanDepot                   | Josh + Jennifer  | 725-800-9955                      |                            | Different Branch?           |
+ | Sebonic                     | Penny            | 240-206-5283                      |                            |                             |
+ | Rocket                      | Adam + Tiffany   | 844-986-2170 direct: 216-466-8285 |                            | Tiffany pretty cool         |
+ | axos                        | Melissa          | 858-649-2514                      |                            |                             |
+ | PennyMac                    | Gabrielle Tamala | (623) 250-2908                    | gabrielle.tamala@pnmac.com | ridiculously long hold time |
+ | North American Savings Bank |                  |                                   |                            |                             |
 
 
 * Axos
@@ -462,47 +467,52 @@ $2500 discount
 appraisal? yes?
 6698
 
+
 * Rocket
 
 ** Contact
 - Tiffany (see table)
   - Ohio
 
-conventional
-credit too high for FHA + eliminate PMI 
-3.375%
-FHA has a lower %, but PMI off sets that
-closing rolled in
-closing: 8400
-2400 at closing "your money" comes as a check
-month includes ins+tax $1552 (closing rolled in); 1514 w/separate closing
-$294 savings $332 savings with up front closing
-482 principle -> 458 principle 
-893 interest -> 800 interest saves $30k
-no prepayment penalty; can bring funds the closing
-10K or more to mortgage - even after closing! 
-"recast"
-1 month off, escrow refund (~$400)
-cautious: closing costs might be concealing extra points
-closing costs are very regulated (since 2008)
-JDPowers rated quicken loan
-"all numbers over estimated"
-216 466 8285 6-7 PST
+** options
+
+***  FHA has a lower %, but PMI off sets that
+*** conventional
+ credit too high for FHA + eliminate PMI 
+ 3.375%
+ closing rolled in
+ closing: 8400
+ 2400 at closing "your money" comes as a check
+ month includes ins+tax $1552 (closing rolled in); 1514 w/separate closing
+ $294 savings $332 savings with up front closing
+ 482 principle -> 458 principle 
+ 893 interest -> 800 interest saves $30k
+ no prepayment penalty; can bring funds the closing
+ 10K or more to mortgage - even after closing! 
+ "recast"
+ 1 month off, escrow refund (~$400)
+ cautious: closing costs might be concealing extra points
+ closing costs are very regulated (since 2008)
+ JDPowers rated quicken loan I don't know what
+ "all numbers over estimated"
+ 216 466 8285 6-7 PST
 
 
-* Load Depot
+* Loan Depot
 
 ** Luis Torres
-275K 
-3.25%
-monthly: 1196
-closing 2360 (includes appraisal)
-part of Prime Pricing
 
-hybrid arm (fixed for 10y)
-2.875% -> 7.875% max 5% increase
-1140
-3381 (includes appraisal)
+*** Numbers
+ 275K 
+ 3.25%
+ monthly: 1196
+ closing 2360 (includes appraisal)
+ part of Prime Pricing
+
+****  hybrid arm (fixed for 10y)
+  2.875% -> 7.875% max 5% increase
+  1140
+  3381 (includes appraisal)
 
 * Voice mails
 Penny w/Sebonic
@@ -568,7 +578,6 @@ they don't work with Sean/Alex
 Called back ...  I'll be talking Luis Torres
 
 
-
 Penny @ sebonic
 just said "pls call back"
 
@@ -578,3 +587,19 @@ very fast message ... not sure if I want to call back??
 
 Adam w/rocket
 Tiffany licensed specialist
+
+
+* Choosing
+- [ ] Get hints from BoA docs
+- [ ] Email questions to lenders
+- [X] Check internet for tips on how to choose
+- [ ] What's "Prime Pricing"?
+  - Couldn't find anything online ... a little difficult to search for because of Amazon Prime filling up the results
+
+** Questions
+- [ ] Is there a pre-payment penalty?
+- [ ] Are you a direct lender?
+- [ ] Can I get a copy of the Loan Estimate document?
+- [ ] How many points?
+  - [ ] Maybe ask as "are there any discount points involved? If not, what would change if they were?"
+  - [ ] 
