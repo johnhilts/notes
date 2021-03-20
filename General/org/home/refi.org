@@ -354,20 +354,95 @@ Was Trulia.com a site to check out?
 * Post application
 
 ** Break even and other numbers
+ | Lender      |      P |   closing costs | monthly payment | savings per month | Months until break-even | years | Notes                                     |
+ |-------------+--------+-----------------+-----------------+-------------------+-------------------------+-------+-------------------------------------------|
+ | BoA         | 276900 |            6643 |            1493 |            352.99 | (/ 6643 352.99)         | 1y 7m | Includes taxs+ins, also closing rolled in |
+ | Rocket      | 284000 |            5400 |            1514 |               332 | (/ 5400 332)            | 2y 1m | 20 months; 16 months                      |
+ | PennyMac    | 270478 | 4201.89 (-2500) |            1464 |            381.99 | (/ 4201.89 381.99)      | 11m   | Includes taxs+ins                         |
+ | axos        | 270477 |         3183.89 |         1426.58 |            419.41 | (/ 3183.89 419.41)      | 8m    | Includes taxs+ins                         |
+ | LD (Luis T) | 275000 |            2360 |            1488 |            357.99 | (/ 2360 357.99)         | 7m    | He said 11m? "brother"; difference is PMI |
+ | axos again  | 270477 |            4300 |         1426.58 |            419.41 | (/ 4300 419.41)         | 11m   |                                           |
+
+** Another table to help better compare
+| Lender          | Principle | Closing Fee |  Points |      % |  Escrow | Monthly | Tax+Ins | Notes                  |                          |
+|-----------------+-----------+-------------+---------+--------+---------+---------+---------+------------------------+--------------------------|
+| BoA             |    276900 |        2586 |    1902 |  3.25% |    2155 |    1205 |     288 |                        | 0.687%                   |
+| PennyMac        |    270478 |        3054 | 4008.53 | 2.999% |      ?? |    1161 |   302.5 |                        | ~1.5% points             |
+| axos            |    270477 |        2425 |     676 | 3.053% |    1199 | 1138.88 |     288 | Lowest Monthly+closing | 0.25% points             |
+| LD              |    275000 |     2360.81 |         | 3.314% | 1177.31 | 1196.82 |  278.16 |                        | negative discount points |
+| LD Local        |    270500 |      3268.6 |  2215.4 |   3.5% |    1253 | 1214.67 |     331 |                        |                          |
+| Rocket original |    284000 |        3108 |    7100 | 3.375% |         | 1255.56 |         |                        | 2.5% points              |
+| Rocket resend   |    282000 |        3101 |    7050 | 3.375% |         | 1246.72 |         |                        |                          |
+| Rocket          |    270477 |        3108 |    6762 |        |         |         |         |                        | 2.5% points              |
+
+| Difference | Closing | Points | Monthly | blah |
+|------------+---------+--------+---------+------|
+|       2000 |       7 |     50 |    8.84 |      |
+|       6000 |      21 |    150 |   26.52 |      |
+|            |         |        |         |      |
+
+*** Notes
+- loan depot has lowest closing costs
+- Axos has the lowest monthly (Melissa)
+  - Also lowest closing if you remove the discount points from LD
+- [X] Why is loan depot's closing so low??
+  - BoA adds points, LD has "discount" points
+
+**** BoA
+6643 Includes $4,488 in Loan Costs + $2,155 in Other Costs - $0 in Lender Credits
+
+***** Loan Costs
+ 2642 == 1902 in points + 740 "lender origination fee"
+ 731 "services" ie appraisal
+ 1115 - other services
+ (+ 2642 731 1115) == 4488
+***** Other Costs
+recording fees 125
+"prepaids" taxes + ins 444
+escrow - 1586 (does some of this get refunded??)
+(+ 125 444 1586) => 2155
+
+**** BoA vs Loan Depot vs Axos
+| Item               | Axos |      LD |  BoA | Notes                            |
+|--------------------+------+---------+------+----------------------------------|
+| Origination fee    |  995 |    1595 |  740 |                                  |
+| Appraisal          |  450 |     475 |  610 |                                  |
+| Credit report      |   23 |   20.36 |   30 |                                  |
+| Tax service        |      |      68 |   79 |                                  |
+| Flood              |    7 |      10 |   12 | 8+4                              |
+| MERS registration  |   12 |   11.95 |      |                                  |
+| Title-settlement   |  450 |     500 |  355 |                                  |
+| Title ins          |  400 |     400 |  560 | only this title category matched |
+| Title CPL          |   25 |      25 |  100 |                                  |
+| Title Svc Fee      |   16 |         |      |                                  |
+| Recording          |   84 |      42 |  100 |                                  |
+| Doc Prep           |   32 |         |      |                                  |
+| Loan Safe Fee      |   15 |         |      |                                  |
+| "prepaid" per diem |      |  342.86 |  125 | "recording" for BoA              |
+| "prepaid" tax+ins  | 1115 | 1177.31 | 2030 |                                  |
+| points             |  676 |         | 1902 |                                  |
+| Total              | 4300 | 4667.48 | 6643 |                                  |
+#+TBLFM: @>$2=vsum(@2..@-1)
+#+TBLFM: @>$3=vsum(@2..@-1)
+#+TBLFM: @>$4=vsum(@2..@-1)
+
+**** Penny Mac Closing
+Borrower closing costs: 3405.8 (includes escrow)
+Discount Points: 4008.53
+Appraisal: 445
+Escrow: 870
+
+
+** Other break evens
  | Lender                      |   closing costs | monthly payment | savings per month | Months until break-even | years  | Notes                                     |
  |-----------------------------+-----------------+-----------------+-------------------+-------------------------+--------+-------------------------------------------|
- | Example                     |            6000 |                 |               100 | (/ 6000 100) 60         | 5y     |                                           |
- | BoA                         |            6643 |            1493 |            352.99 | (/ 6643 352.99)         | 1y 7m  | Includes taxs+ins                         |
  | loanDepot (Sean + Alex)     |            4500 |            1603 |            242.99 | (/ 4500 242.99)         | 1y 7m  | 3.875                                     |
  | loanDepot (Sean + Alex)     |            7500 |            1546 |            299.99 | (/ 7500 299.99)         | 2y 1m  | 3.5                                       |
- | loanDepot (Luis Torres)     |            2360 |            1488 |            357.99 | (/ 2360 357.99)         | 7m     | He said 11m? "brother"; difference is PMI |
  | Sebonic                     |                 |                 |                   |                         |        |                                           |
- | Rocket                      |            5400 |            1514 |               332 | (/ 5400 332)            | 2y 1m  | 20 months; 16 months                      |
- | axos                        |         3183.89 |         1426.58 |            419.41 | (/ 3183.89 419.41)      | 8m     | Includes taxs+ins                         |
  | PennyMac                    |            6698 |         1474.41 |            371.58 | (/ 6698 371.58)         | 1y 6m  | Includes taxs+ins                         |
  | PennyMac                    |            8702 |         1455.41 |            390.58 | (/ 8702 390.58)         | 1y 11m | Includes taxs+ins                         |
- | PennyMac                    | 4201.89 (-2500) |            1464 |            381.99 | (/ 4201.89 381.99)      | 11m    | Includes taxs+ins                         |
  | North American Savings Bank |                 |                 |                   |                         |        |                                           |
+
 
 ** Contact info
  | Lender                      | Agent            | Contact Info                      |                            | Notes                       |
@@ -604,3 +679,14 @@ Tiffany licensed specialist
 - [ ] How many points?
   - [ ] Maybe ask as "are there any discount points involved? If not, what would change if they were?"
   - [ ] 
+
+| Lender    | pre-pay penalty | direct lender | loan estimate doc | any discount points |
+|-----------+-----------------+---------------+-------------------+---------------------|
+| BoA       | No              |               | Yes               |                     |
+| Axos      |                 | Yes           | requested         |                     |
+| LoanDepot | No              |               | Yes               |                     |
+| Rocket    |                 |               | requested         |                     |
+| PennyMac  |                 |               | requested         |                     |
+|           |                 |               |                   |                     |
+|           |                 |               |                   |                     |
+|           |                 |               |                   |                     |
