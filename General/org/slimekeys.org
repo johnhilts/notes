@@ -66,6 +66,8 @@ or, =C-?= (think "control shift /")
 =C-c C-t= slime-toggle-fancy-trace
 =C-c RET= macro exapand interactively
 =C-c M-d= slime-disassemble-symbol
+=(declaim (optimize (speed 0) (space 0) (debug 3)))= include debugging symbols when compiling
+=C-c C-v TAB= inspect object at point
 
 ** Profiling
 (sb-profile:profile function-name) ; no need for any symbols, just the actual function name
