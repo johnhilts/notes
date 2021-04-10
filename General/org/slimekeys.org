@@ -150,3 +150,5 @@ Use code similar to the following to access the HyperSpec from the Shift-F1 key:
                         (thing-at-point 'symbol)))))
 #+END_SRC
 
+* Debugging
+C-u 3 C-c: compile with debugging information (Control-u 3 Control-c)
