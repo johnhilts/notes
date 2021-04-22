@@ -1,0 +1,152 @@
+* Lisp Collections
+
+
+* List
+
+** What is it?
+- The list is the original data structure of Lisp
+  - List code itself is in the form of lists, which is the key to easy meta-programing.
+- made up of cons cells
+  - a singly linked list with one value cell and one pointer.
+- Can be nested (ie., tree)
+
+#+BEGIN_SRC lisp
+(list 1 2 3 4)
+(list 1 (list 2 3) 4)
+(list 'a 'b 'c)
+'(a b c) ; should be equal to the previous one (but not eq)
+CL-USER> (equal (list 'a 'b 'c) '(a b c))
+T
+CL-USER> (equalp (list 'a 'b 'c) '(a b c))
+T
+CL-USER> (eql (list 'a 'b 'c) '(a b c))
+NIL
+CL-USER> (eq (list 'a 'b 'c) '(a b c))
+NIL
+#+END_SRC
+
+
+* A-List / Association List
+** What is it?
+- A list of dotted pairs.
+  - =assoc= treats the =car= as the key to the =cdr=
+  - =rassoc= treats the =cdr= as the key to the =car=
+** Literal format
+#+BEGIN_SRC lisp
+'(a . b) ; one "association"?
+(cons 'a 'b) ; same as above, using CONS
+#+END_SRC
+** Associated functions (no pun intended)
+#+BEGIN_SRC lisp
+(assoc 'c '((a . b) (c . d) (e . f))) ; (C . D)
+(rassoc 'd '((a . b) (c . d) (e . f))) ; (C . D) 
+
+(acons x y a) ; == (cons (cons x y) a)
+(acons 'g 'h '((a . b) (c . d) (e . f))) ; ((G . H) (A . B) (C . D) (E . F)) 
+
+;; pairlis takes two lists and makes an association list that
+;; associates elements of the 1st list to corresponding elements of the 2nd list
+(pairlis '(one two) '(1 2) '((three . 3) (four . 19)))
+;; => ((one . 1) (two . 2) (three . 3) (four . 19))
+
+;;;; assoc
+;; assoc item a-list &key :test :test-not :key 
+;; assoc-if predicate a-list 
+;; assoc-if-not predicate a-list
+;; there are 3 rassoc for reverse lookups - they match on cdr instead of car
+
+(assoc 'r '((a . b) (c . d) (r . x) (s . y) (r . z))) ;; =>  (r . x) 
+(assoc 'goo '((foo . bar) (zoo . goo))) ; => nil 
+(assoc '2 '((1 a b c) (2 b c d) (-7 x y z))) ; => (2 b c d)
+#+END_SRC
+** Other notes
+#+BEGIN_SRC lisp
+;; the following 2 are similar ...
+(assoc item list :test fn)
+(find item list :test fn :key #'car)
+;; except that ... if nil appears in the a-list in place of a pair, and the item being searched for is nil, 
+;; find will blithely compute the car of the nil in the a-list, find that it is equal to the item,
+;; and return nil, whereas assoc will ignore the nil in the a-list and continue to search for 
+;; an actual pair (cons) whose car is nil. See find and position. 
+#+END_SRC
+*** To "update" a list just insert a pair with the same key
+#+BEGIN_SRC lisp
+(let ((a-list (list '(1 . one) '(2 . two) '(3 . three))))
+  (print (assoc 2 a-list))
+  (setf a-list (acons 2 'dos a-list))
+  (print (assoc 2 a-list)))
+;; (2 TWO)
+;; (2 . DOS)
+#+END_SRC
+** Something I noticed (WATCH OUT!!)
+Even if the associations aren't dotted pairs, assoc still "works":
+#+BEGIN_SRC lisp
+(assoc 1 (list '(1 one))) ; (1 ONE)
+;; but ...
+(rassoc 'one (list '(1 one))) ; nil
+;; because ...
+(cdr (assoc 1 (list '(1 one)))) ; (ONE) - gasp!!
+#+END_SRC
+
+
+* Hashtables
+
+** What is it?
+- A key value pair
+- Performs better than other data structures on large collections.
+
+** Literal initializing
+- *note* this is the closest you can come to it
+#+BEGIN_SRC lisp
+(let ((ht (make-hash-table)))
+	     (setf (gethash 'one ht) 1
+		   (gethash 'two ht) 2
+		   (gethash 'three ht) 3)
+	     (maphash #'(lambda (k v) (format t "key: ~a value: ~a~%" k v)) ht))
+#+END_SRC
+- You can set :size and :test params in =make-hash-table=
+
+** Associated functions
+- =make-hash-table=
+- =gethash=
+- =remhash=
+
+** Cool tricks
+
+*** Store sets
+#+BEGIN_SRC lisp
+(let ((ht-set (make-hash-table)))
+	     (setf (gethash 'one ht-set) t
+		   (gethash 'two ht-set) t
+		   (gethash 'three ht-set) t)
+	     (maphash #'(lambda (k v) (format t "entry: ~a~%" k)) ht-set)) ; style-warning for not using v 
+#+END_SRC
+
+** Beware
+
+*** =maphash= doesn't return a value!!
+- It's for side-effects *only*
+- You could use a lambda, etc and populate an external collection, though.
+
+*** There's no =sethash=
+- Use =setf= with =getash=
+- You can also use =push= (=push= is actually =setf= in disguise!)
+- See in ACL p. 77
+ 
+
+* P-List / Property Lists
+
+** What is it?
+- A list of even numbered elements that works as a KV store by convention, and has special functions for it.
+
+** Literal format
+#+BEGIN_SRC lisp
+(getf (list 'one 1 'two 2 'three 3) 'one) ; 1
+#+END_SRC
+
+** Associated functions
+=get= ; for symbol plists
+=getf= ; getter counterpart to setf
+
+** Beware
+Probably the least performant.

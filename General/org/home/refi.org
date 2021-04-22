@@ -1,16 +1,22 @@
 * penny mac USA
 
-* https://www.pennymacusa.com/blog%2Fa-refinance-checklist-do-you-have-all-the-right-documents
+** Link
+- https://www.pennymacusa.com/blog%2Fa-refinance-checklist-do-you-have-all-the-right-documents
 
 ** Goals
 Lower monthly payment
 
-** Does refinancing make financial sense?
+** TODO Does refinancing make financial sense?
 - [ ] Is the interest rate lower than your existing rate?
+  - [ ] Existing rate
+    - 3.875%
+  - [ ] New Rate
+    - [ ] Expected
+    - [ ] Actual
 - [ ] Will the new rate increase your monthly payments?
 - [ ] Will you pay more money over the entire length of the loan?
 
-*** Rule of thumb
+*** TODO Rule of thumb
 - [ ] If the current interest rate is at least a half percent lower than the interest rate in your existing mortgage, then refinancing may be a good option for you.
   - For example, if you have $390,000 remaining on an original $400,000 loan at 4.25%, replacing your current mortgage at 3.75% could save as much as $162 per month.
   - In addition to interest rates, homeowners also need to consider the length of the new loan term.
@@ -19,33 +25,686 @@ Lower monthly payment
 *** Refinance Calculator
 - https://www.pennymacusa.com/mortgage-calculators
 
-** Can you afford closing costs and fees?
+** TODO Can you afford closing costs and fees?
 - [ ] Are you prepared to pay the application fee?
 - [ ] Have you determined title insurance, attorney and closing costs?
 - [ ] Do you have these funds to pay upfront?
 - [ ] Will these fees be less than the savings?
-  - How long until fees are recouped?
+  - [ ] How long until fees are recouped?
 
-** Have you determined what the payoff amount will be (including any prepayment penalties)?
+** TODO Have you determined what the payoff amount will be (including any prepayment penalties)?
 - [ ] Calculate the payoff amount (balance + interest)
-- [ ] *Determine any payoff penalty fees*
+- [X] *Determine any payoff penalty fees*
   - Pre-payment penalties are *usually about 80% of six months interest*, which can run in the TENS OF THOUSANDS OF DOLLARS.
     - *It is your right to request a copy of the payoff statement* before you choose to enter a refinancing loan.
 - [ ] Request a copy of the payoff statement
 
-** Do you know what mortgage refinancing documents are needed to apply? Can you obtain them?
+** TODO Do you know what mortgage refinancing documents are needed to apply? Can you obtain them?
 - [ ] Paystubs
 - [ ] Tax Returns, W-2s, and/or 1099s
 - [ ] Credit Report
   - [ ] double check before lender reviews
+    - March 8, 2021
+      - Transunion: 762
+      - Equifax: 768
 - [ ] Statement of Debts
   - car loans
+    - Honda - $13,658; $370/month
+    - Subaru - $23,995; $594/month
   - existing mortgage
 - [ ] Statement of Assets
   - Savings account
 
-** Apply with this website
+** TODO Apply with this website
 - https://www.pennymacusa.com/contact-us
 
 
+* Wiki How
+** Link
+- https://www.wikihow.com/Prepare-to-Refinance
+
+** Make financial sense?
+*** Fees can vary - shop around!
+  - The application fee, which can be anywhere from $75-$300+.
+  - loan origination fee
+  - up front points
+  - appraisal
+  - title search
+*** TODO Calculate the break even date
+  - Calculator: http://www.bankrate.com/calculators/mortgages/mortgage-refinance-break-even-calculator.aspx
+    - All you’ll need is your monthly mortgage statement, your income tax rate, and the new interest rate, loan origination fee, points paid, and closing costs
+*** TODO Calcuate savings
+  - How much is your current loan? Calculate payment * months remaining (also at some point we can take off the insurance)
+*** TODO Loan to value ratio
+  - Should be no more than 80%
+  - [ ] check on zillow, etc - what's that vs remaining principal?
+    - (/ 270000.0 365000.0) = ~74%
+*** TODO Credit score
+  - [ ] check credit karma
+    - March 8, 2021
+      - Transunion: 762
+      - Equifax: 768
+    - March 16, 2021
+      - Transunion: 755
+      - Equifax: 760
+*** TODO Shopping around
+  - It may be most cost effective to work with a broker or direct lender.
+  - You should compare quotes from:
+    - [ ] a direct lender
+    - [ ] a reputable broker
+    - [ ] a bank
+    - [ ] a credit union.
+*** TODO Statement of assets
+  - possibly will just be part of the application
+  - [ ] Titles to real property or cars
+  - [ ] Savings and checking accounts
+  - [ ] balances of retirement accounts (401k's??)
+*** TODO Statement of debts
+  - [ ] mortgage
+  - [ ] car loan
+
+
+* Nerd Wallet
+** Link
+- https://www.nerdwallet.com/article/mortgages/how-to-refinance-your-mortgage
+** TODO Shopping Around
+- Apply for a mortgage with three to five lenders.
+  - *Submit all applications within a two-week period to minimize the impact on your credit score.*
+- [ ] Compare the Loan Estimate document each lender provides after you apply.
+
+
+* Lending Tree
+** Link
+- https://www.lendingtree.com/home/refinance/how-long-it-takes-to-refinance-a-house/
+** FHA
+*** FHA streamline. 
+- Homeowners with a current FHA mortgage may be eligible for the faster and easier refinance process of an FHA streamline refinance with no appraisal.
+- An added bonus: No income verification is required.
+** TODO Prep Financial Info
+- [ ] Current month’s pay stubs
+  - got from paycom for 2/2021 and 3/2021
+- [ ] W-2s for the last two years
+  - got from paycom for 2020 and 2019
+- [ ] Names and phone numbers of employers for the last two years*
+  - LampsPlus, Inc
+    - 818-428-4100 (?)
+- [ ] Current two months’ bank statements
+- [ ] Current mortgage statement
+- [ ] Current homeowners policy with contact information
+- [ ] Current property tax statement
+  - hard copy
+  - info for my area 521 on the web
+*** Following From: https://www.clarkcountynv.gov/government/elected_officials/county_treasurer/by_tax_district.php
+ #+BEGIN_SRC text
+ CLARK COUNTY PROPERTY TAX RATES
+ Fiscal Year 2020-2021
+ 
+ District 521 - HENDERSON CITY REDEVELOPMENT 521
+ 	
+ ASSISTANCE TO INDIGENT PERSONS	0.0300
+ CLARK COUNTY CAPITAL	0.0150
+ CLARK COUNTY FAMILY COURT	0.0058
+ CLARK COUNTY GENERAL OPERATING	0.1380
+ COUNTY SCHOOL DEBT (BONDS)	0.5534
+ COUNTY SCHOOL MAINTENANCE & OPERATION	0.2250
+ HENDERSON CITY	0.1862
+ HENDERSON CITY DEBT	0.0360
+ HENDERSON CITY LIBRARY	0.0182
+ HENDERSON REDEVELOPMENT AREA#521	1.6542
+ INDIGENT ACCIDENT FUND	0.0045
+ STATE COOPERATIVE EXTENSION	0.0030
+ STATE OF NEVADA	0.0598
+
+ Total Tax Rate	
+
+ 2.9291
+ #+END_SRC
+
+* Motley Fool 1
+** link
+- https://www.fool.com/the-ascent/mortgages/refinance-guide/
+
+** Type of refinancing
+*** FHA Streamlining
+- https://www.fool.com/the-ascent/mortgages/fha-streamline-refinance/
+** Mortgage insurance
+If you have private mortgage insurance (PMI), *you can easily get rid of it once your loan-to-value (LTV) ratio falls below 80%.*
+
+** TODO Home Insurance
+- [ ] Be prepared to provide a copy of your current homeowners insurance policy.
+  - Hard copy ready
+  - Web: couldn't find on qbe.com/us
+
+** list of FHA lenders
+- https://www.fool.com/the-ascent/mortgages/best-lenders-fha-loans/
+
+** How much does an FHA streamline refinance cost?
+- With an FHA streamline refinance, you'll pay an upfront mortgage insurance premium of 1.75% of your loan amount.
+- You may be able to roll your initial mortgage insurance premium into your loan and pay it off over time.
+- On top of that premium, you may be liable for other closing costs, like loan origination and recording fees that vary by lender. You won't be able to roll these other costs into your loan.
+
+** FHA streamline guidelines (rules)
+- Your streamline refinance must result in a *shorter loan term*, a lower mortgage interest rate, or both
+
+
+** TODO List of online lenders
+https://www.fool.com/the-ascent/mortgages/
+
+*** FHA loan: warning
+*You pay certain premiums with an FHA loan (similar to PMI) that can make your mortgage more expensive.*
+
+
+* Motley Fool 2
+** Link
+- https://www.fool.com/the-ascent/mortgages/coronavirus-how-refinance/
+  - Already read this ...
+
+
+* Motley Fool 3
+** Link
+- https://www.fool.com/mortgages/2017/04/08/refinancing-a-mortgage-essential-tips-you-need-to.aspx
+*** Links
+- https://www.fool.com/mortgages/2017/03/28/3-things-you-may-not-know-about-refinancing-your-m.aspx
+- https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=newssearch&cd=5&cad=rja&uact=8&ved=0ahUKEwiThPGn-P7SAhUHWSYKHWDPDp4QqQIIJigAMAQ&url=https%3A%2F%2Fwww.fool.com%2Fmortgages%2F2017%2F03%2F26%2F7-dumb-mortgage-refinancing-mistakes-to-avoid.aspx
+*** TODO Checklist
+  - [ ] Make sure to look at APR numbers, *not* APY
+  - [ ] No cost refinancing - the costs get added to the loan amount - might make sense depending on time, etc
+  - [X] Make sure there's no pre-payment penalty
+  - [ ] Calculating break-even
+    - Example, closing costs = $6,000 and saving $100/month, divide $6,000 by $100 => 60.  It will take 60 months (five years) before break even.
+- https://www.fool.com/mortgages/2017/03/25/how-to-get-the-best-mortgage-refiance-rates.aspx
+- https://www.fool.com/mortgages/2017/03/09/6-steps-to-check-before-refinancing-your-mortgage.aspx
+**** Notes
+***** PMI
+ - If you pay < 20%, then you'll have to get PMI
+   - 20% of home's value, or 20% of the loan?
+***** debt-to-income ratio
+- Divide the total of all your monthly debt payments by your gross monthly income
+  - Should be 43% or less
+***** Break even
+- To figure out when you'll break even, divide the closing costs by how much lower your monthly payment will be. (see example above)
+***** Better.com
+- Not available in Nevada!
+
+
+* Motley Fool 4
+** Link
+- https://www.fool.com/mortgages/2017/03/26/7-dumb-mortgage-refinancing-mistakes-to-avoid.aspx
+  - already read; see notes above
+
+
+* More Links ...
+
+* Magnify Money
+** Link
+ https://www.magnifymoney.com/blog/mortgage/refinance-with-your-current-lender472013385/
+** Notes
+*** TODO Step 1: Gather basic information you’ll need to start getting quotes
+- [ ] Current mortgage statement
+- [ ] Date you took out current mortgage
+  - Mainly concerned if you've had > 7 months
+- [ ] Estimated FICO Score
+  - your credit score
+    - March 8, 2021
+      - Transunion: 762
+      - Equifax: 768
+- [X] How much your house is worth
+  - Zillow's zestimate: $365K
+  - Trulia: $365K
+  - if appraisal is low, rate and costs could go *up*
+- [ ] Get all the quotes on the same day
+  - credit inquiries by multiple lenders only count as 1 credit pull if done on the same day
+- [ ] Take your best quotes to your current lender to see if they’ll negotiate
+  - Current lender may give you:
+    - waiving appraisal inspection
+    - allow you to roll over the balance of your escrow account
+      - Notes on escrow account (I have one, according to this)
+	- If your current payment includes a portion for your property taxes and insurance, then you have an escrow account.
+	- An escrow account is simply a savings account the lender creates to pay your property taxes and insurance when they come due
+	- Is required on loans if you have *less than 20% equity in your home*
+	- If you refinance with a lender besides your current lender, you’ll have to set up a new escrow account
+	  - That means extra money out of your pocket at closing.
+	  - However, you do end up getting a refund of whatever is in your current lender’s escrow account
+	    - so *you often get most if not all of the funds you spend on the new account back*.
+
+
+* Current Lender
+  https://www.nasb.com/lending/solutions/loan-servicing/Manage-Your-NASB-Mortgage
+
+| Product         |  Rate | APR        | Payment       | Monthly PMI | Fees   |
+|-----------------+-------+------------+---------------+-------------+--------|
+| 30 Yr Fixed     | 3.25% | 3.279% APR | $1,175 /mo    | $0          | $995   |
+|-----------------+-------+------------+---------------+-------------+--------|
+| 15 Yr Fixed     | 2.75% | 2.803% APR | $1,832 /mo    | $0          | $61    |
+|-----------------+-------+------------+---------------+-------------+--------|
+| FHA 30 Yr Fixed | 2.75% | 3.44% APR  | $1,300.21 /mo | $178.21     | $5,720 |
+|-----------------+-------+------------+---------------+-------------+--------|
+
+** TODO Other ideas
+- [ ] Calculate the difference in $$ out over 2, 3, 5, 10 years
+- Why does FHA look like such a bad deal??
+
+
+* Zillow
+https://www.zillow.com/mortgage-rates/quotes/?auto=true&loantype=refinance&zip=89011&value=347838&cscore=760%2B&va=false&type=SingleFamilyHome&use=Primary&currentbalance=273948#request=ZR-JQQPSZPP
+
+** Notes
+
+*** Get lots of quotes with different parameters
+ https://www.zillow.com/mortgage-rates/quotes/?auto=true&loantype=refinance&zip=89011&value=347838&cscore=760%2B&va=false&type=SingleFamilyHome&use=Primary&currentbalance=273948#request=ZR-CXWWXHMZ
+
+
+* Others?
+Was Trulia.com a site to check out?
+
+* % table
+
+** Principal Balance ~= $270,000
+ |  % |     $ |     $$ |
+ |----+-------+--------|
+ |  1 |  2700 | 267300 |
+ |  3 |  8100 | 261900 |
+ |  5 | 13500 | 256500 |
+ | 10 | 27000 | 243000 |
+ | 20 | 54000 | 216000 |
+ |    |       |        |
+
+
+* TODO Loan Hunting!
+
+- [X] Read notes
+
+- [ ] Get all info
+  - [ ] Documents (see lists above)
+  - [ ] Credit Score
+    - March 8, 2021
+      - Transunion: 762
+      - Equifax: 768
+
+- [ ] Online Contact Prep
+  - [ ] Which lenders?
+    - Need to contact on the same day
+  - [ ] Which kind of loan?
+    - maybe not FHA?
+
+* DONE Actual applications
+- [X] Go to here and choose some good ones: https://www.zillow.com/mortgage-rates/quotes/?auto=true&loantype=refinance&zip=89011&value=347838&cscore=760%2B&va=false&type=SingleFamilyHome&use=Primary&currentbalance=273948#request=ZR-TQHFHDMF
+  - [X] We should run some of them through the formulas to see how good of a deal each one is!
+- [X] Choose some here too: https://www.fool.com/the-ascent/mortgages/
+  - [X] We should run some of them through the formulas to see how good of a deal each one is!
+
+** Advertised amounts
+ | Lender                      | closing costs | monthly payment | savings per month | Months until break-even | years |
+ |-----------------------------+---------------+-----------------+-------------------+-------------------------+-------|
+ | Example                     |          6000 |                 |               100 | (/ 6000 100) 60         |     5 |
+ | BoA                         |               |                 |                   |                         |       |
+ | loanDepot                   |          6799 |            1067 |               800 | (/ 6799 800) 8          |   0.8 |
+ | Sebonic                     |          2303 |            1119 |               700 | (/ 2303 700) 3          |   0.3 |
+ | loanDepot                   |          1615 |            1120 |               700 | (/ 1615 700) 2          |   0.2 |
+ | Rocket                      |               |                 |                   |                         |       |
+ | axos                        |               |                 |                   |                         |       |
+ | PennyMac                    |               |                 |                   |                         |       |
+ | North American Savings Bank |               |                 |                   |                         |       |
+
+*** PennyMac: https://www.pennymacusa.com/contact-us
+
+ Current monthly: 1845.99
+
+
+* Post application
+
+** Break even and other numbers
+ | Lender      |      P |   closing costs | monthly payment | savings per month | Months until break-even | years | Notes                                     |
+ |-------------+--------+-----------------+-----------------+-------------------+-------------------------+-------+-------------------------------------------|
+ | BoA         | 276900 |            6643 |            1493 |            352.99 | (/ 6643 352.99)         | 1y 7m | Includes taxs+ins, also closing rolled in |
+ | Rocket      | 284000 |            5400 |            1514 |               332 | (/ 5400 332)            | 2y 1m | 20 months; 16 months                      |
+ | PennyMac    | 270478 | 4201.89 (-2500) |            1464 |            381.99 | (/ 4201.89 381.99)      | 11m   | Includes taxs+ins                         |
+ | axos        | 270477 |         3183.89 |         1426.58 |            419.41 | (/ 3183.89 419.41)      | 8m    | Includes taxs+ins                         |
+ | LD (Luis T) | 275000 |            2360 |            1488 |            357.99 | (/ 2360 357.99)         | 7m    | He said 11m? "brother"; difference is PMI |
+ | axos again  | 270477 |            4300 |         1426.58 |            419.41 | (/ 4300 419.41)         | 11m   |                                           |
+
+** Another table to help better compare
+| Lender          | Principle | Closing Fee |  Points |      % |  Escrow |  Monthly | Tax+Ins | Notes                  |                          |
+|-----------------+-----------+-------------+---------+--------+---------+----------+---------+------------------------+--------------------------|
+| BoA             |    276900 |        2586 |    1902 |  3.25% |    2155 |     1205 |     288 |                        | 0.687%                   |
+| PennyMac        |    270478 |        3054 | 4008.53 | 2.999% |      ?? |     1161 |   302.5 |                        | ~1.5% points             |
+| axos            |    270477 |        2425 |     676 | 3.053% |    1199 |  1138.88 |     288 | Lowest Monthly+closing | 0.25% points             |
+| LD              |    275000 |     2360.81 |         | 3.314% | 1177.31 |  1196.82 |  278.16 |                        | negative discount points |
+| LD Local        |    270500 |      3268.6 |  2215.4 |   3.5% |    1253 |  1214.67 |     331 |                        |                          |
+| Rocket original |    284000 |        3108 |    7100 | 3.375% |         |  1255.56 |         |                        | 2.5% points              |
+| Rocket resend   |    282000 |        3101 |    7050 | 3.375% |         |  1246.72 |         |                        |                          |
+| Rocket          |    270477 |        3108 |    6762 |        |         |          |         |                        | 2.5% points              |
+| BoA2            |   270,478 |        2586 |    1858 | 0.687% |    2144 | 1,177.14 |     288 |                        |                          |
+| LD2             |    270477 |        1757 |         | 3.315% |    1117 |     1177 |     292 |                        |                          |
+| axos2           |    270477 |        2507 |    2028 |  2.99% |         |     1138 |         |                        |                          |
+| axos3           |    270477 |        2507 |       0 | 3.125% |         |     1159 |         |                        |                          |
+| sebonica        |    270477 |        2799 |      ?? |  3.16% |         |     1171 |         |                        |                          |
+
+
+| Difference | Closing | Points | Monthly | blah |
+|------------+---------+--------+---------+------|
+|       2000 |       7 |     50 |    8.84 |      |
+|       6000 |      21 |    150 |   26.52 |      |
+|            |         |        |         |      |
+
+*** Notes
+- loan depot has lowest closing costs
+- Axos has the lowest monthly (Melissa)
+  - Also lowest closing if you remove the discount points from LD
+- [X] Why is loan depot's closing so low??
+  - BoA adds points, LD has "discount" points
+
+**** BoA
+6643 Includes $4,488 in Loan Costs + $2,155 in Other Costs - $0 in Lender Credits
+
+***** Loan Costs
+ 2642 == 1902 in points + 740 "lender origination fee"
+ 731 "services" ie appraisal
+ 1115 - other services
+ (+ 2642 731 1115) == 4488
+***** Other Costs
+recording fees 125
+"prepaids" taxes + ins 444
+escrow - 1586 (does some of this get refunded??)
+(+ 125 444 1586) => 2155
+
+**** BoA vs Loan Depot vs Axos
+| Item               | Axos |      LD |  BoA | Notes                            |
+|--------------------+------+---------+------+----------------------------------|
+| Origination fee    |  995 |    1595 |  740 |                                  |
+| Appraisal          |  450 |     475 |  610 |                                  |
+| Credit report      |   23 |   20.36 |   30 |                                  |
+| Tax service        |      |      68 |   79 |                                  |
+| Flood              |    7 |      10 |   12 | 8+4                              |
+| MERS registration  |   12 |   11.95 |      |                                  |
+| Title-settlement   |  450 |     500 |  355 |                                  |
+| Title ins          |  400 |     400 |  560 | only this title category matched |
+| Title CPL          |   25 |      25 |  100 |                                  |
+| Title Svc Fee      |   16 |         |      |                                  |
+| Recording          |   84 |      42 |  100 |                                  |
+| Doc Prep           |   32 |         |      |                                  |
+| Loan Safe Fee      |   15 |         |      |                                  |
+| "prepaid" per diem |      |  342.86 |  125 | "recording" for BoA              |
+| "prepaid" tax+ins  | 1115 | 1177.31 | 2030 |                                  |
+| points             |  676 |         | 1902 |                                  |
+| Total              | 4300 | 4667.48 | 6643 |                                  |
+#+TBLFM: @>$2=vsum(@2..@-1)
+#+TBLFM: @>$3=vsum(@2..@-1)
+#+TBLFM: @>$4=vsum(@2..@-1)
+
+**** Penny Mac Closing
+Borrower closing costs: 3405.8 (includes escrow)
+Discount Points: 4008.53
+Appraisal: 445
+Escrow: 870
+
+
+** Other break evens
+ | Lender                      |   closing costs | monthly payment | savings per month | Months until break-even | years  | Notes                                     |
+ |-----------------------------+-----------------+-----------------+-------------------+-------------------------+--------+-------------------------------------------|
+ | loanDepot (Sean + Alex)     |            4500 |            1603 |            242.99 | (/ 4500 242.99)         | 1y 7m  | 3.875                                     |
+ | loanDepot (Sean + Alex)     |            7500 |            1546 |            299.99 | (/ 7500 299.99)         | 2y 1m  | 3.5                                       |
+ | Sebonic                     |                 |                 |                   |                         |        |                                           |
+ | PennyMac                    |            6698 |         1474.41 |            371.58 | (/ 6698 371.58)         | 1y 6m  | Includes taxs+ins                         |
+ | PennyMac                    |            8702 |         1455.41 |            390.58 | (/ 8702 390.58)         | 1y 11m | Includes taxs+ins                         |
+ | North American Savings Bank |                 |                 |                   |                         |        |                                           |
+
+
+** Contact info
+ | Lender                      | Agent            | Contact Info                      |                            | Notes                       |
+ |-----------------------------+------------------+-----------------------------------+----------------------------+-----------------------------|
+ | BoA                         | Perry Alexander  | 800-781-4104 ext 1560357          |                            |                             |
+ | loanDepot                   | Alex + Sean      | 702 278 3879                      |                            |                             |
+ | loanDepot                   | Josh + Jennifer  | 725-800-9955                      |                            | Different Branch?           |
+ | Sebonic                     | Penny            | 240-206-5283                      |                            |                             |
+ | Rocket                      | Adam + Tiffany   | 844-986-2170 direct: 216-466-8285 |                            | Tiffany pretty cool         |
+ | axos                        | Melissa          | 858-649-2514                      |                            |                             |
+ | PennyMac                    | Gabrielle Tamala | (623) 250-2908                    | gabrielle.tamala@pnmac.com | ridiculously long hold time |
+ | North American Savings Bank |                  |                                   |                            |                             |
+
+
+* Axos
+
+** Contact
+ - Melissa Wallen
+ - 858-649-2514
+
+** Free checking account
+   - $995 fee waived
+   - what about ATMs?
+     - fees reimbursed
+   - Can decide before closing
+
+** More notes
+ might get appraisal waived - *NO*
+ OTOH value can determine pricing bracket
+ 2.99%
+ closing: $3183.89
+ $2188.89 (reduced)
+
+** appraisal fee: $450 <-- that's part of closing cost
+
+** when's QBE due? (February?)
+
+** Closing notes
+- Escrow balance - can't transfer - will be collected by Axos and reimbursed by NASB
+- secure for 45 days allow time for appraisal
+- 3 months of insurance 4 months of tax --> can be included in loan amount
+- PMI - $190? will go away
+
+$1426.58 -> monthly payment including taxes + insurance
+
+Will get email from doc magic - disclosures.
+Another email with a link to a secure portal link.
+Pricing locked for 45 days.
+Solidify - the appraisal company
+
+
+* LoanDepot
+$475 for appraisal - only out of pocket
+
+** Option 1
+- monthly without closing 3.875% $1603
+- closing costs ~$4500, 
+
+** Option 2
+- for 3.5% $1546
+- $7500 in closing cost - "paying down interest"
+
+** Next step
+ Let them know if you want to move forward (call Alex)
+
+
+* PennyMac
+"Kevin" - super low tension
+"Gabriela"?
+855-207-9736 (main number, not NV)
+2.99 apr is 3.148
+
+1172 / month (principle + int)
+
+4045
+3.094%
+6049
++ 2004 to closing cost
+~19 savings
+
+** Notes
+Super long phone call .... omg hurry UP
+even the hold song ended and started over!!
+
+$2500 discount
+1464
+11 months
+
+** Options
+
+*** FHA
+
+**** Streamline
+
+*** Conventional
+- no PMI
+1474.41 / month (included ins + taxes)
+appraisal? yes?
+6698
+
+
+* Rocket
+
+** Contact
+- Tiffany (see table)
+  - Ohio
+
+** options
+
+***  FHA has a lower %, but PMI off sets that
+*** conventional
+ credit too high for FHA + eliminate PMI 
+ 3.375%
+ closing rolled in
+ closing: 8400
+ 2400 at closing "your money" comes as a check
+ month includes ins+tax $1552 (closing rolled in); 1514 w/separate closing
+ $294 savings $332 savings with up front closing
+ 482 principle -> 458 principle 
+ 893 interest -> 800 interest saves $30k
+ no prepayment penalty; can bring funds the closing
+ 10K or more to mortgage - even after closing! 
+ "recast"
+ 1 month off, escrow refund (~$400)
+ cautious: closing costs might be concealing extra points
+ closing costs are very regulated (since 2008)
+ JDPowers rated quicken loan I don't know what
+ "all numbers over estimated"
+ 216 466 8285 6-7 PST
+
+
+* Loan Depot
+
+** Luis Torres
+
+*** Numbers
+ 275K 
+ 3.25%
+ monthly: 1196
+ closing 2360 (includes appraisal)
+ part of Prime Pricing
+
+****  hybrid arm (fixed for 10y)
+  2.875% -> 7.875% max 5% increase
+  1140
+  3381 (includes appraisal)
+
+* Voice mails
+Penny w/Sebonic
+240-206-5283
+
+8:01AM
+Automated VM from Penny Mac
+888 910 7506 <-- opt out
+855-2079736
+
+8:09AM
+Eddie from Quicken Loans
+888-700-369??
+
+9:04
+Mike from Sebonic
+877-721-6866
+
+9:06AM
+Savanna from Loan Depot (automated)
+866-965-9011 opt-out
+"missing pieces of critical info"
+866 965 9011
+
+9:21AM
+Melissa w/Axos
+858-649-2514
+
+10:03AM
+Automated VM from Penny Mac
+888 910 7506 <-- opt out
+855-207-9736
+
+10:11AM
+Savanna from Loan Depot (automated) again
+866-965-9011 opt-out
+"missing pieces of critical info"
+866 965 9011
+until 8PM
+
+11:56AM
+Melissa again from Axos "working another 3 hours"
+
+12:07PM
+PennyMac again
+
+12:32PM
+Mike from Sebonic
+877 721 6866 (?)
+
+4:36PM
+Perry Alexander w/BOA
+pre-approved based on what I submitted
+800-781-4104 ext 1560357
+
+4:55PM
+Alex with loanDepot
+702 278 3879
+
+Josh with Loan Depot
+works with Jennifer
+they don't work with Sean/Alex
+Called back ...  I'll be talking Luis Torres
+
+
+Penny @ sebonic
+just said "pls call back"
+
+Angel w/Quicken; already talking with Tiffany
+888 700 7369
+very fast message ... not sure if I want to call back??
+
+Adam w/rocket
+Tiffany licensed specialist
+
+
+* Choosing
+- [ ] Get hints from BoA docs
+- [ ] Email questions to lenders
+- [X] Check internet for tips on how to choose
+- [ ] What's "Prime Pricing"?
+  - Couldn't find anything online ... a little difficult to search for because of Amazon Prime filling up the results
+
+** Questions
+- [ ] Is there a pre-payment penalty?
+- [ ] Are you a direct lender?
+- [ ] Can I get a copy of the Loan Estimate document?
+- [ ] How many points?
+  - [ ] Maybe ask as "are there any discount points involved? If not, what would change if they were?"
+  - [ ] 
+
+| Lender    | pre-pay penalty | direct lender | loan estimate doc | any discount points |
+|-----------+-----------------+---------------+-------------------+---------------------|
+| BoA       | No              |               | Yes               |                     |
+| Axos      |                 | Yes           | requested         |                     |
+| LoanDepot | No              |               | Yes               |                     |
+| Rocket    |                 |               | requested         |                     |
+| PennyMac  |                 |               | requested         |                     |
+|           |                 |               |                   |                     |
+|           |                 |               |                   |                     |
+|           |                 |               |                   |                     |
+
+* Appraiser
+Shelby 
+702-449-6564
+
+Tuesday AM
+
+- comes inside the house
+- photos of every single room (including bathrooms)
+- takes <=30 mins
+- morning is best, to noon at latest
 
