@@ -73,6 +73,8 @@ or, =C-?= (think "control shift /")
 (sb-profile:report)
 ** Evaluating code
 =C-c C-j= (slime-eval-last-expression-in-repl) 
+=C-c C-y= call the current defun in the repl (it will allow you to enter params)
+=C-c C-z= this is supposed to take you to the active window, but on at least some of my emacs this isn't defined
 ** Other possibly useful:
 slime-who*
 slime-list-compiler-notes
@@ -150,5 +152,27 @@ Use code similar to the following to access the HyperSpec from the Shift-F1 key:
                         (thing-at-point 'symbol)))))
 #+END_SRC
 
+** Cross referencing
+- From: https://lispcookbook.github.io/cl-cookbook/emacs-ide.html#evaluating-and-compiling-lisp-in-slime
+C-c C-w c (slime-who-calls) callers of a function
+C-c C-w m (slime-who-macroexpands) places where a macro is expanded
+C-c C-w r (slime-who-references) global variable references
+C-c C-w b (slime-who-bind) global variable bindings
+C-c C-w s (slime-who-sets) global variable setters
+C-c C-w a (slime-who-specializes) methods specialized on a symbol
+And when the slime-asdf contrib is enabled, C-c C-w d (slime-who-depends-on) lists dependent ASDF systems
+
+And a general binding: M-? or M-_ (slime-edit-uses) combines all of the above, it lists every kind of references.
+
+** Synchronizing (very useful!!)
+C-c ~ (slime-sync-package-and-default-directory): When run in a buffer with a lisp file it will change the current package of the REPL to the package of that file and also set the current directory of the REPL to the parent directory of the file.
+
 * Debugging
 C-u 3 C-c: compile with debugging information (Control-u 3 Control-c)
+
+* CLOS
+M-x slime-who-specializes List methods specializing on a class
+
+* Links
+- https://bnmcgn.github.io/lisp-guide/lisp-exploration.html
+- https://lispcookbook.github.io/cl-cookbook/emacs-ide.html#evaluating-and-compiling-lisp-in-slime
