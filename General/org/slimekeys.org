@@ -154,3 +154,12 @@ Use code similar to the following to access the HyperSpec from the Shift-F1 key:
 
 * Debugging
 C-u 3 C-c: compile with debugging information (Control-u 3 Control-c)
+
+* Slime connection
+** Hints on how to change the name
+- from IRC:
+ kagevf: you can pass the :name option to slime-start
+07:55 <@luis> or you could add some advice to slime-generate-connection-name
+07:55 <@luis> kagevf: (setf (slime-connection-name slime-default-connection) "new name") might work too
+07:56 <@luis> an easier way to rename a connection would be nice. If you open an issue on github describing your use case, that slightly increases the odds of the
+              feature being implemented :)
