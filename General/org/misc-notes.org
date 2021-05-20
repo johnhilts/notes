@@ -1,0 +1,33 @@
+C-u 3 C-c: compile with debugging information (Control-u 3 Control-c)
+
+Use (break) in code to trigger a stop point to inspect.
+
+Nyxt stuff:
+"You can use ffi-buffer-evaluate-javascript or ffi-buffer-evaluate javascript-async with DOM-modifying code."
+
+(let ((stib-container (@ document get-element-by-id) (ps:lisp "123")))
+  (stibs (ps:@ stib-container children)) (search-bar ((ps:@ document get-element-by-id) (ps:lisp "abc"))) (search-bar-val ((ps:@ search-bar-id value))))
+
+(defun sticker-searcher-js (search-bar-id sticker-container-id)
+  (ps:ps
+   (let ((stib-container ((ps:@ document get-element-by-id) (ps:lisp sticker-container-id)))
+         (stibs (ps:@ stib-container children)) (search-bar ((ps:@ document get-element-by-id) (ps:lisp search-bar-id))) (search-bar-val ((ps:@ search-bar-id value))))
+     ((ps:@
+       console log) search-bar-val))))
+
+Nyxt clone: https://github.com/atlas-engineer/nyxt.git
+
+(setq ido-mode t)
+
+(set-face-attribute 'default nil :height 350)
+
+(defmacro fast-body (&body body) `(locally (declare (optimize (speed 3) (safety 0) (space 0) (compilation-speed 0))) ,@body))
+
+(intern (string-upcase string) :keyword)
+
+;; start nyxt from slime!
+(ql:quickload :nyxt/gtk)
+(nyxt:start)
+
+buid script for nyxt:
+https://github.com/atlas-engineer/nyxt/blob/master/build-scripts/guix.scm

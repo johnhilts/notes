@@ -1,0 +1,17 @@
+* Stuff to try
+** From IRC
+- "You can use ffi-buffer-evaluate-javascript or ffi-buffer-evaluate javascript-async with DOM-modifying code."
+
+** Not sure what this is ...
+
+#+BEGIN_SRC lisp
+ (let ((stib-container (@ document get-element-by-id) (ps:lisp "123")))
+   (stibs (ps:@ stib-container children)) (search-bar ((ps:@ document get-element-by-id) (ps:lisp "abc"))) (search-bar-val ((ps:@ search-bar-id value))))
+
+ (defun sticker-searcher-js (search-bar-id sticker-container-id)
+   (ps:ps
+    (let ((stib-container ((ps:@ document get-element-by-id) (ps:lisp sticker-container-id)))
+          (stibs (ps:@ stib-container children)) (search-bar ((ps:@ document get-element-by-id) (ps:lisp search-bar-id))) (search-bar-val ((ps:@ search-bar-id value))))
+      ((ps:@
+ console log) search-bar-val))))
+#+END_SRC
