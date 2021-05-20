@@ -172,7 +172,6 @@ C-c ~ (slime-sync-package-and-default-directory): When run in a buffer with a li
 * Debugging
 C-u 3 C-c: compile with debugging information (Control-u 3 Control-c)
 
-<<<<<<< HEAD
 * Slime connection
 ** Hints on how to change the name
 - from IRC:
@@ -181,11 +180,9 @@ C-u 3 C-c: compile with debugging information (Control-u 3 Control-c)
 07:55 <@luis> kagevf: (setf (slime-connection-name slime-default-connection) "new name") might work too
 07:56 <@luis> an easier way to rename a connection would be nice. If you open an issue on github describing your use case, that slightly increases the odds of the
               feature being implemented :)
-=======
 * CLOS
 M-x slime-who-specializes List methods specializing on a class
 
 * Links
 - https://bnmcgn.github.io/lisp-guide/lisp-exploration.html
 - https://lispcookbook.github.io/cl-cookbook/emacs-ide.html#evaluating-and-compiling-lisp-in-slime
->>>>>>> 5801c652b28ddb16a618bb5947782c5cc4258865
