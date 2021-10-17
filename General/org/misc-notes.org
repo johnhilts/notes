@@ -1,8 +1,9 @@
+* slime
 C-u 3 C-c: compile with debugging information (Control-u 3 Control-c)
 
 Use (break) in code to trigger a stop point to inspect.
 
-Nyxt stuff:
+* Nyxt stuff:
 "You can use ffi-buffer-evaluate-javascript or ffi-buffer-evaluate javascript-async with DOM-modifying code."
 
 (let ((stib-container (@ document get-element-by-id) (ps:lisp "123")))
@@ -15,19 +16,174 @@ Nyxt stuff:
      ((ps:@
        console log) search-bar-val))))
 
-Nyxt clone: https://github.com/atlas-engineer/nyxt.git
+** Nyxt clone: https://github.com/atlas-engineer/nyxt.git
 
+** start nyxt from slime!
+(ql:quickload :nyxt/gtk)
+(nyxt:start)
+
+** buid script for nyxt:
+https://github.com/atlas-engineer/nyxt/blob/master/build-scripts/guix.scm
+
+
+* emacs general
 (setq ido-mode t)
 
 (set-face-attribute 'default nil :height 350)
 
+* common lisp
 (defmacro fast-body (&body body) `(locally (declare (optimize (speed 3) (safety 0) (space 0) (compilation-speed 0))) ,@body))
 
 (intern (string-upcase string) :keyword)
 
-;; start nyxt from slime!
-(ql:quickload :nyxt/gtk)
-(nyxt:start)
+** Printing without line breaks
+   #+begin_src lisp
+     (progn (format t "hello~c" #\Return) (format t "bonjour"))
+   #+end_src
+   
+* asdf
+=(asdf:load-asd "path/to/asd") and then (asdf:load-system :your-project)=
 
-buid script for nyxt:
-https://github.com/atlas-engineer/nyxt/blob/master/build-scripts/guix.scm
+* Slime
+- irc discussion about making dev startup more automated:
+- From: https://irclog.tymoon.eu/libera/%23commonlisp?around=1626000860#1626000860
+10:54:20 nature If yes, what should I do to improve/automate a bit more my bootstraping of development
+10:56:30 pve nature: ideally you'd want to run those automatically when you start slime
+10:56:38 susam nature: How about *C-c C-l to load the entire run.lisp file* in one shot?
+10:57:01 pve nature: let me show you my setup
+10:57:47 pjb nature: =(define-symbol-macro run (load "run.lisp")) in your rc file=, and just type  run RET in the REPL!
+11:06:49 pve nature: Here's what I use. It can obviously be improved on, but works well enough for me.
+11:06:52 pve https://plaster.tymoon.eu/view/2548
+#+begin_src lisp
+    ;;;; Slime sessions.
+
+  (defvar pve-slime-and-load-file nil)
+
+  ;;; Should get run once slime has connected.
+  (defun pve-slime-and-load-file-hook-fn ()
+     (when pve-slime-and-load-file
+          (remove-hook 'slime-connected-hook 'pve-slime-and-load-file-hook-fn)
+          (slime-load-file pve-slime-and-load-file)))
+
+                    ;;; Start slime, then load file. If slime is already connected, quit
+                  ;;; first, then restart.
+  (defun pve-slime-and-load-file (file)
+     (interactive "fFile")
+     (when (slime-connected-p)
+          (slime-quit-lisp t))
+     (sleep-for 1)
+     (setq pve-slime-and-load-file file)
+     (add-hook 'slime-connected-hook 'pve-slime-and-load-file-hook-fn)
+     (slime))
+
+              ;;; Start slime with current buffer.
+  (defun pve-slime-and-load-this-file ()
+    (interactive)
+    (setq pve-slime-and-load-file (buffer-file-name))
+    (add-hook 'slime-connected-hook 'pve-slime-and-load-file-hook-fn)
+    (slime))
+
+          ;;; Restart slime and load whatever buffer was last loaded.
+  (defun pve-slime-and-load-last-file ()
+    (interactive)
+    (pve-slime-and-load-file pve-slime-and-load-file))
+
+      ;;; Quick restart of session.
+  (define-key lisp-mode-map [f7] (quote pve-slime-and-load-last-file))
+#+end_src
+11:07:43 pve nature: the idea is to visit a "session" lisp file (like the one you have) and call M-x pve-slime-and-load-this-file
+11:10:32 pve I have an "easy-menu" with an entry for that, but you could also just bind it to a key
+11:14:36 _death may want to check out =defslime-repl-shortcut=
+11:21:48 nature susam: That's another thing that puzzles me, when I do C-c C-k it fails, I thought C-c C-l would fail too, but I just tried and it works... I am not sure I understand well enough the diff between compilation and loading of files
+11:23:55 susam nature: What failure do you see with C-c C-k? I believe the failure would be to do with the fact that the file is unable to compile neatly perhaps due to some existing definitions in your REPL?
+11:24:04 nature pjb: which rc file are you talking about? I haven't customized much regarding my dev environment yet
+11:24:28 susam nature: I just use C-c C-l to load the entire file. Never had issues with it. Find it quite straightforwrad, in fact.
+11:24:31 _death compilation and loading is separate.. when run.lisp is compiled, the asdf form is compiled, but not evaluated.. because the system is not loaded, the package is not available, and in-package (which sets *package* during compile time) fails
+11:24:51 nature susam: the failure comes from the fact that the `(in-package ..)` targets a package that doesn't exists, as if sexp where not compiled sequentially
+11:25:13 susam nature: That makes sense.
+11:25:17 nature aaaaah, makes sense, thanks
+11:28:31 _death nature: if you're using sbcl, there is =~/.sbclrc= .. if you want your code uses slime/swank, there's ~/.swank.lisp
+11:28:55 _death -you want
+11:28:59 pjb nature: each implementation uses its own rc file.  In each of them, I have:
+#+begin_src lisp
+(load (merge-pathnames (make-pathname :directory '(:relative "RC") :name "COMMON" :type "LISP" :case :common) (user-homedir-pathname) nil))
+#+end_src
+11:29:11 pjb nature: so I can put all my common lisp initialization in =~/rc/common.lisp=
+11:30:47 nature pve: thanks for showing your setup
+11:31:06 nature _death: pjb: Okok I see
+11:31:32 pjb nature: more can be seen at http://github.com/informatimago/rc/
+11:31:35 nature But the idea of having a "run.lisp" is not completely alien then?
+11:31:42 pjb nature: it is not.
+11:31:54 pjb you have to make things practical for yourself.
+11:31:55 nature It's just a matter of how you run that file
+11:32:02 nature I see
+11:32:38 pjb nature: the lisp REPL is like emacs: you can write lisp code to customize it.
+11:33:08 pve nature: no problem
+11:35:46 pve nature: in many of my session files, the last expression is something like (asdf:test-system "my-system), 
+which means *I lazily end up hitting F7 all the time to restart my slime session and rerun the tests in a fresh image* :)
+11:54:13 nature Thank you all :)
+
+* a way to display error messages
+- useful when trying to get up and running in a remote environment
+#+begin_src lisp
+  (handler-bind
+   (error
+    (lambda (condition)
+      (format *error-output* "~%~A~%" condition)
+      (uiop/image:print-backtrace :stream *error-output* )))
+    (load #P"~/quicklisp/setup.lisp"))
+#+end_src
+
+* from IRC, numbers
+(type-of 1234) #| --> (INTEGER 0 4611686018427387903) |#
+;; type, min, max
+
+(rationalize 0.5) #| --> 1/2 |#
+(float 1/2) #| --> 0.5 |#
+
+pjb> 1234 is also of type (integer 1234 1234), and in an infinite number of sets between (integer 1234 1234) and integer
+pjb> type-of is not very useful in that way.  You may prefer (class-name (class-of 1234)) #| --> fixnum |#  (or integer, since fixnum is a type, but not necessarily a class). 
+
+* from irc, get objects
+  #+begin_src lisp
+(let ((macros 0) (funs 0) (specops 0)) 
+  (do-external-symbols (s "CL")
+    (cond ((special-operator-p s) (incf specops))
+      ((macro-function s)     (incf macros))
+      ((fboundp s)            (incf funs))))
+  (list :macros macros :functions funs :special-operators specops))
+  #+end_src
+
+* from IRC (pjb again!)
+  #+begin_src lisp
+(format nil "~A ~? ~A" 'hello "~@{~A~^, ~}" '(blue cruel sad) 'world)
+;; => "HELLO BLUE, CRUEL, SAD WORLD"
+(format nil "~A ~? ~A" 'hello "~A, ~a" '(happy kind) 'world)
+;; => "HELLO HAPPY, KIND WORLD"
+  #+end_src
+
+* from IRC (pjb yet again) - documentation for symbol macros
+07:04 < pjb> (defmethod documentation ((symbol symbol) (kind (eql 'symbol-macro))) (getf symbol 'symbol-macro-documentation))
+07:04 < pjb> (defmethod (setf documentation) (new-doc (symbol symbol) (kind (eql 'symbol-macro))) (setf (getf symbol 'symbol-macro-documentation) new-doc))
+07:04 < pjb> (defmethod documentation ((symbol symbol) (kind (eql 'symbol-macro))) (get symbol 'symbol-macro-documentation))                                              07:04 < pjb> (defmethod (setf documentation) (new-doc (symbol symbol) (kind (eql 'symbol-macro))) (setf (get symbol 'symbol-macro-documentation) new-doc))
+07:05 < pjb> (setf (documentation 'foo 'symbol-macro) "bla bla")  (documentation 'foo 'symbol-macro) #| --> "bla bla" |#
+07:05 < pjb> rain3: of course, you have to choose where to store that documentation.  Also, when and how to store it and retrieve it from a fasl file.
+
+* variable / bindings
+< pjb> CodeBitCookie[m]: I think the best model is a diagram such as:    var: [*]-->42    The name of the variable is the symbol VAR  the variable is the box [
+             ]   the binding is the arrow *-->  and the value is 42.
+11:32 < pjb> CodeBitCookie[m]: object and value are synonym in Common Lisp.
+11:32 < pjb> Notably, all CL values have a class, and generic function methods can dispatch on those classes.
+11:51 < White_Flame> CodeBitCookie[m]: certain small values, such as integers, characters, single-floats, etc might not be literal references, but the values are                              immediately represented in a machine word
+11:52 < White_Flame> s/integers/fixnums/
+11:54 < White_Flame> also, I think this might just have been a mental typo on your part, but "values" exist, and bindings are places to hold/refer to values.                                  "variables" are just names for some particular bindings that can happen
+11:56 < pjb> Notably: a variable name may reference different variables (boxes) at the same time, depending on the lexical scope.
+11:56 < pjb> or a variable (a box) can have no name (eg. after compilation).
+11:57 < White_Flame> right, a variable is a name to look up in some environment and find the binding.  This process now happens fully at compile-time
+11:57 < White_Flame> with dynamic bindings being pretty directly findable now, given a symbol
+12:13 < winning-luser> Is there a simple Lisp implementation to look at its code to see how it implements this value binding model?
+12:23 < White_Flame> if it's too simple, then it doesn't really represent what's going on in real systems
+12:23 < White_Flame> the simplest is that the environment is simly an a-list
+12:23 < White_Flame> (defvar *foo* 1) (defun bar (x) (let ((*foo* 2)) ...)), if you call (bar 3), then the environment could be
+12:24 < White_Flame> ((*foo* . 2) (x . 3) (*foo* . 1))
+12:24 < White_Flame> (setf *foo* 4) would mutate the first ASSOC-found entry for *foo* in the environment, and leave the earlier one (later on the list) alone             
