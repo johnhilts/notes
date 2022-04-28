@@ -1,0 +1,43 @@
+* chapter 12 conditions
+  #+begin_src lisp
+    (defun percentage (a b)
+      (restart-case ;; wrap "problem area" in restart-case
+          (let ((ratio (/ a b)))
+            (unless (typep ratio '(real 0 1))
+              (error 'not-a-percentage :dividend a :divisor b)) ;; "manually" throwing an error
+            (format nil "~,2F%" (* 100 ratio)))
+        (use-other-values (new-a new-b) ;; the "emergency" function (non-standard term coined by author for lack of better term)
+          :report "Use two other values instead."
+          :interactive (lambda ()
+                         (flet ((get-value (name)
+                                  (format t "~&Enter new value for ~A: " name)
+                                  (read)))
+                           (list (get-value 'a) (get-value 'b))))
+          (percentage new-a new-b)))) ;; recall the function (note: recursive)
+
+    ;; run this in the top level
+    (handler-bind ((not-a-percentage ;; this matches what's thrown in the error form above
+                    (lambda (condition)
+                      (declare (ignore condition))
+                      (invoke-restart 'use-other-values 1 10)))) ;; invoke "emergency" function (the term "re-start function" is already taken)
+      (percentage 4 2)) ;; call the function, wrapped in the handler-bind
+
+    ;; my own example!!!
+    (defun my-div (a b)
+      (restart-case ;; wrap problem area in restart-case
+          (progn ;; has to be "one" form, so wrapping in progn so I can also add some output
+            (format t "~&attempting division by ~a / ~a ...~%" a b)
+            (let ((result (/ a b)))
+              (format nil "~a" result)))
+        (fix-div-by-0 () ;; "emergency" function
+          (* a 10)))) ;; you can put whatever you want in here!!
+
+    ;; run from the top level
+    (handler-bind ((DIVISION-BY-ZERO ;; built-in condition! I didn't specify this anywhere!!
+                    (lambda (condition)
+                      (declare (ignore condition))
+                      (invoke-restart 'fix-div-by-0)))) ;; invoke "emergency" function
+      (princ (my-div 10 2)) ;; call the function over and over with some different values - everything still works as expected!
+      (princ (my-div 10 0))
+      (princ (my-div 10 5)))
+  #+end_src

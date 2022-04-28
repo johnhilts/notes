@@ -2,7 +2,6 @@
 C-u 3 C-c: compile with debugging information (Control-u 3 Control-c)
 
 Use (break) in code to trigger a stop point to inspect.
-
 * Nyxt stuff:
 "You can use ffi-buffer-evaluate-javascript or ffi-buffer-evaluate javascript-async with DOM-modifying code."
 
@@ -30,7 +29,6 @@ https://github.com/atlas-engineer/nyxt/blob/master/build-scripts/guix.scm
 (setq ido-mode t)
 
 (set-face-attribute 'default nil :height 350)
-
 * common lisp
 (defmacro fast-body (&body body) `(locally (declare (optimize (speed 3) (safety 0) (space 0) (compilation-speed 0))) ,@body))
 
@@ -43,7 +41,6 @@ https://github.com/atlas-engineer/nyxt/blob/master/build-scripts/guix.scm
    
 * asdf
 =(asdf:load-asd "path/to/asd") and then (asdf:load-system :your-project)=
-
 * Slime
 - irc discussion about making dev startup more automated:
 - From: https://irclog.tymoon.eu/libera/%23commonlisp?around=1626000860#1626000860
@@ -61,20 +58,20 @@ https://github.com/atlas-engineer/nyxt/blob/master/build-scripts/guix.scm
 
   ;;; Should get run once slime has connected.
   (defun pve-slime-and-load-file-hook-fn ()
-     (when pve-slime-and-load-file
-          (remove-hook 'slime-connected-hook 'pve-slime-and-load-file-hook-fn)
-          (slime-load-file pve-slime-and-load-file)))
+    (when pve-slime-and-load-file
+      (remove-hook 'slime-connected-hook 'pve-slime-and-load-file-hook-fn)
+       (slime-load-file pve-slime-and-load-file)))
 
                     ;;; Start slime, then load file. If slime is already connected, quit
                   ;;; first, then restart.
   (defun pve-slime-and-load-file (file)
-     (interactive "fFile")
-     (when (slime-connected-p)
-          (slime-quit-lisp t))
-     (sleep-for 1)
-     (setq pve-slime-and-load-file file)
-     (add-hook 'slime-connected-hook 'pve-slime-and-load-file-hook-fn)
-     (slime))
+    (interactive "fFile")
+    (when (slime-connected-p)
+       (slime-quit-lisp t))
+    (sleep-for 1)
+    (setq pve-slime-and-load-file file)
+    (add-hook 'slime-connected-hook 'pve-slime-and-load-file-hook-fn)
+    (slime))
 
               ;;; Start slime with current buffer.
   (defun pve-slime-and-load-this-file ()
@@ -122,7 +119,6 @@ https://github.com/atlas-engineer/nyxt/blob/master/build-scripts/guix.scm
 11:35:46 pve nature: in many of my session files, the last expression is something like (asdf:test-system "my-system), 
 which means *I lazily end up hitting F7 all the time to restart my slime session and rerun the tests in a fresh image* :)
 11:54:13 nature Thank you all :)
-
 * a way to display error messages
 - useful when trying to get up and running in a remote environment
 #+begin_src lisp
@@ -133,7 +129,6 @@ which means *I lazily end up hitting F7 all the time to restart my slime session
       (uiop/image:print-backtrace :stream *error-output* )))
     (load #P"~/quicklisp/setup.lisp"))
 #+end_src
-
 * from IRC, numbers
 (type-of 1234) #| --> (INTEGER 0 4611686018427387903) |#
 ;; type, min, max
@@ -143,7 +138,6 @@ which means *I lazily end up hitting F7 all the time to restart my slime session
 
 pjb> 1234 is also of type (integer 1234 1234), and in an infinite number of sets between (integer 1234 1234) and integer
 pjb> type-of is not very useful in that way.  You may prefer (class-name (class-of 1234)) #| --> fixnum |#  (or integer, since fixnum is a type, but not necessarily a class). 
-
 * from irc, get objects
   #+begin_src lisp
 (let ((macros 0) (funs 0) (specops 0)) 
@@ -153,7 +147,6 @@ pjb> type-of is not very useful in that way.  You may prefer (class-name (class-
       ((fboundp s)            (incf funs))))
   (list :macros macros :functions funs :special-operators specops))
   #+end_src
-
 * from IRC (pjb again!)
   #+begin_src lisp
 (format nil "~A ~? ~A" 'hello "~@{~A~^, ~}" '(blue cruel sad) 'world)
@@ -161,7 +154,6 @@ pjb> type-of is not very useful in that way.  You may prefer (class-name (class-
 (format nil "~A ~? ~A" 'hello "~A, ~a" '(happy kind) 'world)
 ;; => "HELLO HAPPY, KIND WORLD"
   #+end_src
-
 * from IRC (pjb yet again) - documentation for symbol macros
 07:04 < pjb> (defmethod documentation ((symbol symbol) (kind (eql 'symbol-macro))) (getf symbol 'symbol-macro-documentation))
 07:04 < pjb> (defmethod (setf documentation) (new-doc (symbol symbol) (kind (eql 'symbol-macro))) (setf (getf symbol 'symbol-macro-documentation) new-doc))
@@ -187,3 +179,414 @@ pjb> type-of is not very useful in that way.  You may prefer (class-name (class-
 12:23 < White_Flame> (defvar *foo* 1) (defun bar (x) (let ((*foo* 2)) ...)), if you call (bar 3), then the environment could be
 12:24 < White_Flame> ((*foo* . 2) (x . 3) (*foo* . 1))
 12:24 < White_Flame> (setf *foo* 4) would mutate the first ASSOC-found entry for *foo* in the environment, and leave the earlier one (later on the list) alone             
+
+19:34 < sukaeto> late to the conversations, but I (think I) understand what beach is saying re: binding
+19:34 < sukaeto> the spec overloads the term
+19:36 < sukaeto> they sometimes use it the way a compiler writer would - as in "this variable is bound to this value"
+19:36 < sukaeto> they also use it in the logical sense - as in "this variable is not free in this form.  It is bound."
+19:39 < sukaeto> in the second sense, you're saying the variable is bound by the *context*. (progv '(*x*) () (boundp '*x*)) <- *x* is bound in the sense that it
+                 won't be susceptible to variable capture, no matter where that progv is put
+19:39 < sukaeto> but not in the sense that it has a value associated with it
+* starting swank (from pjb on irc)
+(unless (find-package "SWANK")
+  (ql:quickload :swank))
+
+(let ((interface #+ccl (ccl::primary-ip-interface-address)
+                 #-ccl (hostname) #|"0.0.0.0"|#)
+      (port 4005 #|(+ 4005 (random 95))|#))
+  (swank:create-server :interface interface :port port)
+  (format t "~&Swank server started on port ~D~%" port))
+
+;; see also: https://codeshare.io/anXKbY
+"Starts a swank-server on the localhost interface."
+  (unless (find-package "SWANK")
+    (ql:quickload :swank))
+  (funcall (intern "CREATE-SERVER" "SWANK") :port port)
+* get a file name (from pjb on irc)
+  #+begin_src lisp
+    (swank:find-definitions-for-emacs "foo") #| --> (("#'foo" (:location (:file "/private/tmp/foo.lisp") (:position 50) (:snippet "(defun foo ()
+             foo)"))) ("(type foo)" (:location (:file "/private/tmp/foo.lisp") (:position 1) (:snippet "(deftype foo () '(member foo))"))) ("(variable foo)"
+             (:location (:file "/private/tmp/foo.lisp") (:position 32) (:snippet "(defvar foo 'foo)")))) |#
+
+  #+end_src
+* Sorting and using trees (from pjb on irc)
+10:29 < pjb> opcode: if you do binary search on a list, you need O(nlogn) accesses to the nodes, but since you need O(n) to access a node, that's O(n**2 logn) !
+10:30 < pjb> opcode: that's why to do binary search, we use a tree instead. Then we get O(nlogn).
+10:30 < pjb> opcode: the tree can be stored using cons cells, or using vector, it doesn't matter, as long as accessing a child is O(1).
+10:33 < pjb> note that to insert a node in a tree, it's better to use cons cells (or other independent node structures) than a (sorted) vector,
+ since inserting a node in a tree is O(1) (+ O(nlogn) to find where it must be inserted), 
+while inserting an element in a sorted vector is O(n) (+ O(nlogn) to find where to insert it). 
+
+
+
+* difference between nil and '() and () (from beach on irc)
+beach> lisp123: NIL means "false" or "default value". '() means "empty list", () means empty parameter list.
+beach> lisp123: Oh, and 'nil means the symbol NIL as a form.
+http://www.lispworks.com/reference/HyperSpec/Body/01_dadd.htm
+holycow> land of lisp, page 51 has a lit of how to write nil 4 ways
+* packages / modules / requires etc (from various on irc)
+< beach> hexology: USE-PACKAGE is the function version of the :USE option.
+< _death> https://web.archive.org/web/20171127051637/http://www.weitz.de/packages.html
+<@jackdaniel> hexology: module in asdf is not the same thing as require/module in common lisp
+ <@jackdaniel> the latter is deprecated in the standard and is a precursor of what asdf calls "system". i.e the implementation may package optional libraries for
+                    use - in order to load them you must either know where to find it, or use (require :sb-posix)
+<@jackdaniel> for imaginary module that is named :sb-posix :)
+< pjb> hexology: a module is any body of code that can be located by REQUIRE, and that calls PROVIDE once it's loaded.
+< pjb> hexology: since you can pass a pathname to REQUIRE, it can be any lisp file that calls PROVIDE.
+* Debugger help (from Catie on irc)
+- LIST-LOCALS will show you variables local to the current frame
+- if you evaluate :HELP in SBCL's debugger it gives you a whole bunch of information
+* how to implement =let= (from moon-child on irc)
+  #+begin_src lisp
+(defmacro let (bindings &body body) `((lambda ,(mapcar #'car bindings) ,@body) ,@(mapcar #'cadr bindings)))
+  #+end_src
+* auto-loading externall updated files
+  #+begin_src lisp
+(global-auto-revert-mode t) ;; turns on "auto-revert" for all files
+(setq auto-revert-use-notify nil) ;; this turns off reliance on the OS to notify emacs; instead emacs will poll every 5 seconds for updates
+  #+end_src
+"You can change the polling interval through the variable auto-revert-interval."
+* getting ascii character names
+  #+begin_src 
+(loop for x from 0 to 31 collect (code-char x))
+;; or just use (code-char x) with your favorite character code!
+;; and if you want to go in the opposite direction use (code-char #\Space) !!
+  #+end_src
+* lambdas / closures (from pjb on irc)
+in CL, the only operator that creates closures is CL:FUNCTION, which is also the only operator that creates function 
+(used in defun, defmacro, defmethod, defgeneric, flet, labels.)
+More precisely, (CL:FUNCTION (CL:LAMBDA ... ...)) creates a closure.   
+(cl:function foo) returns the closure that is named foo.
+Usually it's a closure in the NIL environment (ie. the global environment), with no enclosed variables.  
+But you can also use defun to create closure: eg. (let ((x 42)) (defun f (y) (+ x y)))                   
+CL:LAMBDA as an operator is just a macro that expands to  (CL:FUNCTION (CL:LAMBDA ... ...)).
+for example: (mapcar 'funcall (loop for i below 3 collect (let ((i i)) (function (lambda () i))))) #| --> (0 1 2) |#
+the function operator in the loop body creates each time a different function, that returns a different binding.
+
+note: (mapcar (function funcall) (loop for i below 3 collect (let ((i i)) (flet ((foo () i))  (function foo))))) #| --> (0 1 2) |#
+so here, (function foo) returns a closure. But the closure is actually created inside flet, by an expansion to something like
+ (function (lambda () (block foo i))) but this is hidden because flet/labels are special operators ;-)
+
+There is no such thing as "a lambda" in Common Lisp, as pjb tried to explain. (beach)
+
+* importing packages (from IRC)
+It is a much better idea not to import at all, but to use explicit package prefixes, possibly with package-local nicknames. (beach)
+* how to create your own namespace (pjb on IRC)
+#+begin_src lisp
+(defmacro define-namespace (namespace-name constructor)
+  `(progn
+     (defparameter ,namespace-name (make-hash-table :test (function eql)))
+     (defun ,(intern (concatenate 'string (symbol-name 'find-) (symbol-name namespace-name))) (name)
+       (gethash name ,namespace-name))
+     (defun ,(intern (concatenate 'string (symbol-name 'ensure-) (symbol-name namespace-name)))
+         (name &rest arguments &key &allow-other-keys)
+       (or (gethash name ,namespace-name)
+           (setf (gethash name ,namespace-name) (apply (function ,constructor) arguments))))
+     ',namespace-name))
+
+(defclass color ()
+    ((red   :initarg :red   :reader color-red)
+     (green :initarg :green :reader color-green)
+     (blue  :initarg :blue  :reader color-blue)))
+
+(define-namespace color
+    (lambda (&rest arguments &key red green blue)
+      (apply (function make-instance) 'color arguments)))
+
+(ensure-color 'blue :blue 1.0)
+(find-color 'blue)
+;; --> #<color #x3020023FBCCD>
+#+end_src
+* How to do an immutable hash table (from pjb on IRC)
+  #+begin_src lisp
+
+(defclass immutable-hash () ((immutable-hash-table :initarg :immutable-hash-table :reader immutable-hash-table)))
+(defmethod get-ih (key (table immutable-hash))
+  (gethash key (immutable-hash-table table)))
+(defvar *table*
+  (make-instance 'immutable-hash
+                 :immutable-hash-table (let ((h (make-hash-table)))
+                                         (setf (gethash :k1 h) 'v1 (gethash :k2 h) 'v2)
+                                         h)))
+  #+end_src
+* which sequence to use (from pjb on irc)
+16:29 < pjb> yottabyte: the key of a-list can be anything, and you can also search for the value (rassoc)
+16:30 < pjb> yottabyte: the key of p-list is intended to be symbols. They cannot be numbers or characters. And if they're something else than symbols, it's difficult to               handle them, since you have to keep references to the keys used.
+16:31 < pjb> yottabyte: the key of hash-tables can be anything, (you can adjust the test function between EQ, EQL, EQUAL and EQUALP), but you cannot search on the values              (unless you enumerate them).
+16:32 < pjb> yottabyte: you can also use mere lists or vectors, with functions such as POSITION or FIND that take a :KEY (and a :TEST) parameter to extract the key from               the stored object itself.
+16:32 < pjb> yottabyte: and once you have a sequence, you can also sort them to be able to do binary searches.
+16:33 < pjb> yottabyte: p-list are what functions get with &key arguments. So it's useful to use them for those arguments.
+16:34 < pjb> a-list and p-list are more efficient than hash-tables when they're small. (depending on the implementation, the break-even point is between 5 and 35                      entries).
+16:34 < pjb> yottabyte: but in the end, the best is to avoid commiting to an implementation choice. Instead, use dictionaries.
+16:34 < pjb> com.informatimago.common-lisp.cesarum.dictionary
+16:34 < pjb> yottabyte: Notably, a com.informatimago.common-lisp.cesarum.dictionary:adaptating-dictionary can change the implementation dynamically on the run.
+16:35 < pjb> it's in http://github.com/informatimago/lisp
+16:37 < yottabyte> Thank you for the thorough response!
+16:38 < yottabyte> What's the difference between the dictionary and hash table?
+16:39 < White_Flame> another thing about alists is that you can push new values onto the head of the list, which will override the tail, and when you return to using the                      non-pushed list, those additions will be "undone" and you'll see the complete prior state
+16:40 < White_Flame> eg ((a . 1) (b . 2)), into ((b . 4) (a . 1) (b . 2)) to override B's value in a scope
+16:41 < pjb> yottabyte: the dictionary is a wrapper for all kinds of key-value map.
+16:41 < pjb> yottabyte: so you don't have to choose between p-list, a-list, hash-table or other. The adaptative-dictionary class makes the choice for you.
+16:42 < yottabyte> Interesting
+16:42 < pjb> yottabyte: the point here is that you should not choose to use a given set of operator  (list*, getf, remf) vs. (acons, assoc, rassoc) vs. (gethash,                      remhash), etc.
+16:43 < pjb> yottabyte: instead, write your own dictionary-get dictionary-add dictionary-remove functional abstraction!
+16:44 < pjb> Now, for the choice between a-list and p-list, there's also the consideration that p-list literals are easier to write: (k1 v1 k2 v2 k3 v3) vs. ((k1 . v1)                (k2 . v2) (k3 . v3))
+16:45 < pjb> So you may want to write your literals as p-lists.  But it's trivial to convert them into a-list or hash-table, so that should not influence the choice too               much.
+* nyxt get buffer (view source adjacent)
+[solved][Q] How can I get the HTML of the current page?: (ffi-buffer-get-document (current-buffer))
+This also works: (plump:serialize (document-model (current-buffer)) nil))
+* from irc (pjb)
+  #+begin_src lisp
+(deftype list () `(or null cons))
+  #+end_src
+* from irc (phoe and scymtym)
+12:46 < kagevf> scymtym: 2 questions: "what does dpANS stand for?" and "how did you make those slides?"
+12:50 < phoe> kagevf: draft preview American National Standard, re the first question
+12:52 < yitzi> I think its actually "proposed?"
+12:52 < scymtym> kent pitman writes "draft proposed American National Standard"
+12:53 < scymtym> kagevf: i made the slides with org-mode and org-reveal (and various programs for the figures)                                                   
+12:55 < kagevf> scymtym: hmmm that sounds very familiar ... did you post a video about it recently? or maybe mention it in r/emacs?                             
+12:55 < scymtym> kagevf: i didn't                                                                                                                                
+13:00 < kagevf> scymtym: the slides are very nice ... appreciated how they support hjkl navigation ... and they looked good too!
+13:02 < scymtym> kagevf: thanks. i guess that praise should go towards reveal.js. org-mode with org-reveal is a quick way to make something decent in a sane format                   (for certain kinds of presentations) 
+* from IRC (beach)
+08:07 < CodeBitCookie[m]> Newbie question, so an array is a vector?
+08:07 < beach> No, a vector is an array.
+08:07 < beach> But some arrays are not vectors, like with a rank other than 1.
+08:07 < CodeBitCookie[m]> Ohhhhh
+08:08 < CodeBitCookie[m]> I see, it just clicked
+08:08 < beach> Now, ELT is a sequence function.
+08:08 < beach> So it works on lists and vectors.
+08:08 < CodeBitCookie[m]> Like when you would store a 4x4 Matrix in an array, that would not be a vector.
+08:08 < rotateq> CodeBitCookie[m]: As with all squares are rectangles but not the other way around. (in normal flat euclidian geometry)
+08:08 < beach> Correct, a 4x4 array is a 2-dimensional array, and vectors are 1-dimensional arrays.
+08:09 < beach> A vector may have a fill pointer.  And if it does, the fill pointer determines the LENGTH of the vector as a sequence.
+08:10 < beach> That can be different from the number of elements in the 1-dimensional array.
+08:10 < CodeBitCookie[m]> Okay
+08:10 < CodeBitCookie[m]> beach: wait how?
+08:10 < beach> Let me cook up an example...
+08:11 < beach> (defparameter *s* (make-array 20 :fill-pointer 10))
+08:12 < beach> (array-total-size *s*) => 20
+08:12 < beach> (length *s*) => 10
+08:12 < beach> So AREF can access all 20 elements, but ELT is limited by the fill pointer.
+08:13 < beach> Because as a sequence, *s* has only 10 elements.
+08:13 < beach> (aref *s* 15) => 0 [in SBCL]
+08:13 < CodeBitCookie[m]> how is the rest of 10 elements represented in memory?
+08:13 < beach> (elt *s* 15) => error
+08:14 < beach> All 20 elements are sequentially represented in the vector.
+08:14 < beach> But the vector has an additional slot FILL-POINTER.
+08:15 < beach> And ELT must check the fill pointer and signal an error if an attempt is made to access an element beyond the fill pointer.
+08:15 < beach> So basically, you use AREF if you don't care about fill pointers, and ELT if you do.
+08:15 < beach> ... for vectors that is.
+08:16 < CodeBitCookie[m]> So, I don't think this is a common case, in normal programs I see ELT used where AREF could be used and the other way around
+08:16 < CodeBitCookie[m]> Oh nvm
+08:16 < rotateq> got to read that by you too
+08:16 < CodeBitCookie[m]>  * Oh NVM
+08:17 < CodeBitCookie[m]> beach: What happens for Non-Vectors?
+08:18 < rotateq> CodeBitCookie[m]: learn by trying out :)
+08:18 < beach> ELT can access lists as well, but only 1-dimensional arrays.  Like I said, ELT is a "sequence function", and only 1-dimensional arrays and lists are
+               sequences.
+* Get package nicknames (this is standard, nothing to do with PLN!)
+(mapc
+ #'(lambda (e) (format t "Package Name: ~a: Nickname list: ~a~%" (package-name e) (package-nicknames e)))
+ (package-use-list (find-package 'todo-project)))
+* Passing by reference (from IRC, beach and pjb)
+07:09 < CodeBitCookie[m]> Hello Everyone!
+07:10 < CodeBitCookie[m]> Super newbie question, How do I pass arguments by reference. I learnt this one but forgot about it. When tried to search online, I couldn't                               find a solution that worked for me without a macro.
+07:10 < beach> You can't pass argument to a function by reference.
+07:10 < beach> Common Lisp is uniformly call-by-value.
+07:11 < CodeBitCookie[m]> but you can with a macro?
+07:11 < beach> Macros are called with forms as arguments, so that's very different.
+07:12 < CodeBitCookie[m]> So what can I do?
+07:12 < CodeBitCookie[m]> My problem is,
+07:13 < CodeBitCookie[m]> I have a function that sets up a texture for me. To avoid code duplication, I put that in its own function. The problem was, I had to give it a                           variable to store the texture into. So I had to pass that variable.
+07:14 < CodeBitCookie[m]> Wait a minute,
+07:14 < CodeBitCookie[m]> Can't I just return the variable after doing all operations to it?
+07:14 < CodeBitCookie[m]> and then set a variable to that?
+07:15 < beach> You don't pass or return variables.  You may pass and return VALUES of variables, but not the variables themselves (usually).                               
+07:16 < beach> But, yes, you don't pass a variable to store anything in, because that is not possible.  You assign the value returned by the function to the variable you                want to initialize.
+07:16 < CodeBitCookie[m]> What do you mean by usually?
+07:16 < CodeBitCookie[m]> beach: ^
+07:18 < beach> Special variables are named by symbols, and you can get from the symbol to the value of the special variable, so in that sense you can say that you                       pass/return a variable.  No such thing is possible with lexical variables of course.
+07:18 < CodeBitCookie[m]> Oh.
+07:19 < CodeBitCookie[m]> So we copy the value EVERY TIME? Even when there is a huuuuuuge vector with a lot of data?
+07:20 < beach> Call by reference is an efficiency kludge used in languages such as C++ because they copy everything by default, so you might want to avoid that, and                     because they don't allow for multiple return values, so if you want to return more than one thing, that kludge is sometimes necessary.
+07:20 < beach> GODDAMMIT!!!!!
+07:21 < beach> CodeBitCookie[m]: Common Lisp uses "uniform reference semantics", meaning that arguments are evaluated before passed to callee functions, but the values                  are references so no object is ever implicitly copied.
+07:21 < beach> CodeBitCookie[m]: Surely, you must have seen this before since you have been here for some time, no?
+07:22 < beach> CodeBitCookie[m]: I am sorry.  I just spent the better part of an hour explaining the details of all this to nij-.
+07:23 < beach> CodeBitCookie[m]: And it seems I explain it all over again once a week or so.
+07:25 < beach> Common Lisp uses the only sane semantics for function calls, and it seems all newbies assume that it uses the absolute most stupid one.  I guess that                     means that most newbies have used only languages with stupid function-call semantics.
+07:25 < beach> No wonder the computing industry is in such a mess.
+07:25 < CodeBitCookie[m]> <beach> "GODDAMMIT!!!!!" <- Oops, I am very sorry. Its just that I can never understand it. I remember I even read that website you told me to                            read and understood it all. It just doesn't stick in my head. :(
+07:26 < CodeBitCookie[m]> I still don't remember it fully.                                                                                                                07:27 < beach> I will retire in less than a month, but I always thought I was not too bad as a teacher.  It seems I must have been wrong about myself all these years,                   because I seem unable to explain something so fundamental.
+07:27 < beach> CodeBitCookie[m]: Do you know C?
+07:29 < CodeBitCookie[m]> Yes
+07:29 < beach> CodeBitCookie[m]: Imagine every Common Lisp object is of type `void *' then, and that every operation allocates a chunk of memory on the heap and returns                 a void * to it.  Then you have a pretty good approximation of Common Lisp semantics.
+07:30 < beach> Notice the word "semantics".  Which means "it works as if", not "it does that".
+07:31 < beach> So in Common Lisp, something like (setq y x) is an assignment of a single word, typically a register operations.  In a language like C++, the default is                  to copy the object instead, so C++ is much less efficient.
+07:32 < CodeBitCookie[m]> so basically, everything works as a pointer, and the values through arguments are pass-by-value but are not copied. Right?
+07:33 < beach> Right, the values that are passed are references.
+07:34 < beach> "call by value" has never meant that objects are copied.  The term just means that arguments are evaluated and the values are passed to the function being                called.  In C++, by default, the values are the objects themselves.  In Common Lisp, the values are references.  C++ is that stupid because it does not                   have automatic memory management.
+07:37 < CodeBitCookie[m]> wait, let me try to understand this. It's not that I am not active, I am just processing.
+07:46 < beach> Take your time. *sigh* :)
+07:53 < Kabriel> Perhaps you could program one of the bots with a link to your essay on uniform reference semantics and then start with "bot tell person about URS".
+07:59 < beach> I thought we had done that, but I can't seem to find the keyword.
+08:01 < beach> Maybe someone cleared out the terms known by minion.
+08:05 < edgar-rft> minion: semantics?
+08:05 < minion> semantics: For a concise definition of the Common Lisp semantics of assignments and function calls, please see                                                            http://metamodular.com/common-lisp-semantics.html                                                                                                          
+09:18 < pjb> CodeBitCookie[m]: you can pass arguments "by reference" using C-like "pointers",  cf.  http://informatimago.com/articles/usenet.html#C-like-pointers-in-Lisp
+09:20 < pjb> beach: teaching in front of a black board with student in the same room, is not the same thing as trying to teach thru irc.  We're all bad at teaching thru               irc.                                                                                                                                                         09:21 < White_Flame> CodeBitCookie[m]: fundamentally, if you want to pass something that will be changed, you're passing a composite and will change a slot/element of it
+09:22 < pjb> CodeBitCookie[m]: so about those huge vectors, the thing is that we don't store vectors in variables.  We only store references in variables.  And it's                   those references that are copied to the parameter variables.
+09:22 < White_Flame> if you have (let ((a 3)) ...) then you can't pass the "location of A" and have something from the outside mutate it to 4
+09:23 < White_Flame> but, (let* ((a 3) (changer (lambda (new) (setf a new))) ....) you can pass the changer function/closure around and it can change A
+09:23 < pjb> CodeBitCookie[m]: so while arguments are passed by value (copying the value), since those values are actually references to the actual objects that are ALL               stored in the heap, you get a kind of pass the objects by reference.
+09:23 < White_Flame> because it has A in its lexical scope
+09:23 < pjb> CodeBitCookie[m]: but indeed, not pass the variable by reference.
+09:24 < pjb> CodeBitCookie[m]: White_Flame is right, only you can, using C-like-pointers, see links above.
+09:25 < White_Flame> now, if (let ((a (list 1 2 3)) ...) you can pass A around (which is a reference to the 1st cons cell) and those other functions can mutate the                            car/cdr of those cons cells
+09:25 < White_Flame> *pass the value of A around
+09:26 < White_Flame> and each place that the value of A is passed around refers to that exact same (1 . ...) cons cell
+09:26 < White_Flame> in the (let ((a 3)) ...) case, the value 3 is primitive and immutable
+09:27 < White_Flame> in the (let ((a (list ...))) ...) case, the list value is composite and mutable
+09:28 < pjb> In both cases, it's the same: A:[*]--->3   A:[*]--->(1 . [*])--->...
+09:28 < White_Flame> right, hence the thing being described is the "value"; the "variable" just names some slot on the stack where that value can be stored
+09:29 < pjb>  The only difference is that since 3 is immutable (numbers and characters are),    the implementations are allowed to copy them instead of keeping the same               reference.
+09:29 < pjb> after (let ((a 3) b)  (setf b a)  you can have A:[*]--->3<---[*]:B  or A:[*]--->3   B[*]--->3  a different copy of 3.
+09:30 < pjb> you can detect it with (let ((a 3)) (eq a a)) -> nil (or t, depends).                                                                                         
+09:30 < pjb> Hence you should not use EQ.
+09:37 < nij-> are strings mutable in CL?
+09:43 < White_Flame> yes, they are just arrays
+09:44 < White_Flame> hence you have to be careful about mutating literals
+09:52 < nij-> Indeed.. (defvar *S* "Help!") (setf (elt *S* 3) #\l) *S* ; => "Hell!"
+09:52 < nij-> Hmm.. is this UB?
+09:52 < White_Flame> I believe so
+09:54 < White_Flame> "The consequences are undefined if literal objects (including quoted objects) are destructively modified."
+09:54 < White_Flame> (from the QUOTE page http://www.lispworks.com/documentation/HyperSpec/Body/s_quote.htm )
+09:59 < edgar-rft> I'm not 100% sure but what would be the point of having arrays if I can't mutate them?
+10:02 < nij-> shorter lookup time?
+10:04 < edgar-rft> CLHS 5.1.2.2 mentions CHAR as SETF-able function call what I think would not be possible if strings were immutable.
+10:06 < edgar-rft> ...what means that this is valid behaviour according to CLHS: (defvar *S* "Help!") (setf (char *S* 3) #\l) ; => "Hell!"
+10:06 < edgar-rft> and if I'm not totally wrong then ELT calls CHAR if the sequene is a string
+10:07 < nij-> It boils down to this - does "Help!" generate a literal string or not?
+10:13 < White_Flame> it's not valid, because it's mutating a string that originally came from a literal
+10:13 < White_Flame> nij-: yes
+10:14 < White_Flame> (copy-seq "Help!") would give you a mutable copy
+10:15 < White_Flame> and of course any string gotten at runtime from I/O would be mutable
+10:15 < White_Flame> just not those which directly exist in the source code
+10:15 < White_Flame> there's no guarantee that the one you're mutating is going to be reused or not on subsequent calls to the same code built from it
+10:20 < nij-> White_Flame: Got it.                                                                                                                                        10:22 < edgar-rft> White_Flame: thank you
+
+** Some stuff I tried
+   #+begin_src lisp
+(defun change-my-list (list)
+  "The original list is not updated"
+  (setf list '(4 5 6))
+  (format t "Changed List: ~a~%" list))
+
+(defun change-my-literal-list (list)
+  "The original list *is* updated"
+  (setf (car list) 4)
+  (format t "Changed List: ~a~%" list))
+
+(let ((list '(1 2 3)))
+  (change-my-list list)
+  (format t "Original List: ~a~%" list))
+
+(let ((list '(1 2 3)))
+  (change-my-literal-list list)
+  (format t "Original List: ~a~%" list))
+
+(let ((list (make-list 3 :initial-element '(1 2 3))))
+  (change-my-literal-list list)
+  (format t "Original List: ~a~%" list))
+
+(defun change-my-array (arr)
+  "The original array *is* updated"
+  (setf (aref arr 1) 4)
+  (format t "Changed Array: ~a~%" arr))
+
+(defun change-my-array2 (arr)
+  "The original array is *not* updated"
+  (setf arr #(4 5 6))
+  (format t "Changed Array: ~a~%" arr))
+
+(let ((arr (make-array 3 :initial-contents '(1 2 3))))
+  (change-my-array arr)
+  (format t "Original Array: ~a~%" arr))
+
+(let ((arr (make-array 3 :initial-contents '(1 2 3))))
+  (change-my-array2 arr)
+  (format t "Original Array: ~a~%" arr))
+
+;; you can use copy-list to avoid updating the original
+   #+end_src
+
+
+* Necessary ingredients for a condition system (something I've always wondered about)
+< phoe> a condition system requires three things: dynamic variables, control flow operators for stack unwinding, and closures
+* from IRC (beach) - protocols!
+beach> You would then create what is known as a protocol (which is a generalization of an interface) that typically (but not necessarily) uses standard
+               classes and generic functions.
+22:51 < neominimum> beach: I had wondered if it would be wise to make `lfl` a structure or a class, as a big downside of the current impl creates ambiguity as to
+                    whether a list is now a list or an lfl list.
+22:51 < beach> Exactly.
+22:52 < beach> You would then do the exact same thing that you now do, but to a list contained in a slot of the main class.
+
+* from my email for loop macro
+  #+begin_src common-lisp
+(defmacro for (var from init to final do &rest body)
+  "Execute a simple for loop: (for i from 1 to 10 do (print i))."
+  (let ((tempvar (gensym "max")))
+    `(do ((,var ,init)
+           (,tempvar ,final))
+       (( ,var ,tempvar)
+         ,@body
+         (incf ,var)))))
+
+(for i from 1 to 3 do
+   (setq square (* i i))
+   (princ (format t "\n%d %d" i square)))
+  #+end_src
+* from irc cl:in-package (beach)
+21:50 < kagevf> beach: style question ... in Cluffer at the top of the source files, why do you prefix in-package with cl-?
+ is it avoid any potential clashes with some other package's in-package? 
+and once you do cl-in-package, you can safely assume that your "in" cl- so you don't have to prefix other things like defmethod with cl- ... is that correct?
+21:51 < beach> It's (cl:in-package ...) with the : package prefix.
+21:52 < beach> Well, it is more a question of making sure that the operator IN-PACKAGE is available at all and not so much to avoid a clash.
+21:54 < kagevf> ah! right cl:in-package
+21:54 < beach> Once that (cl:in-package <mumble>) has been evaluated, you are sure to be in the <mumble> package, 
+but that package could perhaps not :USE the CL package, so you can use only symbols available in the <mumble> package without a package prefix.
+21:56 < beach> Does that make sense?
+21:56 < kagevf> it makes sense, and I'm trying to think of the implications                                                                        
+21:57 < kagevf> the part about not being able to assume :USE <the CL package> is a great point I hadn't thought of
+21:58 < kagevf> so I would then think "ok, so during something like (asdf:load-system) that would be smart and ensure in-package is available"
+21:58 < kagevf> but then
+21:58 < beach> I mean, if you do (cl:in-package <mumble>) presumably, you know how <mumble> was made, 
+so you wouldn't try to use symbols that are not available in it.
+21:58 < kagevf> right
+21:58 < kagevf> but given that premise, why isn't the rest of the file cl-defun cl-defmethod, etc ... ?
+21:59 < kagevf> how would we know that <mumble> has :USE CL ...?
+21:59 < beach> Because presumably you know how <mumble> was made, and if you know that it :USE-es CL, then you can use CL operators without any package prefix.
+22:00 < kagevf> ahhhhh ok I get it now
+22:00 < beach> You would not do (cl:in-package <mumble>) with <mumble> being someone else's package, so you know how it was created.
+22:00 < kagevf> the difference is whether you're in <mumble> or not ...
+22:01 < beach> Before the evaluation of (cl:in-package <mumble>) you don't know the current package.  After the evaluation, you know you are in <mumble>.
+22:01 < kagevf> right, if I'm writing code that consumes <mumble> there wouldn't be any (normal) reason to do (in-package <mumble>)
+22:02 < kagevf> and right, to your last point ... that was the part I was missing
+22:03 < beach> If by "consumes" you mean client code, then yes, client code should never do (IN-PACKAGE ...) with ... being the supplier package.
+22:03 < kagevf> yes, that is what I meant
+22:04 < kagevf> it's pretty impressive that Line 1 of a file already had this much to teach! :)
+22:04 < beach> Heh, yes.
+22:05 < kagevf> thank you for taking the time to explain, beach!                                                                                          
+22:05 < beach> Pleasure.
+* from IRC (pjb)
+** an example to show how to use ENDP, contrasting it will NULL
+(cond ((endp list) 'no-element) ((null (first list)) 'nil-was-first) (t 'normal-list))
+* from IRC (beach)
+(declare (optimize (debug 3)))
+Or use (proclaim '(optimize (debug 3))) as I have in my .sbclrc.
+(sb-ext:describe-compiler-policy) ;; what are current settings?
+
+
+C-x C-m c utf-8-unix
