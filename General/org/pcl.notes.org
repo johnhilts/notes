@@ -22,7 +22,12 @@ FORMAT understands dozens of directives, each with their own set of options.
   FORMAT loops over that list, processing the directives between the ~{ and ~}, consuming as many elements of the list as needed each time through the list. 
 *** ~%
   The ~% directive doesn't consume any arguments but tells FORMAT to emit a newline. 
-
+** Examples
+*** goto directive ~:* (jumps back with :) and escape upward directive ~^ skips the last element
+#+BEGIN_SRC lisp
+(format t "~{~r ~:*(~d)~^, ~}" '(1 2 3 4))
+;; => one (1), two (2), three (3), four (4)
+#+END_SRC
 * Comments
 #+BEGIN_SRC lisp
 ;;;; Four semicolons are used for a file header comment.
