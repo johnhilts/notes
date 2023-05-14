@@ -1,0 +1,32 @@
+#+NAME: time-sheet
+| Item                                                                       | Date      | Hours |
+|----------------------------------------------------------------------------+-----------+-------|
+| Make form builder work on any domain; Investigation + cross domain testing | 4/26/2023 |  1:33 |
+| Update stub page                                                           | 4/28/2023 |  1:42 |
+| Save form data to DB                                                       | 5/02/2023 |  1:10 |
+| Use Full URL on form builder; Investigation                                | 5/10/2023 |  0:19 |
+| Add domain to DIY form                                                     | 5/12/2023 |  2:22 |
+| secret surcharge                                                           |           | 1:00  |
+|----------------------------------------------------------------------------+-----------+-------|
+| Total                                                                      |           |  7:06 |
+
+
+#+BEGIN_SRC emacs-lisp :var table=time-sheet :results format raw
+  (jfh/report-hours-and-total-billed-hours table)
+#+END_SRC
+
+#+RESULTS:
+Hours: 8:06
+Total amount: $850.50
+Hours: 8:06
+Total amount: $850.50
+Hours: 7:06
+Total amount: $745.50
+Hours: 7:06
+Total amount: $745.50
+Hours: 7:06
+Total amount: $745.50
+
+Hours: 7:06
+Total amount: $745.50
+
